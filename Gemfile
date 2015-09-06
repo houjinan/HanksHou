@@ -26,3 +26,4 @@ end
 
 gem 'unicorn', '~> 4.9.0'
 
+gem 'uglifier', '>= 1.3.0'
