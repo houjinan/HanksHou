@@ -1,0 +1,18 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: root
+  password:
+  socket: /tmp/mysql.sock
+
+development: &development
+  <<: *default
+  database: hankshou_development
+
+production: &production
+  <<: *default
+  port: 3306
+  database: oa_core
+  username: root
+  password: root

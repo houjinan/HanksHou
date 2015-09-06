@@ -1,0 +1,249 @@
+<div id="home" class="banner">
+   <div class="container">
+     <div class="top-header">     
+        <div class="logo">
+          <a href="index.html"><span style="color: #fff; font-size: 27px;">HanksHou</span></a>
+        </div>
+        <div class="top-menu">
+          <span class="menu"> </span>
+          <ul>
+              <nav class="cl-effect-5">
+              <li><a class="active scroll"  href="#home"><span data-hover="HOME">HOME</span></a></li> 
+              <li>/</li>
+              <li><a class="scroll" href="#service"><span data-hover="SERVICES">SERVICES</span></a></li>
+              <li>/</li>
+              <li><a class="scroll" href="#portfolio"><span data-hover="PORTFOLIO">PORTFOLIO</span></a></li>
+              <li>/</li>
+              <li><a class="scroll" href="#contact"><span data-hover="CONTACT">CONTACT</span></a></li>
+           </nav>
+          </ul>        
+        </div>  
+        <!-- script-for-menu -->
+       <script>
+        $("span.menu").click(function(){
+          $(".top-menu ul").slideToggle("slow" , function(){
+          });
+        });
+       </script>
+       <!-- script-for-menu -->
+       <div class="clearfix"></div>     
+     </div>  
+     <div class="banner-info">  
+      <h1>Hello Welcome!</h1>
+      <h3>I'm Hanks，Welcome to my home page.</h3>
+      <a class="downarrow scroll" href="#service"><span> </span></a>
+     </div>
+   </div>
+</div>
+<!---->
+<div id="service" class="service">
+   <div class="container">
+     <div class="service-head">
+     <h3>SERVICES</h3>
+     <h4>WHAT WE DO?</h4>
+     </div>
+     <div class="service-grids">
+       <div class="col-md-4 service-grid">
+          <%=image_tag("pic1.png")%>
+         <h3>EMARKETING</h3>
+         <h4>EMAIL, SOCIAL & MARKETING SOLUTIONS</h4>
+       </div>
+       <div class="col-md-4 service-grid">
+          <%=image_tag("pic2.png")%>
+         <h3>DEVELOPMENT</h3>
+         <h4>WE DEVELOPMENT & MOBILE APPS</h4>
+       </div>
+       <div class="col-md-4 service-grid">
+          <%=image_tag("pic3.png")%>
+         <h3>DESIGN</h3>
+         <h4>WEB DESIGN & MOBILE APPS</h4>
+       </div>
+       <div class="clearfix"></div>
+     </div>    
+   </div>
+</div>
+<!---->
+<div class="author">
+   <div class="container">
+     <h3>great web design without functionality is like a sports car with <span>no engine.</span></h3>
+     <h4>- PAUL COOKSON</h4>
+   </div>
+</div>
+ <script>
+    // You can also use "$(window).load(function() {"
+    $(function () {
+      $("#slider2").responsiveSlides({
+        auto: true,
+        pager: true,
+        speed: 300,
+        namespace: "callbacks",
+      });
+    });
+  </script>
+<div id="portfolio" class="portfolio">
+   <div class="container">
+     <h3>PORTFOLIO</h3>
+      <div class="slider">
+        <ul class="rslides" id="slider2">
+          <li>
+           <div class="works main">             
+              <div class="gallery-box">
+                <div id="nivo-lightbox-demo"> <p> <a href="<%=image_url('p7')%>" data-lightbox-gallery="gallery1" id="nivo-lightbox-demo"> <span class="rollover1"> </span><span class="rollover2"> </span></a> </p></div>
+                <%=image_tag("p7")%> 
+              </div>
+              <div class="gallery-box">
+                <div id="nivo-lightbox-demo"> <p> <a href="<%=image_url('p1')%>" data-lightbox-gallery="gallery1" id="nivo-lightbox-demo"> <span class="rollover1"> </span><span class="rollover2"> </span></a> </p></div>     
+                <%=image_tag("p1")%> 
+              </div>
+              <div class="gallery-box">
+                <div id="nivo-lightbox-demo"> <p> <a href="<%=image_url('p2')%>" data-lightbox-gallery="gallery1" id="nivo-lightbox-demo">  <span class="rollover1"> </span></a> </p></div>     
+                  <%=image_tag("p2")%> 
+              </div>
+              <div class="gallery-box">
+                <div id="nivo-lightbox-demo"> <p> <a href="<%=image_url('p3')%>" data-lightbox-gallery="gallery1" id="nivo-lightbox-demo">  <span class="rollover1"> </span></a> </p></div>     
+                <%=image_tag("p3")%> 
+              </div>
+              <div class="gallery-box">
+                <div id="nivo-lightbox-demo"> <p> <a href="<%=image_url('p4')%>" data-lightbox-gallery="gallery1" id="nivo-lightbox-demo">  <span class="rollover1"> </span></a> </p></div>     
+                <%=image_tag("p4")%> 
+              </div>
+              <div class="gallery-box">
+                <div id="nivo-lightbox-demo"> <p> <a href="<%=image_url('p5')%>" data-lightbox-gallery="gallery1" id="nivo-lightbox-demo">  <span class="rollover1"> </span></a> </p></div>     
+                <%=image_tag("p5")%> 
+              </div>
+              <div class="gallery-box">
+                <div id="nivo-lightbox-demo"> <p> <a href="<%=image_url('p6')%>" data-lightbox-gallery="gallery1" id="nivo-lightbox-demo">  <span class="rollover1"> </span></a> </p></div>     
+                <%=image_tag("p6")%> 
+              </div>
+              <div class="gallery-box">
+                <div id="nivo-lightbox-demo"> <p> <a href="<%=image_url('p7')%>" data-lightbox-gallery="gallery1" id="nivo-lightbox-demo">  <span class="rollover1"> </span></a> </p></div>     
+                <%=image_tag("p7")%> 
+              </div>
+             <div class="clearfix"></div>
+            </div>        
+          </li>
+         <li>
+           <div class="works main">             
+              <div class="gallery-box">
+                <div id="nivo-lightbox-demo"> <p> <a href="images/p3.jpg" data-lightbox-gallery="gallery1" id="nivo-lightbox-demo"> <span class="rollover1"> </span><span class="rollover2"> </span></a> </p></div>     
+                <%=image_tag("p3")%> 
+              </div>
+              <div class="gallery-box">
+                <div id="nivo-lightbox-demo"> <p> <a href="images/p7.jpg" data-lightbox-gallery="gallery1" id="nivo-lightbox-demo"> <span class="rollover1"> </span><span class="rollover2"> </span></a> </p></div>     
+                <%=image_tag("p7")%> 
+              </div>
+              <div class="gallery-box">
+                <div id="nivo-lightbox-demo"> <p> <a href="images/p6.jpg" data-lightbox-gallery="gallery1" id="nivo-lightbox-demo">  <span class="rollover1"> </span></a> </p></div>     
+                  <%=image_tag("p6")%> 
+              </div>
+              <div class="gallery-box">
+                <div id="nivo-lightbox-demo"> <p> <a href="images/p4.jpg" data-lightbox-gallery="gallery1" id="nivo-lightbox-demo">  <span class="rollover1"> </span></a> </p></div>     
+                <%=image_tag("p4")%> 
+              </div>
+              <div class="gallery-box">
+                <div id="nivo-lightbox-demo"> <p> <a href="images/p5.jpg" data-lightbox-gallery="gallery1" id="nivo-lightbox-demo">  <span class="rollover1"> </span></a> </p></div>     
+                <%=image_tag("p5")%> 
+              </div>
+              <div class="gallery-box">
+                <div id="nivo-lightbox-demo"> <p> <a href="images/p1.jpg" data-lightbox-gallery="gallery1" id="nivo-lightbox-demo">  <span class="rollover1"> </span></a> </p></div>     
+                <%=image_tag("p1")%> 
+              </div>
+              <div class="gallery-box">
+                <div id="nivo-lightbox-demo"> <p> <a href="images/p2.jpg" data-lightbox-gallery="gallery1" id="nivo-lightbox-demo">  <span class="rollover1"> </span></a> </p></div>     
+                <%=image_tag("p2")%> 
+              </div>
+              <div class="gallery-box">
+                <div id="nivo-lightbox-demo"> <p> <a href="images/p7.jpg" data-lightbox-gallery="gallery1" id="nivo-lightbox-demo">  <span class="rollover1"> </span></a> </p></div>     
+                <%=image_tag("p7")%> 
+              </div>
+             <div class="clearfix"></div>
+            </div>        
+          </li>
+         <li>
+           <div class="works main">             
+              <div class="gallery-box">
+                <div id="nivo-lightbox-demo"> <p> <a href="images/p7.jpg" data-lightbox-gallery="gallery1" id="nivo-lightbox-demo"> <span class="rollover1"> </span><span class="rollover2"> </span></a> </p></div>     
+                <%=image_tag("p7")%> 
+              </div>
+              <div class="gallery-box">
+                <div id="nivo-lightbox-demo"> <p> <a href="images/p4.jpg" data-lightbox-gallery="gallery1" id="nivo-lightbox-demo"> <span class="rollover1"> </span><span class="rollover2"> </span></a> </p></div>     
+                <%=image_tag("p4")%> 
+              </div>
+              <div class="gallery-box">
+                <div id="nivo-lightbox-demo"> <p> <a href="images/p5.jpg" data-lightbox-gallery="gallery1" id="nivo-lightbox-demo">  <span class="rollover1"> </span></a> </p></div>     
+                  <%=image_tag("p5")%> 
+              </div>
+              <div class="gallery-box">
+                <div id="nivo-lightbox-demo"> <p> <a href="images/p3.jpg" data-lightbox-gallery="gallery1" id="nivo-lightbox-demo">  <span class="rollover1"> </span></a> </p></div>     
+                <%=image_tag("p3")%> 
+              </div>
+              <div class="gallery-box">
+                <div id="nivo-lightbox-demo"> <p> <a href="images/p1.jpg" data-lightbox-gallery="gallery1" id="nivo-lightbox-demo">  <span class="rollover1"> </span></a> </p></div>     
+                <%=image_tag("p1")%> 
+              </div>
+              <div class="gallery-box">
+                <div id="nivo-lightbox-demo"> <p> <a href="images/p7.jpg" data-lightbox-gallery="gallery1" id="nivo-lightbox-demo">  <span class="rollover1"> </span></a> </p></div>     
+                <%=image_tag("p7")%> 
+              </div>
+              <div class="gallery-box">
+                <div id="nivo-lightbox-demo"> <p> <a href="images/p6.jpg" data-lightbox-gallery="gallery1" id="nivo-lightbox-demo">  <span class="rollover1"> </span></a> </p></div>     
+                <%=image_tag("p6")%> 
+              </div>
+              <div class="gallery-box">
+                <div id="nivo-lightbox-demo"> <p> <a href="images/p2.jpg" data-lightbox-gallery="gallery1" id="nivo-lightbox-demo">  <span class="rollover1"> </span></a> </p></div>     
+                <%=image_tag("p2")%> 
+              </div>
+             <div class="clearfix"></div>
+            </div>        
+          </li>
+        </ul>
+        <script type="text/javascript">
+        $(document).ready(function(){
+            $('#nivo-lightbox-demo a').nivoLightbox({ effect: 'fade' });
+        });
+        </script>
+      </div>
+   </div>
+</div>
+
+<!---contact-->
+<div id="contact" class="contact">
+   <div class="container">
+     <h3>CONTACT</h3>
+     <h4>WE'RE ALWAYS HERE TO HELP YOU</h4>
+     <div class="contact-form">
+       <form>
+         <div class="col-md-6 contact-left">
+            <input type="text" placeholder="Name" required/>
+            <input type="text" placeholder="E-mail" required/>
+            <input type="text" placeholder="Phone" required/>
+          </div>
+          <div class="col-md-6 contact-right">
+           <textarea placeholder="Message"></textarea>
+           <input type="submit" value="SEND"/>
+         </div>
+         <div class="clearfix"></div>
+       </form>
+       </div>
+   </div>
+</div>
+<!---fotter-->
+<div class="fotter">
+   <p>Copyrights &copy; 2015 Jalil All rights reserved | Template by <a href="http://w3layouts.com/">W3layouts</a></p>
+</div>
+<!---->
+
+<a href="#home" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+<script type="text/javascript">
+    $(document).ready(function() {
+        /*
+        var defaults = {
+        containerID: 'toTop', // fading element id
+        containerHoverID: 'toTopHover', // fading element hover id
+        scrollSpeed: 1200,
+        easingType: 'linear' 
+        };
+        */
+    //$().UItoTop({ easingType: 'easeOutQuart' });
+});
+</script>
