@@ -24,9 +24,5 @@ group :development, :test do
   gem 'capistrano-rvm'
 end
 
-gem 'unicorn'
-
-group :production do
-  gem 'unicorn'
-end
+gem 'unicorn', '~> 4.9.0'
 
