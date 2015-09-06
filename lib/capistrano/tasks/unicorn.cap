@@ -1,0 +1,12 @@
+namespace :unicorn do
+
+  desc "upload unicorn config"
+  task :update_config do
+    on roles :web do
+      dest = "#{shared_path}/config/unicorn.conf.rb"
+      upload! from_template("unicorn.conf.rb.erb"), dest
+      info "Uploaded to '#{fetch(:server_name)}@#{dest}'"
+    end
+  end
+
+end
