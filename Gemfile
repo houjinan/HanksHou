@@ -1,6 +1,5 @@
-source 'https://rubygems.org/'
-gem 'rails', '4.2.1'
-gem 'mysql2'
+source 'http://ruby.taobao.org'
+gem 'rails', '4.2.4'
 gem 'sass-rails', '~> 5.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
@@ -27,3 +26,10 @@ end
 gem 'unicorn', '~> 4.9.0'
 
 gem 'uglifier', '>= 1.3.0'
+
+gem 'devise'
+  
+gem 'mongoid'
+gem 'mongoid-tree'
+gem 'mongoid-pagination'
+gem "bson_ext"
