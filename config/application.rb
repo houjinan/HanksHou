@@ -30,7 +30,9 @@ module HanksHou
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
 
-    
+    config.generators do |g|
+      g.template_engine :slim
+    end
 
   end
 end
