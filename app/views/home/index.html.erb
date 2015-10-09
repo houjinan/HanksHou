@@ -1,8 +1,14 @@
 <div id="home" class="banner">
+  <% if user_signed_in? %>
+    <div class="user_bar pull-right">
+      <%= current_user.email %>
+      <%= link_to "退出", destroy_user_session_path, method: :delete%>
+    </div>
+  <% end %>
    <div class="container">
      <div class="top-header">     
         <div class="logo">
-          <a href="index.html"><span style="color: #fff; font-size: 27px;">HanksHou</span></a>
+          <a href="/"><span style="color: #fff; font-size: 27px;">HanksHou</span></a>
         </div>
         <div class="top-menu">
           <span class="menu"> </span>

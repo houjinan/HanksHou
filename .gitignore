@@ -13,5 +13,7 @@
 
 # Ignore all logfiles and tempfiles.
 /log/*
+mongodb.log
+mongodb.log.*
 !/log/.keep
 /tmp
