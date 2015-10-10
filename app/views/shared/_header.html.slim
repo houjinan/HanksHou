@@ -1,0 +1,16 @@
+nav.header-bar.navbar.navbar-default
+  .container
+    .collapse.navbar-collapse
+      ul.nav.navbar-nav
+        li = link_to "Hanks·Hou",  "/", class: "logo"
+
+      ul.nav.navbar-nav.navbar-right
+        - if user_signed_in?
+          li = link_to current_user.email, "", class: "first"
+          li = link_to "退出", destroy_user_session_path, method: "delete"
+        - else
+          li.not-sign-in
+            span Welcome to here, 
+            = link_to "登录", new_user_session_path, class: "sign-in"
+            span  或者
+            = link_to "注册", new_user_registration_path, class: "sign-out"
