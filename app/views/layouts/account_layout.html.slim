@@ -1,0 +1,31 @@
+doctype html
+html
+  head
+    title HanksHou
+    = stylesheet_link_tag    'account', media: 'all'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+  body
+
+    = render "account/shared/account_header"
+
+    .container-fluid
+      .row
+        = render "account/shared/sidebar"
+        .col-lg-11.col-lg-offset-1.main
+            - if flash[:notice]
+              .row
+                .col-lg-12
+                  .alert.alert-info
+                    button type="button" class="close" data-dismiss="alert" aria-label="Close"
+                      span == "&times;"
+                    = notice
+
+            - if flash[:alert]
+              .row
+                .col-lg-12
+                  .alert.alert-danger
+                    button type="button" class="close" data-dismiss="alert" aria-label="Close"
+                      span == "&times;"
+                    = alert
+            = yield
