@@ -2,53 +2,41 @@ module Account
   class ArticlesController < AccountController
     before_action :authenticate_user!
     before_action :set_article, only: [:show, :edit, :update, :destroy]
-
     def index
-      @articles = Article.all
+      @articles = current_user.articles.paginate(:per_page => 10, :page => params[:page])
     end
 
     def show
     end
 
     def new
-      @article = Article.new
+      @article = current_user.articles.new
     end
 
     def edit
+      @article = Article.find(params[:id])
     end
 
     def create
-      @article = Article.new(article_params)
-
-      respond_to do |format|
-        if @article.save
-          format.html { redirect_to @article, notice: 'Article was successfully created.' }
-          format.json { render :show, status: :created, location: @article }
-        else
-          format.html { render :new }
-          format.json { render json: @article.errors, status: :unprocessable_entity }
-        end
+      @article = current_user.articles.new(article_params)      
+      if @article.save
+        redirect_to action: :index
+      else
+        render :new
       end
     end
 
     def update
-      respond_to do |format|
-        if @article.update(article_params)
-          format.html { redirect_to @article, notice: 'Article was successfully updated.' }
-          format.json { render :show, status: :ok, location: @article }
-        else
-          format.html { render :edit }
-          format.json { render json: @article.errors, status: :unprocessable_entity }
-        end
+      if @article.update(article_params)
+        redirect_to action: :index
+      else
+        render :edit
       end
     end
 
     def destroy
       @article.destroy
-      respond_to do |format|
-        format.html { redirect_to articles_url, notice: 'Article was successfully destroyed.' }
-        format.json { head :no_content }
-      end
+      redirect_to action: :index
     end
 
     private

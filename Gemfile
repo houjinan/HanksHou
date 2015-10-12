@@ -34,3 +34,7 @@ gem 'mongoid'
 gem 'mongoid-tree'
 gem 'mongoid-pagination'
 gem "bson_ext"
+
+
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'

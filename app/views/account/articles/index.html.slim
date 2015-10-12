@@ -1,13 +1,11 @@
-h1 Listing articles
+= link_to '新建文章', new_account_article_path, class: "btn btn-xs btn-success"
 
-table
+table.table
   thead
     tr
-      th Title
-      th Content
-      th User
-      th
-      th
+      th 标题
+      th 内容
+      th 创建者
       th
 
   tbody
@@ -15,11 +13,11 @@ table
       tr
         td = article.title
         td = article.content
-        td = article.user_id
-        td = link_to 'Show', article
-        td = link_to 'Edit', edit_article_path(article)
-        td = link_to 'Destroy', article, data: {:confirm => 'Are you sure?'}, :method => :delete
+        td = article.user.try(:email)
+        td 
+          = link_to '详情', account_article_path(article), class: "btn btn-xs btn-default"
+          = link_to '编辑', edit_account_article_path(article), class: "btn btn-xs btn-primary"
+          = link_to '删除', account_article_path(article), data: {:confirm => 'Are you sure?'}, :method => :delete, class: "btn btn-xs btn-danger"
 
-br
+= will_paginate @articles
 
-= link_to 'New Article', new_article_path

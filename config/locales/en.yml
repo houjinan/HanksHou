@@ -21,3 +21,8 @@
 
 en:
   hello: "Hello world"
+
+zh-CN:
+  will_paginate:
+    previous_label: "前一页"
+    next_label: "后一页"
