@@ -2,7 +2,7 @@
   .container-fluid
     .collapse.navbar-collapse
       ul.nav.navbar-nav
-        li = link_to "Hanks·Hou",  "/", class: "logo"
+        li = link_to "Hanks·Hou",  "/", class: "logo", target: "_top"
 
       ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
