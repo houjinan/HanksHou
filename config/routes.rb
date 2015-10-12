@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   namespace :account do 
     get 'dashboard' => 'dashboard#index', as: 'dashboard'
     resources :articles
+
+    resources :users
   end
 
   resources :articles

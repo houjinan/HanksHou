@@ -7,9 +7,13 @@
       = link_to "技术文章", account_articles_path
     li
       = link_to "心得体会", ""
-  ul.nav.nav-sidebar
     li
       = link_to "我的收藏", ""
+
+  -if current_user.is_super_admin?
+    ul.nav.nav-sidebar
+      li
+        = link_to "用户管理", account_users_path
 
 javascript:
   $(".nav-#{controller_name}").addClass("active");

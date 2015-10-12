@@ -1,0 +1,26 @@
+= link_to '新建用户', new_account_user_path, class: "btn btn-xs btn-success"
+span.pull-right 
+  = "当前用户总数" 
+  = "(" + User.all.count.to_s + ") "
+
+
+table.table
+  thead
+    tr
+      th 标题
+      th 创建者
+      th 创建时间
+      th
+
+  tbody
+    - @users.each do |user|
+      tr
+        td = user.id
+        td = user.try(:email)
+        td = user.created_at.present? ? user.created_at.strftime("%Y-%m-%d %H:%M") : ""
+        td 
+          = link_to '详情', account_user_path(user), class: "btn btn-xs btn-default"
+          /= link_to '编辑', edit_account_user_path(user), class: "btn btn-xs btn-primary"
+          = link_to '删除', account_user_path(user), data: {:confirm => 'Are you sure?'}, :method => :delete, class: "btn btn-xs btn-danger"
+
+= will_paginate @users
