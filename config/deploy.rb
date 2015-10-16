@@ -22,6 +22,7 @@ set :log_level, :debug
 set :pty, true
 
 #set :linked_files, %w{config/database.yml}
+set :linked_files, %w{config/mongoid.yml}
 set :linked_dirs, %w{bin log tmp public/system public/assets public/uploads}
 
 set :keep_releases, 5
