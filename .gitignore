@@ -17,3 +17,4 @@ mongodb.log
 mongodb.log.*
 !/log/.keep
 /tmp
+/config/mongoid.yml
