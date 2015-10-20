@@ -1,25 +1,23 @@
-h1 Listing articles
+.container
+  .row.home-articles
+    .col-lg-10
+      - @articles.each do |article|
+        .row.panel.panel-default.wapper
+          .col-lg-10
+            .article-title 
+              = link_to article.title, article_path(article)
+            .label-wapper = article.labels.present? ? "\(" + article.labels_content.to_s + "\)" : ""
+          .col-lg-2
+            .pull-right = article.user.email
 
-table
-  thead
-    tr
-      th Title
-      th Content
-      th User
-      th
-      th
-      th
+          hr
+          .col-lg-12
+            pre = article.content
+          .col-lg-6
+            = "创建时间：#{article.created_at.strftime("%Y-%m-%d %H:%M:%S") if article.created_at.present?}"
+          .col-lg-6
+            .pull-right ="访问量：1 赞数：2 评论数：3"
 
-  tbody
-    - @articles.each do |article|
-      tr
-        td = article.title
-        td = article.content
-        td = article.user_id
-        td = link_to 'Show', article
-        td = link_to 'Edit', edit_article_path(article)
-        td = link_to 'Destroy', article, data: {:confirm => 'Are you sure?'}, :method => :delete
-
-br
-
-= link_to 'New Article', new_article_path
+    .col-lg-2
+      - @labels.each do |label|
+        .p.badge = link_to label.name, articles_path(label_id: label.id) 

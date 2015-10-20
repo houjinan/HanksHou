@@ -2,6 +2,7 @@ class HomeController < ApplicationController
   #before_action :authenticate_user!
   def index
     cookies["nav_active"] = "index"
+    redirect_to articles_path
   end
 
   def feel

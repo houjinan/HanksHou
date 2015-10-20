@@ -9,9 +9,12 @@ class Article
 
   validates :title, presence: true
   belongs_to :user
+  has_and_belongs_to_many :labels
 
 
-
+  def labels_content
+    self.labels.collect { |label| label.name }.join(", ")
+  end
 
   private 
 

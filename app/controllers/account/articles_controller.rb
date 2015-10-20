@@ -18,7 +18,9 @@ module Account
     end
 
     def create
-      @article = current_user.articles.new(article_params)      
+      labels = params.delete(:labels).to_s
+      @article = current_user.articles.new(article_params)
+      initialize_or_create_labels(labels)      
       if @article.save
         redirect_to action: :index
       else
@@ -27,6 +29,11 @@ module Account
     end
 
     def update
+
+      @article = Article.find params[:id]
+
+      labels = params.delete(:labels).to_s
+      initialize_or_create_labels(labels)
       if @article.update(article_params)
         redirect_to action: :index
       else
@@ -40,6 +47,14 @@ module Account
     end
 
     private
+      def initialize_or_create_labels(labels)
+        @article.labels = []
+        labels.split(",").each do |name|
+          label = Label.find_or_initialize_by(name: name.strip)
+          label.save!
+          @article.labels << label
+        end
+      end
       def set_article
         @article = Article.find(params[:id])
       end
