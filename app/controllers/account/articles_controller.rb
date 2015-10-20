@@ -20,8 +20,8 @@ module Account
     def create
       labels = params.delete(:labels).to_s
       @article = current_user.articles.new(article_params)
-      initialize_or_create_labels(labels)      
       if @article.save
+        initialize_or_create_labels(labels)
         redirect_to action: :index
       else
         render :new
