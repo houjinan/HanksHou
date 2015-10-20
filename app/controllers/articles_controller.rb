@@ -10,6 +10,8 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    @article.visit_count = @article.visit_count + 1
+    @article.save
   end
 
   private

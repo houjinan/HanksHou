@@ -6,6 +6,7 @@ class Article
 
   field :title, type: String
   field :content, type: String
+  field :visit_count, type: Integer, default: 0
 
   validates :title, presence: true
   belongs_to :user
