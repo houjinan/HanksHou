@@ -18,7 +18,7 @@
         | 已经存在标签：
         span
           - Label.all.each do |label|
-            a.label-a class="" click="" #{label.name} 
+            a.label-a class="" onclick="choice_label('#{label.name}')" #{label.name} 
 
   .row
     .col-lg-8
