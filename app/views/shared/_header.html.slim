@@ -3,8 +3,16 @@ nav.header-bar.navbar.navbar-default
     .collapse.navbar-collapse
       ul.nav.navbar-nav
         li = link_to "Hanks·Hou",  "/", class: "logo"
-
+          
       ul.nav.navbar-nav.navbar-right
+        li
+          form action="#{articles_path}" method="get" class="search"
+            .input-group
+              input type="test" name="search" class="form-control search-input" placeholder="Search" value="#{params[:search]}"
+              span class="input-group-btn"
+                button type="submit" class="btn btn-default search-input" 
+                  span Go
+
         - if user_signed_in?
           li = link_to current_user.email, account_dashboard_path, class: "first", target: "_top"
           li = link_to "退出", destroy_user_session_path, method: "delete", class: "first"

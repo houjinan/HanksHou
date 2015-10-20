@@ -3,6 +3,7 @@
     .col-lg-10.home-article-show
       p
         h4 = @article.title
+        = @article.labels.present? ? "\(" + @article.labels_content.to_s + "\)" : ""
       br
       p
         pre = @article.content
