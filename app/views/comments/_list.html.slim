@@ -2,7 +2,7 @@
   .panel.panel-default
     .panel-body
       .col-lg-3
-        = (i+1).to_s + "楼 " + (comment.user.try(:email).present? ? comment.user.try(:email) : "匿名：")
+        = "# " + (i+1).to_s + "楼 " + (comment.user.try(:email).present? ? comment.user.try(:email) : "匿名：")
       .col-lg-9
         = comment.created_at.strftime("%Y-%m-%d %H:%M")
       .col-lg-12  
