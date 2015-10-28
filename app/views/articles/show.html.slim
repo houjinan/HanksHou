@@ -1,6 +1,6 @@
-.container
+.container.home-article-show
   .row
-    .col-lg-10.home-article-show
+    .col-lg-10
       p
         h4 = @article.title
         = @article.labels.present? ? "\(" + @article.labels_content.to_s + "\)" : ""
@@ -10,6 +10,23 @@
       p
         strong 创建者:
         = @article.user.email
+      / = link_to "回复", new_article_comment_path(@article)
+      br
+      - if current_user 
+        = render "comments/new", article: @article, comment: @article.comments.build
+      - else
+        = "回复请 "
+        = link_to "登录", new_user_session_path, class: "sign-in"
+      p 
+        strong 回复：
+      = render "comments/list", comments: @article.comments
+      - if current_user 
+        = render "comments/new", article: @article, comment: @article.comments.build if @article.comments.count > 3
+      - else
+        = "回复请 "
+        = link_to "登录", new_user_session_path, class: "sign-in"
 
     .col-lg-2
       span 标签
+
+

@@ -11,7 +11,9 @@ Rails.application.routes.draw do
     resources :users
   end
 
-  resources :articles
+  resources :articles do 
+    resources :comments
+  end
   devise_for :users
 
   get 'home/index'

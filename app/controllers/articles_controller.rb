@@ -9,7 +9,7 @@ class ArticlesController < ApplicationController
       @articles = @articles.any_of({:title => Regexp.new(".*"+params[:search]+".*")}, {:content => Regexp.new(".*"+params[:search]+".*") })
     end
     @articles = @articles.paginate(:per_page => 10, :page => params[:page])
-    @labels = Label.all
+    @labels = Label
   end
 
   def show

@@ -1,0 +1,10 @@
+= simple_form_for [article, comment], html:{class: "horizontal_form"} do |f|
+
+  .row
+    .col-lg-8
+      = f.input :content, :as => :text, label: "回复", input_html: {style: "height: 60px;"}
+
+  = f.hidden_field :article_id
+
+  .actions = f.submit "回复", class: "btn btn-default btn-success"
+br

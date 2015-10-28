@@ -10,7 +10,8 @@ class Article
 
   validates :title, presence: true
   belongs_to :user
-  has_and_belongs_to_many :labels
+  has_many :comments
+  has_and_belongs_to_many :labels, :counter_cache => true
 
 
   def labels_content
