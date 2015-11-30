@@ -12,4 +12,8 @@ class HomeController < ApplicationController
   def about_me
     render "about_me", layout: "about_me"
   end
+
+  def jquery_mobile
+    render "jquery_mobile", layout: "jquery_mobile"
+  end
 end
