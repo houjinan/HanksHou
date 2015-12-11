@@ -9,12 +9,13 @@ class ArticlesController < ApplicationController
       @articles = @articles.any_of({:title => Regexp.new(".*"+params[:search]+".*")}, {:content => Regexp.new(".*"+params[:search]+".*") })
     end
     @articles = @articles.paginate(:per_page => 10, :page => params[:page])
-    @labels = Label
+    @labels = @articles.map(&:labels).flatten.compact.uniq
   end
 
   def show
     @article.visit_count = @article.visit_count + 1
     @article.save
+    @labels = Article.all.map(&:labels).flatten.compact.uniq
   end
 
   private

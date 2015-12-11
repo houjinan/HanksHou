@@ -1,4 +1,5 @@
 .home-articles {
+  min-height: 700px;
   margin-top: 10px;
   .panel-default {
     border-color: #999;
@@ -19,8 +20,8 @@
     padding: 10px 0px;
   }
 
-  hr {
-
+  pre {
+    max-height: 200px;
   }
 
   .badge {
@@ -35,6 +36,4 @@
   }
 }
 
-.home-article-show {
-  min-height: 700px;
-}
+  

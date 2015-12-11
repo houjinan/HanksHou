@@ -1,4 +1,4 @@
-.container.home-article-show
+.container.home-articles
   .row
     .col-lg-10
       p
@@ -27,6 +27,6 @@
         = link_to "登录", new_user_session_path, class: "sign-in"
 
     .col-lg-2
-      span 标签
+      = render "shared/labels"
 
 
