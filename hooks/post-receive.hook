@@ -7,7 +7,7 @@ set -xe  # x表示是打印每一个运行的命令；e表示有任何错误就�
 
 echo "Running Post Receive Hook"
 
-export GIT_WORK_TREE=$HOME/my_code
+export GIT_WORK_TREE=$HOME/hankshou_code
 export GIT_DIR=${GIT_WORK_TREE}/.git
 
 cd ${GIT_WORK_TREE}
