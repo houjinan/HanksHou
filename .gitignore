@@ -18,3 +18,4 @@ mongodb.log.*
 !/log/.keep
 /tmp
 /config/mongoid.yml
+*.DS_Store
