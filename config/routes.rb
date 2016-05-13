@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get 'home/index'
   get 'home/feel'
   get 'home/about_me'
+  get 'home/call_back'
   root 'home#index'
 
   get 'home/jquery_mobile'

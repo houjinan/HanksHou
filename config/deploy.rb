@@ -11,7 +11,7 @@ set :repo_url, 'git@bitbucket.org:hankshou/hankshou.git'
 set :rails_env, 'production'
 
 set :rvm_type, :user
-set :rvm_ruby_version, '2.2.0'
+set :rvm_ruby_version, '2.2.1'
 
 set :branch, "master" # proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 

@@ -16,4 +16,7 @@ class HomeController < ApplicationController
   def jquery_mobile
     render "jquery_mobile", layout: "jquery_mobile"
   end
+
+  def call_back
+  end
 end
