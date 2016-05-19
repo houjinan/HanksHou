@@ -8,7 +8,7 @@
               = link_to article.title, article_path(article)
             .label-wapper = article.labels.present? ? "\(" + article.labels_content.to_s + "\)" : ""
           .col-lg-2
-            .pull-right = article.user.email
+            .pull-right = article.user.try(:email)
 
           hr
           .col-lg-12

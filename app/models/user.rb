@@ -26,7 +26,8 @@ class User
   field :current_sign_in_ip, type: String
   field :last_sign_in_ip,    type: String
 
-
+  field :is_deleted, type: Boolean, default: false
+  
   has_many :articles
   ## Confirmable
   # field :confirmation_token,   type: String
@@ -43,6 +44,7 @@ class User
   
 
   def is_super_admin?
-    email == "houjinan@126.com" ? true : false
+    true
+    # email == "houjinan@126.com" ? true : false
   end
 end

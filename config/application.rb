@@ -30,7 +30,7 @@ module HanksHou
     config.time_zone = 'Beijing'
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.i18n.default_locale = "zh-CN"
-
+    # config.log_level = :error
     config.generators do |g|
       g.template_engine :slim
     end

@@ -14,7 +14,7 @@ gem 'bootstrap-sass', '~> 3.3.4'
 group :development, :test do
   gem 'pry'
   gem 'byebug'
-  gem 'web-console', '~> 2.0'
+  # gem 'web-console', '~> 2.0'
   gem 'spring'
 
   gem 'method_profiler'
@@ -24,6 +24,16 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano-bundler'
   gem 'capistrano-rvm'
+
+  gem 'capybara'
+  gem 'poltergeist'
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'faker', '>= 1.6.2'
+  gem 'spork-rails'
+  gem 'guard-rspec', require: false
+  gem 'launchy'
 end
 
 gem 'unicorn', '~> 4.9.0'

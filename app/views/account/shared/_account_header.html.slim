@@ -6,7 +6,7 @@
 
       ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
-          li = link_to current_user.email, "", class: "first"
+          li = link_to current_user.try(:email), "", class: "first"
           li = link_to "退出", destroy_user_session_path, method: "delete"
         - else
           li.not-sign-in

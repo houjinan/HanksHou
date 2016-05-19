@@ -1,9 +1,9 @@
 module Account
   class ArticlesController < AccountController
-    before_action :authenticate_user!
+    # before_action :authenticate_user!
     before_action :set_article, only: [:show, :edit, :update, :destroy]
     def index
-      @articles = current_user.articles.desc("created_at").paginate(:per_page => 10, :page => params[:page])
+      @articles = current_user.articles.desc("created_at").paginate(:per_page => 10, :page => params[:pagen])
     end
 
     def show

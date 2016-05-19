@@ -26,3 +26,13 @@ zh-CN:
   will_paginate:
     previous_label: "前一页"
     next_label: "后一页"
+  mongoid:
+    errors:
+      messages:
+        # message_title: "aaa"
+        # validations:
+        #   message: "bbb"
+        #   summary: "ddd"
+        #   resolution: "fff"
+        # summary_title: "ccc"
+        # resolution_title: "eee"
