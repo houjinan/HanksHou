@@ -10,6 +10,8 @@ class ArticlesController < ApplicationController
     end
     @articles = @articles.paginate(:per_page => 10, :page => params[:page])
     @labels = @articles.map(&:labels).flatten.compact.uniq
+
+    # render component: 'Articles', props: { todos: @articles }, tag: 'span', class: 'article' and return 
   end
 
   def show

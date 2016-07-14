@@ -14,8 +14,10 @@
 //= require jquery_ujs
 //= require jquery.mobile
 //= require turbolinks
+//= require react
+//= require react_ujs
+//= require components
 //= require_tree .
-
 
 function choice_label(label){
   var has_labels = $("#labels").val().split(",");

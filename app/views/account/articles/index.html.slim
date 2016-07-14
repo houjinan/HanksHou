@@ -1,6 +1,6 @@
 = link_to '新建文章', new_account_article_path, class: "btn btn-xs btn-success"
-span.pull-right 
-  = "当前文章总数" 
+span.pull-right
+  = "当前文章总数"
   = "(" + current_user.articles.count.to_s + ") "
 
 
@@ -18,10 +18,14 @@ table.table
         td = article.title
         td = article.user.try(:email)
         td = article.created_at.present? ? article.created_at.strftime("%Y-%m-%d %H:%M") : ""
-        td 
+        td
           = link_to '详情', account_article_path(article), class: "btn btn-xs btn-default"
           = link_to '编辑', edit_account_article_path(article), class: "btn btn-xs btn-primary"
           = link_to '删除', account_article_path(article), data: {:confirm => 'Are you sure?'}, :method => :delete, class: "btn btn-xs btn-danger"
 
 = will_paginate @articles
+
+
+
+=""# react_component 'Articles', { data: @articles }
 

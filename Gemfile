@@ -34,12 +34,13 @@ group :development, :test do
   gem 'spork-rails'
   gem 'guard-rspec', require: false
   gem 'launchy'
+  gem 'brakeman', :require => false
 end
 
 gem 'unicorn', '~> 4.9.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'devise'
-  
+
 gem 'mongoid'
 gem 'mongoid-tree'
 gem 'mongoid-pagination'
@@ -48,3 +49,4 @@ gem "bson_ext"
 gem 'simple_form'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
+gem 'react-rails'
