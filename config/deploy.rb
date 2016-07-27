@@ -1,5 +1,5 @@
 # config valid only for Capistrano 3.1
-lock '3.4.0'
+lock '3.3.5'
 
 set :stages, %w(testing production)
 set :default_stage, "production"
@@ -29,7 +29,7 @@ set :keep_releases, 5
 
 namespace :deploy do
 
-  task :start do 
+  task :start do
     invoke :"rvm:hook"
     on roles :app do
       within current_path do
@@ -43,7 +43,7 @@ namespace :deploy do
     end
   end
 
-  task :stop do 
+  task :stop do
     on roles :app do
       if test("[ -f #{fetch(:unicorn_pid)} ]")
         info ">>>>>> stopping unicorn"
@@ -75,7 +75,7 @@ namespace :deploy do
         error ">>>>>> can not restart. there is no started unicorn. will run deploy:start"
       end
     end
-    
+
     invoke "deploy:start" unless pid
   end
 
