@@ -5,14 +5,14 @@ Rails.application.routes.draw do
     resources :users
   end
 
-  namespace :account do 
+  namespace :account do
     get 'dashboard' => 'dashboard#index', as: 'dashboard'
-    resources :articles
+    resources :articlesroutes
 
     resources :users
   end
 
-  resources :articles do 
+  resources :articles do
     resources :comments
   end
   devise_for :users
