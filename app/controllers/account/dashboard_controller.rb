@@ -1,5 +1,5 @@
 module Account
-  class DashboardController < AccountController
+  class DashboardController < Account::AccountController
     def index
     end
   end

@@ -1,5 +1,5 @@
 module Account
-  class UsersController < AccountController
+  class UsersController < Account::AccountController
     before_action :set_user, only: [:show, :edit, :update, :destroy]
 
     def index
@@ -20,7 +20,7 @@ module Account
     end
 
     def create
-      @user = User.new(user_params)      
+      @user = User.new(user_params)
       if @user.save
         redirect_to action: :index
       else

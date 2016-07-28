@@ -35,6 +35,7 @@ group :development, :test do
   gem 'guard-rspec', require: false
   gem 'launchy'
   gem 'brakeman', :require => false
+  gem 'rails_admin'
 end
 
 gem 'unicorn', '~> 4.9.0'
@@ -50,5 +51,4 @@ gem 'simple_form'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'react-rails'
-gem 'rails_admin'
 gem 'oneapm_rpm'

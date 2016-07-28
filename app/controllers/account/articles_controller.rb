@@ -1,5 +1,5 @@
 module Account
-  class ArticlesController < AccountController
+  class ArticlesController < Account::AccountController
     # before_action :authenticate_user!
     before_action :set_article, only: [:show, :edit, :update, :destroy]
     def index
