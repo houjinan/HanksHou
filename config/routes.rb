@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   namespace :account do
     get 'dashboard' => 'dashboard#index', as: 'dashboard'
-    resources :articlesroutes
+    resources :articles
 
     resources :users
   end
