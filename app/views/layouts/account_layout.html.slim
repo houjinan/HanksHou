@@ -3,6 +3,9 @@ html
   head
     title HanksHou 后台管理
     = stylesheet_link_tag 'account', media: 'all'
+    javascript:
+        window.BWEUM||(BWEUM={});BWEUM.info = {"stand":true,"agentType":"browser","agent":"bi-collector.oneapm.com/static/js/bw-send-411.4.5.js","beaconUrl":"bi-collector.oneapm.com/beacon","licenseKey":"Uib~YybVuFJabBbn","applicationID":2285892};
+    = javascript_include_tag src="//bi-collector.oneapm.com/static/js/bw-loader-411.4.5.js"
     = javascript_include_tag 'application'
     = csrf_meta_tags
   body
