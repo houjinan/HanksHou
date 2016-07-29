@@ -1,6 +1,7 @@
 .home-articles {
   min-height: 700px;
   margin-top: 10px;
+
   .panel-default {
     border-color: #999;
   }
@@ -36,3 +37,7 @@
   }
 }
 
+.home {
+  margin-left: -5px;
+  margin-right: -5px;
+}

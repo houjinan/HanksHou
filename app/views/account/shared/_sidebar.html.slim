@@ -5,8 +5,12 @@
   ul.nav.nav-sidebar
     li.nav-articles
       = link_to "技术文章", account_articles_path, target: "_top"
-    li
-      = link_to "心得体会", "", target: "_top"
+    li.nav-articles-experience
+      = link_to "心得体会", account_articles_path(type: "experience"), target: "_top"
+    li.nav-articles-travel
+      = link_to "旅行笔记", account_articles_path(type: "travel"), target: "_top"
+    li.nav-articles-reading
+      = link_to "读书感", account_articles_path(type: "reading"), target: "_top"
     li
       = link_to "我的收藏", "", target: "_top"
 
@@ -20,4 +24,4 @@
         = link_to "个人信息", account_user_path(current_user), target: "_top"
 
 javascript:
-  $(".nav-#{controller_name}").addClass("active");
+  $(".nav-#{controller_name}#{params[:type].blank? ? '' : '-'+params[:type]}").addClass("active");

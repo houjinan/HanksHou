@@ -2,16 +2,19 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show]
   def index
     @articles = Article.desc("created_at")
-    if params[:label_id].present? 
+    if params[:label_id].present?
       @articles = Label.find(params[:label_id]).articles
     end
     if params[:search].present?
       @articles = @articles.any_of({:title => Regexp.new(".*"+params[:search]+".*")}, {:content => Regexp.new(".*"+params[:search]+".*") })
     end
-    @articles = @articles.paginate(:per_page => 10, :page => params[:page])
+
+    @type = params[:type].present? ? params[:type] : Article.default_type
+    @articles = @articles.where(article_type: @type).paginate(:per_page => 10, :page => params[:page])
     @labels = @articles.map(&:labels).flatten.compact.uniq
 
-    # render component: 'Articles', props: { todos: @articles }, tag: 'span', class: 'article' and return 
+    cookies["nav_active"] = @type
+    # render component: 'Articles', props: { todos: @articles }, tag: 'span', class: 'article' and return
   end
 
   def show

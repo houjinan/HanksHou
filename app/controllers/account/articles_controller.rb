@@ -3,14 +3,16 @@ module Account
     # before_action :authenticate_user!
     before_action :set_article, only: [:show, :edit, :update, :destroy]
     def index
-      @articles = current_user.articles.desc("created_at").paginate(:per_page => 10, :page => params[:pagen])
+      @type = params[:type].present? ? params[:type] : Article.default_type
+      @articles = current_user.articles.where(article_type: @type).desc("created_at").paginate(:per_page => 10, :page => params[:pagen])
     end
 
     def show
     end
 
     def new
-      @article = current_user.articles.new
+      @type = params[:type].present? ? params[:type] : Article.default_type
+      @article = current_user.articles.new(article_type: @type)
     end
 
     def edit
@@ -22,7 +24,7 @@ module Account
       @article = current_user.articles.new(article_params)
       if @article.save
         initialize_or_create_labels(labels)
-        redirect_to action: :index
+        redirect_to ({action: :index}.merge(type: @article.article_type))
       else
         render :new
       end
@@ -60,7 +62,7 @@ module Account
       end
 
       def article_params
-        params.require(:article).permit(:title, :content, :user_id)
+        params.require(:article).permit(:title, :content, :article_type, :user_id)
       end
   end
 end

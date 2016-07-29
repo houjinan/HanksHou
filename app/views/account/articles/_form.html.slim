@@ -1,7 +1,7 @@
 - url = @article.new_record? ? account_articles_path : account_article_path(@article)
 
 = simple_form_for(@article, url: url, html:{class: "horizontal_form"}) do |f|
-  
+  = f.input :article_type, value: @type, as: :hidden
   .row
     .col-lg-4
       = f.input :title, label: "标题"
@@ -11,18 +11,21 @@
       = label_tag :labels, "标签"
       br
       = text_field_tag :labels, @article.labels_content, class: "string required form-control"
-
+      br
+  .row
+    .col-lg-4
+      = f.input :article_type, collection: Article::ArticleType, prompt: "请选择", label: "类型"
   .row
     .col-lg-12
       p
         | 已经存在标签：
         span
           - Label.all.each do |label|
-            a.label-a class="" onclick="choice_label('#{label.name}')" #{label.name} 
+            a.label-a class="" onclick="choice_label('#{label.name}')" #{label.name}
 
   .row
     .col-lg-8
       = f.input :content, :as => :text, label: "内容", input_html: {style: "height: 400px;"}
 
-    
+
   .actions = f.submit "提交", class: "btn btn-default"

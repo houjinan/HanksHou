@@ -1,7 +1,7 @@
-= link_to '新建文章', new_account_article_path, class: "btn btn-xs btn-success"
+= link_to '新建文章', new_account_article_path(type: @type), class: "btn btn-xs btn-success"
 span.pull-right
   = "当前文章总数"
-  = "(" + current_user.articles.count.to_s + ") "
+  = "(" + @articles.count.to_s + ") "
 
 
 table.table
