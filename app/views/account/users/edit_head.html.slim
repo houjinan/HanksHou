@@ -1,0 +1,8 @@
+= render "user_info"
+
+= "修改头像"
+
+= form_for @user, url: account_user_path(@user), html: {:multipart => true} do |f|
+  = f.file_field :head_avatar
+  br
+  = f.submit "修改"

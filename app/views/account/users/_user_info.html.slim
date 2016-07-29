@@ -1,0 +1,29 @@
+= image_tag @user.head_avatar.url, class: "middle-head-img"
+p#notice = notice
+
+p
+  strong 用户编号:
+  = @user.id
+p
+  strong 邮箱:
+  = @user.try(:email)
+p
+  strong 创建时间:
+  = @user.created_at
+
+p
+  strong 昵称:
+  = @user.nickname
+
+
+ul.nav.nav-tabs
+  li id = "nav_edit_head"
+    = link_to "修改头像", edit_head_account_user_path, target: "_self"
+  li id = "nav_edit"
+    = link_to "修改信息", edit_account_user_path, target: "_self"
+  li id="nav_edit_password"
+    = link_to "修改密码", edit_password_account_user_path, target: "_self"
+
+
+javascript:
+  $("#nav_#{action_name}").addClass("active");

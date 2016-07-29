@@ -1,0 +1,11 @@
+= render "user_info"
+
+h4 修改信息
+
+= form_for @user, url: account_user_path(@user) do |f|
+
+  = f.label :nickname, "昵称"
+  = f.text_field :nickname
+  br
+  br
+  = f.submit "修改"

@@ -1,6 +1,9 @@
 require 'will_paginate/array'
 
 class User
+  # include Paperclip::Glue
+  include Mongoid::Paperclip
+  # include Mongoid::Carrierwave
   include Mongoid::Document
   include Mongoid::Timestamps
   # Include default devise modules. Others available are:
@@ -11,10 +14,13 @@ class User
   ## Database authenticatable
   field :email,              type: String, default: ""
   field :encrypted_password, type: String, default: ""
+  field :nickname, type: String, default: ""
 
   ## Recoverable
   field :reset_password_token,   type: String
   field :reset_password_sent_at, type: Time
+
+  # field :head_avatar, type: String, default: ""
 
   ## Rememberable
   field :remember_created_at, type: Time
@@ -42,7 +48,10 @@ class User
   #
   #
 
+  # has_mongoid_attached_file :head_avatar, styles: { medium: "300x300>", thumb: "100x100>" }, :default_url => ActionController::Base.helpers.asset_path('default_head.png')
+  # validates_attachment_content_type :head_avatar, content_type: /\Aimage\/.*\Z/
 
+  mount_uploader :head_avatar, HeadAvatarUploader
   def is_super_admin?
     email == "houjinan@126.com" ? true : false
   end

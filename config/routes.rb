@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   namespace :admin do
     resources :users
@@ -9,7 +8,13 @@ Rails.application.routes.draw do
     get 'dashboard' => 'dashboard#index', as: 'dashboard'
     resources :articles
 
-    resources :users
+    resources :users do
+      member do
+        get 'edit_password'
+        get 'edit_head'
+        post 'update_head'
+      end
+    end
   end
 
   resources :articles do

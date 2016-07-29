@@ -15,5 +15,9 @@
       li.nav-users
         = link_to "用户管理", account_users_path, target: "_top"
 
+  ul.nav.nav-sidebar
+      li.nav-users
+        = link_to "个人信息", account_user_path(current_user), target: "_top"
+
 javascript:
   $(".nav-#{controller_name}").addClass("active");

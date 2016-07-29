@@ -28,9 +28,19 @@ module Account
       end
     end
 
+    def edit_password
+      @user = User.find(params[:id])
+      @resource = @user
+      @resource_name = :user
+    end
+
+    def edit_head
+      @user = User.find(params[:id])
+    end
+
     def update
       if @user.update(user_params)
-        redirect_to action: :index
+        redirect_to ({action: :show}.merge(id: @user.id))
       else
         render :edit
       end
@@ -47,7 +57,7 @@ module Account
       end
 
       def user_params
-        params.require(:user).permit(:title, :content, :user_id)
+        params.require(:user).permit(:title, :content, :user_id, :nickname, :head_avatar)
       end
   end
 end

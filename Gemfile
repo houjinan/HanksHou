@@ -4,6 +4,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'jquery_mobile_rails'
+gem "jquery-fileupload-rails"
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
@@ -44,6 +45,16 @@ gem 'devise'
 gem 'mongoid'
 gem 'mongoid-tree'
 gem 'mongoid-pagination'
+gem "paperclip"
+gem "mongoid-paperclip", :require => "mongoid_paperclip"
+gem 'aws-sdk', '~> 1.3.4'
+gem "cocaine"
+gem "mini_magick"
+
+
+gem 'carrierwave'
+gem "carrierwave-mongoid"
+
 gem "bson_ext"
 
 gem 'simple_form'

@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.mobile
+//= require jquery-fileupload/basic
 //= require turbolinks
 //= require react
 //= require react_ujs
@@ -24,5 +24,5 @@ function choice_label(label){
   if(has_labels.indexOf(label) < 0){
     $("#labels").val($("#labels").val() + "," + label);
   }
-  
+
 }
