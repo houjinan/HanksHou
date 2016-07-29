@@ -4,10 +4,12 @@ module Account
 
     def index
       @users = User.desc(:created_at)
+      cookies[:sidebar_active] = "users"
       @users = @users.paginate(:per_page => 10, :page => params[:page])
     end
 
     def show
+      cookies[:sidebar_active] = "users-show"
       @user = User.find(params[:id])
     end
 

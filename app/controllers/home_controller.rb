@@ -7,6 +7,7 @@ class HomeController < ApplicationController
 
   def feel
     cookies["nav_active"] = "feel"
+    render "feel", layout: "feel"
   end
 
   def about_me

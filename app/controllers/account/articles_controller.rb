@@ -4,6 +4,7 @@ module Account
     before_action :set_article, only: [:show, :edit, :update, :destroy]
     def index
       @type = params[:type].present? ? params[:type] : Article.default_type
+      cookies[:sidebar_active] = @type
       @articles = current_user.articles.where(article_type: @type).desc("created_at").paginate(:per_page => 10, :page => params[:pagen])
     end
 

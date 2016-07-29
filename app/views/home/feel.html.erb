@@ -1,0 +1,43 @@
+
+<div class="container">
+  <div class="leftsidebar_box">
+    <div class="line"></div>
+    <dl class="system_log">
+      <dt style="background-color: rgb(49, 126, 180);">系统记录<%=image_tag("select_xl.png") %></dt>
+      <dd class="first_dd menu_chioce" style="display: block;"><%= link_to "技术文章", articles_path%>
+      <dd style="display: block;" class="menu_chioce"><a href="#">短信充值记录</a></dd>
+      <dd style="display: block;" class="menu_chioce"><a href="#">消费记录</a></dd>
+      <dd style="display: block;" class="menu_chioce"><a href="#">操作记录</a></dd>
+    </dl>
+    <dl class="custom">
+      <dt style="background-color: rgb(57, 146, 208);">客户管理<%=image_tag("select_xl01.png") %></dt>
+      <dd class="first_dd menu_chioce" style="display: none;"><a href="#">客户管理</a></dd>
+      <dd style="display: none;" class="menu_chioce"><a href="#">试用/成交客户管理</a></dd>
+      <dd style="display: none;" class="menu_chioce"><a href="#">未成交客户管理</a></dd>
+      <dd style="display: none;" class="menu_chioce"><a href="#">即将到期客户管理</a></dd>
+    </dl>
+  </div>
+</div>
+<script type="text/javascript">
+$(".leftsidebar_box dt").css({"background-color":"#3992d0"});
+$(".leftsidebar_box dt img").attr("src","<%=image_url('select_xl01.png')%>");
+$(function(){
+  $(".leftsidebar_box dd").hide();
+  $(".leftsidebar_box dt").click(function(){
+    $(".leftsidebar_box dt").css({"background-color":"#3992d0"})
+    $(this).css({"background-color": "#317eb4"});
+    $(this).parent().find('dd').removeClass("menu_chioce");
+    $(".leftsidebar_box dt img").attr("src","<%=image_url('select_xl01.png')%>");
+    $(this).parent().find('img').attr("src","<%=image_url('select_xl.png')%>");
+    $(".menu_chioce").slideUp();
+    $(this).parent().find('dd').slideToggle();
+    $(this).parent().find('dd').addClass("menu_chioce");
+  });
+})
+</script>
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+  <p>适用浏览器：IE8、360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗.</p>
+</div>
+
+
+<div id="window-resizer-tooltip" style="display: none;"><a href="#" title="Edit settings"></a><span class="tooltipTitle">Window size: </span><span class="tooltipWidth" id="winWidth">1907</span> x <span class="tooltipHeight" id="winHeight">1110</span><br><span class="tooltipTitle">Viewport size: </span><span class="tooltipWidth" id="vpWidth">1907</span> x <span class="tooltipHeight" id="vpHeight">417</span></div>
