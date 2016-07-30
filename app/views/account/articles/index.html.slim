@@ -8,6 +8,7 @@ table.table
   thead
     tr
       th 标题
+      th 类别
       th 创建者
       th 创建时间
       th
@@ -16,6 +17,7 @@ table.table
     - @articles.each do |article|
       tr
         td = article.title
+        td = article.article_type_name
         td = article.user.try(:email)
         td = article.created_at.present? ? article.created_at.strftime("%Y-%m-%d %H:%M") : ""
         td

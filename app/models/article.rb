@@ -14,13 +14,18 @@ class Article
   has_many :comments
   has_and_belongs_to_many :labels, :counter_cache => true
 
-  ArticleType = [["技术", "technique"], ["心得", "experience"], ["读书", "reading"], ["旅行", "travel"]]
+  ArticleType = [["技术文章", "technique"], ["心得体会", "experience"], ["读书感", "reading"], ["旅行笔记", "travel"]]
   def labels_content
     self.labels.collect { |label| label.name }.join(", ")
   end
 
   def self.default_type
     "technique"
+  end
+
+  def article_type_name
+    type_names = ArticleType.select{|type| type[1] == self.article_type}
+    type_names.present? ? type_names.first[0] : ""
   end
 
   private
