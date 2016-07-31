@@ -34,7 +34,8 @@ class User
 
   field :is_deleted, type: Boolean, default: false
 
-  has_many :articles
+  has_many :articles, inverse_of: :user
+  has_and_belongs_to_many :collection_articles, class_name: 'Article', inverse_of: :collection_users
   ## Confirmable
   # field :confirmation_token,   type: String
   # field :confirmed_at,         type: Time
