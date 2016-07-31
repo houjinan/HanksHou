@@ -14,6 +14,7 @@ class Article
   has_many :comments
   has_and_belongs_to_many :labels, :counter_cache => true
   has_and_belongs_to_many :collection_users, class_name: 'User', inverse_of: :collection_articles
+  has_and_belongs_to_many :vote_users, class_name: 'User', inverse_of: :vote_articles
 
   ArticleType = [["技术文章", "technique"], ["心得体会", "experience"], ["读书感", "reading"], ["旅行笔记", "travel"]]
   def labels_content

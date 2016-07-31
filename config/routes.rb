@@ -18,6 +18,10 @@ Rails.application.routes.draw do
   end
 
   resources :articles do
+    member do
+      put 'vote'
+      put 'collection'
+    end
     resources :comments
   end
   devise_for :users

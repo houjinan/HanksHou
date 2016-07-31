@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: [:show]
+  before_action :set_article, only: [:show, :vote, :collection]
   def index
     @articles = Article.desc("created_at")
     if params[:label_id].present?
@@ -21,6 +21,16 @@ class ArticlesController < ApplicationController
     @article.visit_count = @article.visit_count + 1
     @article.save
     @labels = Article.all.map(&:labels).flatten.compact.uniq
+  end
+
+  def vote
+    @article.vote_users << current_user if current_user.present?
+    redirect_to ({action: :show}.merge(id: @article.id))
+  end
+
+  def collection
+    @article.collection_users << current_user if current_user.present?
+    redirect_to ({action: :show}.merge(id: @article.id))
   end
 
   private

@@ -16,7 +16,7 @@
           .col-lg-6
             = "创建时间：#{article.created_at.strftime("%Y-%m-%d %H:%M:%S") if article.created_at.present?}"
           .col-lg-6
-            .pull-right ="访问量:#{article.visit_count} 赞数:2 评论数:#{article.comments.count}"
+            .pull-right ="访问量:#{article.visit_count} 赞数:#{article.vote_users.count} 评论数:#{article.comments.count}"
       .pull-right = will_paginate @articles
 
     .col-lg-2

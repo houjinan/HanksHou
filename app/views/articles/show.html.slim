@@ -2,15 +2,20 @@
   .row
     .col-lg-10
       p
-        h4 = @article.title
-        = @article.labels.present? ? "\(" + @article.labels_content.to_s + "\)" : ""
-      br
+        h3 = @article.title
+        = (@article.labels.present? ? "\(" + @article.labels_content.to_s + "\)" : "") + "  创建时间：#{@article.created_at.strftime("%Y-%m-%d %H:%M:%S") if @article.created_at.present?}" 
+      p= ""
+      p
+        ="访问量:#{@article.visit_count} 赞数:#{@article.vote_users.count} 评论数:#{@article.comments.count}"
+        = link_to "", vote_article_path(@article), class: 'glyphicon glyphicon-thumbs-up handle', title: "赞", method: :put
+        = link_to "", collection_article_path(@article), class: 'glyphicon glyphicon-heart-empty handle', title: "收藏", method: :put
       p
         pre = @article.content
       p
         strong 创建者:
-        = @article.user.email
+        = @article.try(:user).try(:email)
       / = link_to "回复", new_article_comment_path(@article)
+      
       br
       - if current_user 
         = render "comments/new", article: @article, comment: @article.comments.build
