@@ -3,7 +3,7 @@
     .col-lg-10
       p
         h3 = @article.title
-        = (@article.labels.present? ? "\(" + @article.labels_content.to_s + "\)" : "") + "  创建时间：#{@article.created_at.strftime("%Y-%m-%d %H:%M:%S") if @article.created_at.present?}" 
+        = (@article.labels.present? ? "\(" + @article.labels_content.to_s + "\)" : "") + "  创建时间：#{@article.created_at.strftime("%Y-%m-%d %H:%M:%S") if @article.created_at.present?}"
       p= ""
       p
         ="访问量:#{@article.visit_count} 赞数:#{@article.vote_users.count} 评论数:#{@article.comments.count}"
@@ -15,21 +15,22 @@
         strong 创建者:
         = @article.try(:user).try(:email)
       / = link_to "回复", new_article_comment_path(@article)
-      
+
       br
-      - if current_user 
+      - if current_user
         = render "comments/new", article: @article, comment: @article.comments.build
       - else
         = "回复请 "
-        = link_to "登录", new_user_session_path, class: "sign-in"
-      p 
+        = link_to "登录", new_user_session_path, class: "btn btn-success btn-xs sign-in"
+      p
         strong 回复：
       = render "comments/list", comments: @article.comments
-      - if current_user 
+      - if current_user
         = render "comments/new", article: @article, comment: @article.comments.build if @article.comments.count > 3
       - else
-        = "回复请 "
-        = link_to "登录", new_user_session_path, class: "sign-in"
+        - if @article.comments.present?
+          = "回复请 "
+          = link_to "登录", new_user_session_path, class: "btn btn-success btn-xs sign-in"
 
     .col-lg-2
       = render "shared/labels"
