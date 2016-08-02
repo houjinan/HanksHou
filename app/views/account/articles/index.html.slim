@@ -11,6 +11,7 @@ table.table
       th 类别
       th 创建者
       th 创建时间
+      th 是否公开
       th
 
   tbody
@@ -20,6 +21,7 @@ table.table
         td = article.article_type_name
         td = article.user.try(:email)
         td = article.created_at.present? ? article.created_at.strftime("%Y-%m-%d %H:%M") : ""
+        td = article.try(:is_public) ? "公开" : "私密"
         td
           = link_to '详情', account_article_path(article), class: "btn btn-xs btn-default"
           = link_to '编辑', edit_account_article_path(article), class: "btn btn-xs btn-primary"

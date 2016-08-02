@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :vote, :collection]
   def index
-    @articles = Article.desc("created_at")
+    @articles = Article.where(is_public: true).desc("created_at")
     if params[:label_id].present?
       @articles = Label.find(params[:label_id]).articles
     end

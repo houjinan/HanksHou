@@ -9,6 +9,7 @@ class Article
   field :visit_count, type: Integer, default: 0
 
   field :article_type, type: String, default: "technique"
+  field :is_public, type: Boolean, default: true
   validates :title, presence: true
   belongs_to :user, inverse_of: :articles
   has_many :comments

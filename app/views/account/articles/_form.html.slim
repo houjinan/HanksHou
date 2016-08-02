@@ -21,6 +21,9 @@
         span
           - Label.all.each do |label|
             a.label-a class="label-style" onclick="choice_label('#{label.name}')" #{label.name}
+  .row
+    .col-lg-4
+      = f.input :is_public, :as => :boolean, label: "公开"
 
   .row
     .col-lg-8

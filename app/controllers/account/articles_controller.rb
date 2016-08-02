@@ -63,7 +63,7 @@ module Account
       end
 
       def article_params
-        params.require(:article).permit(:title, :content, :article_type, :user_id)
+        params.require(:article).permit(:title, :content, :article_type, :is_public, :user_id)
       end
   end
 end
