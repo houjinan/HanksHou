@@ -20,6 +20,7 @@ class ArticlesController < ApplicationController
   def show
     @article.visit_count = @article.visit_count + 1
     @article.save
+    @type = @article.article_type
     @labels = @article.try(&:labels).flatten.compact.uniq
   end
 
