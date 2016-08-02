@@ -25,6 +25,7 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano-bundler'
   gem 'capistrano-rvm'
+  gem 'capistrano-rails-console'
 
   gem 'capybara'
   gem 'poltergeist'

@@ -11,7 +11,7 @@ set :repo_url, 'git@bitbucket.org:hankshou/hankshou.git'
 set :rails_env, 'production'
 
 set :rvm_type, :user
-set :rvm_ruby_version, '2.2.1'
+set :rvm_ruby_version, '2.3.0'
 
 set :branch, "master" # proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
@@ -23,7 +23,7 @@ set :pty, true
 
 #set :linked_files, %w{config/database.yml}
 set :linked_files, %w{config/mongoid.yml}
-set :linked_dirs, %w{bin log tmp public/system public/assets public/uploads}
+set :linked_dirs, %w{log tmp public/system public/assets public/uploads}
 
 set :keep_releases, 5
 
@@ -79,6 +79,17 @@ namespace :deploy do
     invoke "deploy:start" unless pid
   end
 
+  desc "Remote console"
+  task :console do
+    on roles :app do
+      within current_path do
+        # execute :bundle, "exec rails console"
+        # exec %Q(ssh -i /Users/hanks/Documents/Development/hankshou.pem ubuntu@#{fetch(:server_name)} -t "cd #{current_path} && ")
+        run_interactively " ~/.rvm/bin/rvm 2.3.0 do bundle exec rails console -e production"
+      end
+    end
+  end
+
   task :force_restart do
     invoke :"deploy:stop"
     invoke :"deploy:start"
@@ -93,6 +104,13 @@ before "deploy:compile_assets", "rvm:hook"
 before "bundler:install", "rvm:hook"
 after "deploy:publishing", "deploy:restart"
 # after "deploy:publishing", "kindeditor:restart"
+
+
+def run_interactively(command)
+  # server ||= find_servers_for_task(current_task).first
+  exec %Q(ssh -i #{fetch(:ssh_options)[:keys]} #{fetch(:ssh_options)[:user]}@#{fetch(:server_name)} -t "cd #{current_path} && #{command}")
+end
+
 
 namespace :kindeditor do
   task :assets do
