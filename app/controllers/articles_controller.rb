@@ -20,7 +20,7 @@ class ArticlesController < ApplicationController
   def show
     @article.visit_count = @article.visit_count + 1
     @article.save
-    @labels = Article.all.map(&:labels).flatten.compact.uniq
+    @labels = @article.try(&:labels).flatten.compact.uniq
   end
 
   def vote
