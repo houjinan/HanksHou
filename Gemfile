@@ -46,6 +46,7 @@ gem 'devise'
 gem 'mongoid'
 gem 'mongoid-tree'
 gem 'mongoid-pagination'
+gem 'mongoid-shell'
 gem "paperclip"
 gem "mongoid-paperclip", :require => "mongoid_paperclip"
 gem 'aws-sdk', '~> 1.3.4'

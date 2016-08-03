@@ -79,8 +79,8 @@ namespace :deploy do
     invoke "deploy:start" unless pid
   end
 
-  desc "Remote console"
-  task :console do
+  desc "Remote rails console"
+  task :rails_console do
     on roles :app do
       within current_path do
         # execute :bundle, "exec rails console"
@@ -89,6 +89,14 @@ namespace :deploy do
       end
     end
   end
+
+  desc "Remote mongodb shell"
+  task :mongodb_shell do
+    on roles :app do
+      exec %Q(ssh -i #{fetch(:ssh_options)[:keys]} #{fetch(:ssh_options)[:user]}@#{fetch(:server_name)} -t "mongo")
+    end
+  end
+
 
   task :force_restart do
     invoke :"deploy:stop"

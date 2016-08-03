@@ -202,6 +202,9 @@ GEM
       mongo (~> 2.1)
       origin (~> 2.1)
       tzinfo (>= 0.3.37)
+    mongoid-compatibility (0.4.0)
+      activesupport
+      mongoid (>= 2.0)
     mongoid-grid_fs (2.3.0)
       mime-types (>= 1.0, < 4.0)
       mongoid (>= 3.0, < 7.0)
@@ -210,6 +213,10 @@ GEM
       mongoid
     mongoid-paperclip (0.0.10)
       paperclip (>= 2.3.6, != 4.3.0)
+    mongoid-shell (0.4.3)
+      i18n
+      mongoid (>= 3.0.0)
+      mongoid-compatibility
     mongoid-tree (2.0.1)
       mongoid (>= 4.0, < 6.0)
     multi_json (1.11.2)
@@ -423,6 +430,7 @@ DEPENDENCIES
   mongoid
   mongoid-pagination
   mongoid-paperclip
+  mongoid-shell
   mongoid-tree
   oneapm_rpm
   paperclip
