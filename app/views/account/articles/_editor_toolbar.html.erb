@@ -1,0 +1,69 @@
+<div class="row">
+  <div class="col-lg-10">
+    <div class="editor-toolbar">
+      <div class="opts pull-right">
+        <a href="#" class="pickup-emoji"><i class="fa fa-smile-o"></i></a>
+        <span class="dropdown dropdown-small" id="editor-toolbar-insert-code">
+          <a href="#editor-toolbar-insert-code" data-toggle="dropdown" title="插入代码" href="#editor-toolbar-insert-code"><i class="fa fa-code"></i></a>
+          <ul class="dropdown-menu insert-codes" role="menu">
+            <%= insert_code_menu_items_tag %>
+          </ul>
+        </span>
+        <%= link_to(icon_tag("image"), "#", id: "topic-upload-image", rel: "twipsy", title: "上传图片" )%>
+      </div>
+      <ul class="nav nav-pills" style="clear:none;">
+        <li class="edit active"><%= link_to("编辑", "javascript: edit_view()") %></li>
+        <li class="preview"><%= link_to("预览", "javascript: preview_view()") %></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<script>
+  function edit_view(){
+    $(".edit").addClass('active');
+    $('.preview').removeClass('active');
+    $('#preview').hide();
+    $('#article_content').show();
+    false
+  }
+
+  function preview_view(){
+    $(".preview").addClass('active');
+    $('.edit').removeClass('active');
+    $('#preview').html('Loading...');
+    $('#article_content').hide();
+    $('#preview').show();
+    $.post('/articles/preview', {body: $('#article_content').val()}, function(data){
+      $('#preview').html(data);
+    });
+    false
+  }
+
+
+  function browseUpload(){
+    $(".topic-editor").focus();
+    $('.topic-editor-dropzone').click();
+  }
+</script>
+
+<style>
+  .editor-toolbar {
+    .nav-pills { }
+    .nav-pills>li>a {
+      border-radius: 3px 3px 0 0;
+      padding: 3px 23px;
+      margin-right: 5px;
+      background-color: #f0f0f0;
+      color: #999;
+    }
+    .nav-pills>li.active>a:link,
+    .nav-pills>li.active>a:visited,
+    .nav-pills>li.active>a:hover { background-color: #d0d0d0; color: #666; }
+  }
+  .editor-toolbar {
+    .dropdown-menu {
+      left: auto;
+      right: 0;
+    }
+  }
+</style>

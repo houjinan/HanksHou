@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  # mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   namespace :admin do
     resources :users
   end
@@ -21,6 +21,9 @@ Rails.application.routes.draw do
     member do
       put 'vote'
       put 'collection'
+    end
+    collection do
+      post 'preview'
     end
     resources :comments
   end

@@ -2,6 +2,8 @@ require File.expand_path('../boot', __FILE__)
 
 require "rails"
 # Pick the frameworks you want:
+require "action_dispatch/railtie"
+require "action_cable"
 require "active_model/railtie"
 require "active_job/railtie"
 require "action_controller/railtie"
@@ -13,6 +15,8 @@ require "rails/test_unit/railtie"
 require "carrierwave"
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
+
+require_relative './markdown.rb'
 Bundler.require(*Rails.groups)
 
 module HanksHou
@@ -35,6 +39,5 @@ module HanksHou
     config.generators do |g|
       g.template_engine :slim
     end
-
   end
 end

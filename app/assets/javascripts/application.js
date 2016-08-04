@@ -10,13 +10,15 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
+//= require jquery2
 //= require jquery_ujs
+//= require bootstrap.min
 //= require jquery-fileupload/basic
 //= require turbolinks
 //= require react
 //= require react_ujs
 //= require components
+
 //= require_tree .
 
 function choice_label(label){
