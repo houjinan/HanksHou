@@ -57,4 +57,9 @@ class User
   def is_super_admin?
     email == "houjinan@126.com" ? true : false
   end
+
+
+  def user_name
+    self.nickname.present? ? self.nickname : self.email
+  end
 end

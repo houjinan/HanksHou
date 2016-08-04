@@ -19,7 +19,7 @@ table.table
       tr
         td = article.title
         td = article.article_type_name
-        td = article.user.try(:email)
+        td = article.user.try(:user_name)
         td = article.created_at.present? ? article.created_at.strftime("%Y-%m-%d %H:%M") : ""
         td = article.try(:is_public) ? "公开" : "私密"
         td
