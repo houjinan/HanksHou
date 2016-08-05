@@ -15,7 +15,7 @@
  *= require flexslider
  *= require magnific-popup
  *
- *
+ *= require font-awesome
  *
  *
  *= require style
@@ -28,5 +28,5 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap-glyphicons.css");
+// @import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap-glyphicons.css");
 

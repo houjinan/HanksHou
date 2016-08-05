@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :vote, :collection]
+  protect_from_forgery :except => :preview
   def index
     @articles = Article.where(is_public: true).desc("created_at")
     if params[:label_id].present?
@@ -34,6 +35,14 @@ class ArticlesController < ApplicationController
     redirect_to ({action: :show}.merge(id: @article.id))
   end
 
+  def preview
+    # out = MarkdownTopicConverter.convert(params[:body])
+    # render plain: out
+    @body = params[:body]
+    respond_to do |format|
+      format.json
+    end
+  end
   private
     def set_article
       @article = Article.find(params[:id])
