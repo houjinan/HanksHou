@@ -2,7 +2,9 @@
   <%= render "editor_toolbar" %>
 
   <div class="form-group">
-    <%= f.text_area :content, class: "topic-editor form-control closewarning", rows: 20 %>
+    <div id="topic-editor-dropzone" class="topic-editor-dropzone">
+      <%= f.text_area :content, class: "topic-editor form-control closewarning", rows: 20 %>
+    </div>
     <div id="preview" class="markdown form-control" style="display: none;">
   </div>
 

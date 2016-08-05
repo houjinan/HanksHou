@@ -36,12 +36,12 @@ class ArticlesController < ApplicationController
   end
 
   def preview
-    out = MarkdownTopicConverter.convert(params[:body])
-    render plain: out
-    # @body = params[:body]
-    # respond_to do |format|
-    #   format.json
-    # end
+    # out = MarkdownTopicConverter.convert(params[:body])
+    # render plain: out
+    @body = params[:body]
+    respond_to do |format|
+      format.json
+    end
   end
   private
     def set_article

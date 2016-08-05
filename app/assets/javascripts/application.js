@@ -19,6 +19,14 @@
 //= require react_ujs
 //= require components
 
+//= require dropzone
+//= require underscore
+//= require backbone
+//= require emoji-data
+//= require emoji-modal
+//= require jquery.autogrow-textarea
+//= require article_markdown
+
 //= require_tree .
 
 function choice_label(label){
@@ -28,3 +36,33 @@ function choice_label(label){
   }
 
 }
+
+
+function insertString(str){
+  $target = $(".topic-editor")
+  start = $target[0].selectionStart
+  end = $target[0].selectionEnd
+  $target.val($target.val().substring(0, start) + str + $target.val().substring(end));
+  $target[0].selectionStart = $target[0].selectionEnd = start + str.length
+  $target.focus()
+}
+
+$.fn.selectRange = function(start, end) {
+  if(end === undefined) {
+      end = start;
+  }
+  return this.each(function() {
+    if('selectionStart' in this) {
+        this.selectionStart = start;
+        this.selectionEnd = end;
+    } else if(this.setSelectionRange) {
+        this.setSelectionRange(start, end);
+    } else if(this.createTextRange) {
+        var range = this.createTextRange();
+        range.collapse(true);
+        range.moveEnd('character', end);
+        range.moveStart('character', start);
+        range.select();
+    }
+  });
+};

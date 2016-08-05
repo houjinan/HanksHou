@@ -27,6 +27,8 @@ Rails.application.routes.draw do
     end
     resources :comments
   end
+
+  resources :photos
   devise_for :users
 
   get 'home/index'
