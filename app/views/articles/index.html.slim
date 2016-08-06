@@ -12,7 +12,7 @@
 
           hr
           .col-lg-12
-            pre.pre = article.content.length > 200 ? article.content[0..200]+"..." : article.content
+            pre.pre = article.content.length > 50 ? article.content[0..50]+"..." : article.content
           .col-lg-6
             = "创建时间：#{article.created_at.strftime("%Y-%m-%d %H:%M:%S") if article.created_at.present?}"
           .col-lg-6

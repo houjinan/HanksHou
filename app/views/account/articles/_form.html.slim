@@ -27,7 +27,11 @@
 
   .row
     .col-lg-8
-      = f.input :content, :as => :text, label: "内容", input_html: {style: "height: 400px;"}
+      = render "editor_toolbar"
+      div class="form-group"
+        div id="topic-editor-dropzone" class="topic-editor-dropzone"
+          = f.input :content, :as => :text, label: false, input_html: {rows: 20, class: "topic-editor form-control closewarning"}
+          div id="preview" class="markdown form-control" style="display: none;"
 
 
   .actions = f.submit "提交", class: "btn btn-default"
