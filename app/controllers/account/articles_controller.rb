@@ -38,7 +38,7 @@ module Account
       labels = params.delete(:labels).to_s
       initialize_or_create_labels(labels)
       if @article.update(article_params)
-        redirect_to action: :index
+        redirect_to ({action: :index}.merge(type: @article.article_type))
       else
         render :edit
       end
