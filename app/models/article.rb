@@ -3,9 +3,11 @@ require 'will_paginate/array'
 class Article
   include Mongoid::Document
   include Mongoid::Timestamps
+  include MarkdownContent
 
   field :title, type: String
   field :content, type: String
+  field :content_html, type: String
   field :visit_count, type: Integer, default: 0
 
   field :article_type, type: String, default: "technique"
