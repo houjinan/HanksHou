@@ -48,6 +48,20 @@ function initDropzone(){
       self.restoreUploaderStatus();
     }
   });
+
+  $("textarea.topic-editor").unbind("keydown");
+  $("textarea.topic-editor").bind("keydown", (function(_this) {
+    return function(el) {
+      if(el.which == 9){
+        return _this.insertSpaces(el);
+      }
+    };
+  })(this));
+}
+
+function insertSpaces(e) {
+  this.insertString('  ');
+  return false;
 }
 
 function uploadFile(item, filename) {
