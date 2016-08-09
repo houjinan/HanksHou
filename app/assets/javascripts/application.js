@@ -19,6 +19,8 @@
 //= require react_ujs
 //= require components
 
+
+//= require jquery.fluidbox.min
 //= require dropzone
 //= require underscore
 //= require backbone
@@ -29,7 +31,6 @@
 //= require article_markdown
 
 //= require_tree .
-
 function choice_label(label){
   var has_labels = $("#labels").val().split(",");
   if(has_labels.indexOf(label) < 0){

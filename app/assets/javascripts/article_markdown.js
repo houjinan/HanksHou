@@ -228,6 +228,28 @@ function initCloseWarning() {
   })(window.history);
 }
 
+function initContentImageZoom() {
+  var el, exceptClasses, imgEls, j, len;
+  exceptClasses = ["emoji", "twemoji"];
+  imgEls = $(".markdown img");
+  for (j = 0, len = imgEls.length; j < len; j++) {
+    el = imgEls[j];
+    if (exceptClasses.indexOf($(el).attr("class")) === -1) {
+      $(el).wrap("<a href='" + ($(el).attr("src")) + "' class='zoom-image' data-action='zoom'></a>");
+    }
+  }
+
+  $('a.zoom-image').fluidbox({
+    overlayColor: "#FFF",
+    closeTrigger: [
+      {
+        selector: 'window',
+        event: 'scroll'
+      }
+    ]
+  });
+  return true;
+}
 
 jQuery(document).ready(function ($) {
   if (window.history && window.history.pushState) {
