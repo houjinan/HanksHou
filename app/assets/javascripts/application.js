@@ -25,6 +25,7 @@
 //= require emoji-data
 //= require emoji-modal
 //= require jquery.autogrow-textarea
+//= require form_storage
 //= require article_markdown
 
 //= require_tree .

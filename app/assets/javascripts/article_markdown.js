@@ -176,3 +176,57 @@ function browseUpload(){
   $(".topic-editor").focus();
   $('.topic-editor-dropzone').click();
 }
+
+function initCloseWarning() {
+  var msg, text;
+  text = $("textarea.closewarning");
+  if (text.length === 0) {
+    return false;
+  }
+  if (!msg) {
+    msg = "离开本页面将丢失未保存页面!";
+  }
+  $("input[type=submit]").click(function() {
+    return $(window).unbind("beforeunload");
+  });
+  return text.change(function() {
+    if (text.val().length > 0) {
+      return $(window).bind("beforeunload", function(e) {
+        if (text.val().length > 0) {
+          return msg;
+        }
+      });
+    } else {
+      return $(window).unbind("beforeunload");
+    }
+  });
+
+  (function(history){
+    var pushState = history.pushState;
+    history.pushState = function(state) {
+      if (typeof history.onpushstate == "function") {
+          history.onpushstate({state: state});
+      }
+      // ... whatever else you want to do
+      // maybe call onhashchange e.handler
+      return pushState.apply(history, arguments);
+    }
+  })(window.history);
+}
+
+
+jQuery(document).ready(function ($) {
+  if (window.history && window.history.pushState) {
+    $(window).on('popstate', function () {
+      var hashLocation = location.hash;
+      var hashSplit = hashLocation.split("#!/");
+      var hashName = hashSplit[1];
+      if (hashName !== '') {
+        var hash = window.location.hash;
+        if (hash === '') {
+          $(window).unbind("beforeunload");
+        }
+      }
+    });
+  }
+});
