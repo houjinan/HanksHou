@@ -1,5 +1,6 @@
 .fluidbox {
   outline: none;
+  display: -webkit-inline-box;
 }
 .fluidbox-overlay {
   cursor: pointer;
