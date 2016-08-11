@@ -19,15 +19,16 @@
 //= require react_ujs
 //= require components
 
+
+//= require jquery.fluidbox.min
 //= require dropzone
 //= require underscore
 //= require backbone
 //= require emoji-data
 //= require emoji-modal
 //= require jquery.autogrow-textarea
+//= require form_storage
 //= require article_markdown
-
-//= require_tree .
 
 function choice_label(label){
   var has_labels = $("#labels").val().split(",");

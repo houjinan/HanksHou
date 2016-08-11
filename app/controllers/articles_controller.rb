@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: [:show, :vote, :collection]
+  before_action :set_article, only: [:show, :vote, :collection, :delete_vote, :delete_collection]
   protect_from_forgery :except => :preview
   def index
     @articles = Article.where(is_public: true).desc("created_at")
@@ -33,6 +33,11 @@ class ArticlesController < ApplicationController
   def collection
     @article.collection_users << current_user if current_user.present?
     redirect_to ({action: :show}.merge(id: @article.id))
+  end
+
+  def delete_collection
+    current_user.collection_articles = current_user.collection_articles - [@article]
+    redirect_to :back
   end
 
   def preview

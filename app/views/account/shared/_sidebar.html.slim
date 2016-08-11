@@ -11,8 +11,8 @@
       = link_to "旅行笔记", account_articles_path(type: "travel"), target: "_top"
     li.nav-reading
       = link_to "读书感", account_articles_path(type: "reading"), target: "_top"
-    li
-      = link_to "我的收藏", "", target: "_top"
+    li.nav-collection
+      = link_to "我的收藏", collections_account_articles_path, target: "_top"
 
   -if current_user.is_super_admin?
     ul.nav.nav-sidebar

@@ -1,0 +1,27 @@
+span.pull-right
+  = "当前收藏文章总数"
+  = "(" + @articles.count.to_s + ") "
+
+
+table.table
+  thead
+    tr
+      th 标题
+      th 类别
+      th 创建者
+      th 创建时间
+      th 是否公开
+      th
+
+  tbody
+    - @articles.each do |article|
+      tr
+        td = article.title
+        td = article.article_type_name
+        td = article.user.try(:user_name)
+        td = article.created_at.present? ? article.created_at.strftime("%Y-%m-%d %H:%M") : ""
+        td
+          = link_to '详情', article_path(article), class: "btn btn-xs btn-default", target: "blank"
+          = link_to '取消收藏', delete_collection_article_path(article), data: {:confirm => 'Are you sure?'}, :method => :delete, class: "btn btn-xs btn-danger"
+
+= will_paginate @articles

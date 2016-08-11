@@ -6,7 +6,11 @@ Rails.application.routes.draw do
 
   namespace :account do
     get 'dashboard' => 'dashboard#index', as: 'dashboard'
-    resources :articles
+    resources :articles do
+      collection do
+        get "collections"
+      end
+    end
 
     resources :users do
       member do
@@ -21,6 +25,8 @@ Rails.application.routes.draw do
     member do
       put 'vote'
       put 'collection'
+      delete 'delete_vote'
+      delete 'delete_collection'
     end
     collection do
       post 'preview'
