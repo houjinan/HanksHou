@@ -14,7 +14,7 @@
           .article-content = raw @article.content_html
       p
         strong 创建者:
-        = @article.try(:user).try(:email)
+        = @article.try(:user).try(:user_name)
       / = link_to "回复", new_article_comment_path(@article)
 
       br
