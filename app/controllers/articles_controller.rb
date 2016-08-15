@@ -23,6 +23,7 @@ class ArticlesController < ApplicationController
     @article.save
     @type = @article.article_type
     @labels = @article.try(&:labels).flatten.compact.uniq
+    Notification.where(notify_type: 'comment', user: current_user).each{|n| n.update(read_at: DateTime.now) if n.target.article == @article}
   end
 
   def vote

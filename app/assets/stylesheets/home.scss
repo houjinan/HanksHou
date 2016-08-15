@@ -129,3 +129,15 @@
   color: #fff;
 }
 
+.notification-header {
+  font-size: 16px;
+  margin: 0px 5px;
+
+  .fa-bell{
+    color: #F86334;
+  }
+  span {
+    font-size: 14px;
+    color: #F86334;
+  }
+}

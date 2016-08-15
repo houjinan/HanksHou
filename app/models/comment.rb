@@ -10,6 +10,15 @@ class Comment
   belongs_to :user
   belongs_to :article
 
-  private 
 
+  after_create :create_notifications
+
+  private
+    def create_notifications
+      notification = Notification.create(
+        notify_type: 'comment',
+        actor: self.user,
+        user: self.article.user,
+        target: self)
+    end
 end

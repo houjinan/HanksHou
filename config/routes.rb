@@ -35,6 +35,11 @@ Rails.application.routes.draw do
   end
 
   resources :photos
+  resources :notifications do
+    collection do
+      delete 'clean'
+    end
+  end
   devise_for :users
 
   get 'home/index'

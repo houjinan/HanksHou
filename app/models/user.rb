@@ -37,6 +37,8 @@ class User
   has_many :articles, inverse_of: :user
   has_and_belongs_to_many :collection_articles, class_name: 'Article', inverse_of: :collection_users
   has_and_belongs_to_many :vote_articles, class_name: 'Article', inverse_of: :vote_users
+
+  has_many :notifications
   ## Confirmable
   # field :confirmation_token,   type: String
   # field :confirmed_at,         type: Time
