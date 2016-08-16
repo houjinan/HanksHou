@@ -1,4 +1,8 @@
-= image_tag @user.head_avatar.url, class: "middle-head-img"
+.ibox-content
+  .row
+    .col-md-6 id="crop-avatar"
+      .avatar-view
+        = image_tag @user.head_avatar.url, class: "middle-head-img"
 p#notice = notice
 
 p
@@ -25,5 +29,6 @@ ul.nav.nav-tabs
     = link_to "修改密码", edit_password_account_user_path, target: "_self"
 
 
+= render "head_upload"
 javascript:
   $("#nav_#{action_name}").addClass("active");

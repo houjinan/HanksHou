@@ -1,4 +1,5 @@
 module Account
+  require 'mini_magick'
   class UsersController < Account::AccountController
     before_action :set_user, only: [:show, :edit, :update, :destroy]
 
@@ -41,10 +42,24 @@ module Account
     end
 
     def update
-      if @user.update(user_params)
-        redirect_to ({action: :show}.merge(id: @user.id))
+      if params[:avatar_file].present?
+        @user.head_avatar = params[:avatar_file]
+        if @user.save
+          img = MiniMagick::Image.open(@user.head_avatar.current_path)
+          avatar_data = eval(params[:avatar_data])
+          crop_params="#{avatar_data[:width]}#{avatar_data[:height]}+#{avatar_data[:x]}+#{avatar_data[:y]}"
+          img.crop(crop_params)
+          img.write @user.head_avatar.current_path
+          render :json => {result: true, url: @user.head_avatar.url}.to_json
+        else
+          render :json => {result: false, message: "图片上传失败，请重新上传"}.to_json
+        end
       else
-        render :edit
+        if @user.update(user_params)
+          redirect_to ({action: :show}.merge(id: @user.id))
+        else
+          render :edit
+        end
       end
     end
 

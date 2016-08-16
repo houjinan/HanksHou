@@ -29,6 +29,8 @@
 //= require jquery.autogrow-textarea
 //= require form_storage
 //= require article_markdown
+//= require cropper.min
+//= require upload-crop-pic
 
 function choice_label(label){
   var has_labels = $("#labels").val().split(",");
