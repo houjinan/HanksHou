@@ -273,7 +273,7 @@
           } else {
             this.uploaded = true;
             this.$avatarSrc.val(this.url);
-            this.startCropper();
+                        this.startCropper();
           }
           this.$avatarInput.val('');
         } else if (data.message) {
@@ -295,6 +295,7 @@
     cropDone: function () {
       this.$avatarForm.get(0).reset();
       this.$avatar.attr('src', this.url);
+      $(".mini-head-img").attr('src',this.url);
       this.stopCropper();
       this.$avatarModal.modal('hide');
     },
