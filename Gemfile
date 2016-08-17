@@ -44,6 +44,8 @@ group :development, :test do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'spork'
+  gem 'rails-controller-testing'
   gem 'faker', '>= 1.6.2'
   gem 'guard-rspec', require: false
   gem 'launchy'

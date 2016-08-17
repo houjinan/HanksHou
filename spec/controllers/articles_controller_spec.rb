@@ -3,11 +3,11 @@ require 'spec_helper'
 describe ArticlesController, :type => :controller do
   before(:each) do
   end
- 
+
   before do
     @label = create :label
   end
-  
+
   it "renders GET index" do
     get :index
     expect(response).to be_successful
@@ -20,7 +20,7 @@ describe ArticlesController, :type => :controller do
       expect(response).to be_successful
       expect(response).to render_template('index')
     end
-   
+
     it "Search by article'title, renders index" do
       get :index, search: "MyString"
       expect(response).to be_successful
