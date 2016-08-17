@@ -48,6 +48,7 @@ group :development, :test do
   gem 'guard-rspec', require: false
   gem 'launchy'
   gem 'brakeman', :require => false
+  gem "rubycritic", :require => false
 end
 
 gem 'unicorn', '~> 4.9.0'
