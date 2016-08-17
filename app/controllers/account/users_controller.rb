@@ -48,6 +48,8 @@ module Account
           img = MiniMagick::Image.open(@user.head_avatar.current_path)
           avatar_data = eval(params[:avatar_data])
           crop_params="#{avatar_data[:width]}x#{avatar_data[:height]}+#{avatar_data[:x]}+#{avatar_data[:y]}"
+          rotate_size = avatar_data[:rotate]
+          img.rotate(rotate_size)
           img.crop(crop_params)
           img.write @user.head_avatar.current_path
           render :json => {result: true, url: @user.head_avatar.url}.to_json
