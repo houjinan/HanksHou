@@ -123,6 +123,8 @@
     },
 
     click: function () {
+      this.cropDone();
+      this.$avatarInput.val('');
       this.$avatarModal.modal('show');
       this.initPreview();
     },
@@ -130,7 +132,7 @@
     change: function () {
       var files,
           file;
-
+      $(".avater-alert").remove();
       if (this.support.datauri) {
         files = this.$avatarInput.prop('files');
 
@@ -157,6 +159,7 @@
 
     submit: function () {
       if (!this.$avatarSrc.val() && !this.$avatarInput.val()) {
+        this.alert("请上传文件");
         return false;
       }
 
@@ -245,7 +248,11 @@
         },
 
         error: function (XMLHttpRequest, textStatus, errorThrown) {
+          if(XMLHttpRequest.status == 413){
+            _this.submitFail("上传文件太大，请保持在0-2M之间");
+          }else{
           _this.submitFail(textStatus || errorThrown);
+          }
         },
 
         complete: function () {
@@ -301,6 +308,7 @@
     },
 
     alert: function (msg) {
+      $(".avater-alert").remove();
       var $alert = [
             '<div class="alert alert-danger avater-alert">',
               '<button type="button" class="close" data-dismiss="alert">&times;</button>',
