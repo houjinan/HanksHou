@@ -1,0 +1,16 @@
+.navbar.navbar-default.navbar-fixed-top.pull-right.hidden-lg.hidden-md.hidden-sm
+  .container-fluid
+    .navbar-header
+      button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"
+        span class="sr-only"
+          = "Toggle navigation"
+        span class="icon-bar"
+        span class="icon-bar"
+        span class="icon-bar"
+    .collapse.navbar-collapse id="bs-example-navbar-collapse-1"
+      ul class="nav navbar-nav"
+        li.nav-technique = link_to "技术文章", articles_path
+        li.nav-experience = link_to "心得体会", articles_path(type: "experience")
+        li.nav-travel = link_to "旅行笔记", articles_path(type: "travel")
+        li.nav-reading = link_to "读书感", articles_path(type: "reading")
+        li.nav-about = link_to "关于我", home_about_me_path

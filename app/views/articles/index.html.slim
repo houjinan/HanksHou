@@ -1,22 +1,28 @@
 .container
-  .row.home-articles.home
+  .row.home-articles
     .col-lg-10
       - @articles.each do |article|
-        .row.panel.panel-default.wapper
-          .col-lg-10
-            .article-title
-              = link_to article.title, article_path(article)
-            .label-wapper = article.labels.present? ? "\(" + article.labels_content.to_s + "\)" : ""
-          .col-lg-2
-            .pull-right = article.user.try(:user_name)
-
-          hr
-          .col-lg-12
-            pre.pre = article.content.length > 50 ? article.content[0..50]+"..." : article.content
-          .col-lg-6
-            = "创建时间：#{article.created_at.strftime("%Y-%m-%d %H:%M:%S") if article.created_at.present?}"
-          .col-lg-6
-            .pull-right ="访问量:#{article.visit_count} 赞数:#{article.vote_users.count} 评论数:#{article.comments.count}"
+        .article
+          .row
+            .col-lg-12
+              .article-title
+                = link_to article.title, article_path(article)
+                .label-wapper = article.labels.present? ? "\(" + article.labels_content.to_s + "\)" : ""
+          .row
+            .col-lg-12
+              pre.pre
+                - if article.content.length > 100
+                  = article.content[0..100]
+                  = link_to "»", article_path(article), class: "read-more"
+                - else
+                  = article.content
+          .row
+            .col-lg-6.col-sm-6.col-xs-12
+              = image_tag article.user.head_avatar.url, class: "author-head"
+              = article.user.try(:user_name)
+              .article-date= "#{article.created_at.strftime("%d %B %Y") if article.created_at.present?}"
+            .col-lg-6.col-sm-6.col-xs-12
+              .pull-right ="访问量:#{article.visit_count} 赞数:#{article.vote_users.count} 评论数:#{article.comments.count}"
       .pull-right = will_paginate @articles
 
     .col-lg-2

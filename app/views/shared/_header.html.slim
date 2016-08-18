@@ -1,10 +1,16 @@
-nav.header-bar.navbar.navbar-default
+nav.header-bar.navbar
   .container
     .collapse.navbar-collapse
-      ul.nav.navbar-nav
+      ul.nav.navbar-nav.header-left
         li = link_to "Hanks·Hou",  "/", class: "logo"
-
-      ul.nav.navbar-nav.navbar-right
+        li.nav-technique = link_to "技术文章", articles_path
+        li.nav-experience = link_to "心得体会", articles_path(type: "experience")
+        li.nav-travel = link_to "旅行笔记", articles_path(type: "travel")
+        li.nav-reading = link_to "读书感", articles_path(type: "reading")
+        li.nav-about = link_to "关于我", home_about_me_path
+        javascript:
+          $(".nav-#{cookies[:nav_active]}").addClass("active");
+      ul.nav.navbar-nav.navbar-right.header-right
         li
           form action="#{articles_path}" method="get" class="search"
             .input-group
@@ -24,3 +30,5 @@ nav.header-bar.navbar.navbar-default
             = link_to "登录", new_user_session_path, class: "sign-in"
             span  或者
             = link_to "注册", new_user_registration_path, class: "sign-out"
+
+= render "shared/header_mini"

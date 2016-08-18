@@ -9,10 +9,8 @@
   min-height: 40px;
   margin-bottom: 0px;
 
-  .navbar-nav > li > a {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    color: #333;
+  .header-right a:hover {
+    background-color: transparent;
   }
 
   .navbar-nav{
@@ -37,11 +35,20 @@
       padding-right: 5px;
     }
 
+    .active a{
+      color: #EB5424;
+      background-color: #e7e7e7;
+    }
+
     a {
+      font-size: 14px;
+      color: #555;
       display: inline-block;
-      padding-right: 0px;
-      padding-left: 0px;
       text-transform: none;
+    }
+
+    a:hover {
+      color: #EB5424;
     }
 
     a.sign-in {
@@ -60,6 +67,8 @@
     }
 
   }
+
+
 }
 
 .navbar-collapse {

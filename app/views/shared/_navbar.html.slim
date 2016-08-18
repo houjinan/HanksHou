@@ -1,11 +1,12 @@
-nav.navbar.navbar-default.home-navbar
-  .container
-    .collapse.navbar-collapse
-      ul.nav.navbar-nav
-        li.nav-technique = link_to "技术文章", articles_path
-        li.nav-experience = link_to "心得体会", articles_path(type: "experience")
-        li.nav-travel = link_to "旅行笔记", articles_path(type: "travel")
-        li.nav-reading = link_to "读书感", articles_path(type: "reading")
-        li.nav-about = link_to "关于我", home_about_me_path
-javascript:
-  $(".nav-#{cookies[:nav_active]}").addClass("active");
+div style="height: 200px; background-color: #ebf2f5;"
+/ nav.navbar.navbar-default.home-navbar
+/   .container
+/     .collapse.navbar-collapse
+/       ul.nav.navbar-nav
+/         li.nav-technique = link_to "技术文章", articles_path
+/         li.nav-experience = link_to "心得体会", articles_path(type: "experience")
+/         li.nav-travel = link_to "旅行笔记", articles_path(type: "travel")
+/         li.nav-reading = link_to "读书感", articles_path(type: "reading")
+/         li.nav-about = link_to "关于我", home_about_me_path
+/ javascript:
+/   $(".nav-#{cookies[:nav_active]}").addClass("active");

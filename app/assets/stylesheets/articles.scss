@@ -1,32 +1,64 @@
 .home-articles {
   min-height: 700px;
-  margin-top: 10px;
 
-  .panel-default {
-    border-color: #999;
+  .article {
+    margin-top: 40px;
+    padding-bottom: 40px;
+    border-bottom: #d7dce0 1px solid;
+    color: #8a7d7d;
   }
 
   .article-title {
     float: left;
     padding-right: 10px;
-    font-size: 15px;
+    font-size: 2.5rem;
+    a {
+      color: #333;
+      text-decoration: none;
+    }
+    a:hover {
+      color: #000;
+    }
   }
 
   .label-wapper {
     margin-top: 3px;
-    font-size: 12px;
-  }
-
-  .wapper {
-    padding: 10px 0px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 15px;
+    display: inline;
   }
 
   pre {
     white-space: pre-wrap;
+    background-color: transparent;
+    border: 0px;
+    color: #716467;
+    font-size: 1em;
+    line-height: 1.7em;
   }
 
   .pre {
     max-height: 200px;
+  }
+
+  .author-head {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    border-radius: 100%;
+  }
+
+  .article-date {
+    margin-left: 10px;
+    padding-left: 10px;
+    display: inline-block;
+    border-left: #999 1px solid;
+  }
+
+  .read-more {
+    color: #333;
+    margin-left: 10px;
   }
 
   .badge {
@@ -44,9 +76,4 @@
     color: #000;
     margin-left: 10px;
   }
-}
-
-.home {
-  margin-left: -5px;
-  margin-right: -5px;
 }
