@@ -54,15 +54,20 @@
     a.sign-in {
       font-weight: bold;
       font-size: 15px;
+      padding-left: 0px;
+      padding-right: 0px;
     }
 
     a.sign-out {
       margin-left: 5px;
       font-size: 15px;
       color: orange;
+      padding-left: 0px;
+      padding-right: 0px;
     }
 
     a.logo {
+      padding-left: 0px;
       font-size: 24px;
     }
 
@@ -71,22 +76,63 @@
 
 }
 
-.navbar-collapse {
-  padding-left: 0px;
+.harder-bar-mini {
 
-  a.first {
-    padding-left: 0px;
-    padding-right: 10px;
+  .btn-back {
+    float: left;
+    margin-left: 15px;
+    padding: 6px 17px;
+    color: #888;
     font-size: 16px;
   }
 
-  a.last {
-    padding-right: 0px;
-    font-size: 14px;
+  .header-title {
+    padding-top: 15px;
+    font-size: 20px;
   }
 
-  img {
-    margin-right: 2px;
+  .harder-mini{
+    padding-left: 20px;
+  }
+
+  .author-head {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    border-radius: 100%;
+  }
+}
+
+
+
+.board-desc {
+  margin: 0 auto;
+  text-align: center;
+  // min-height: 200px;
+  padding: 50px 0px;
+  background-color: #ebf2f5;
+  overflow: hidden;
+
+  .empty,
+  .board {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .empty {
+    height: 100%;
+  }
+
+  .board-title {
+    margin: -10px 0px 10px 0px;
+    letter-spacing: -1px;
+    font-family: "Open Sans", sans-serif;
+    color: #91a6a7;
+  }
+
+  .board-description {
+    color: rgba(104, 107, 96, 0.5);
+
   }
 }
 

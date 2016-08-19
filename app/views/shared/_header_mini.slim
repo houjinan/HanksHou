@@ -1,16 +1,38 @@
-.navbar.navbar-default.navbar-fixed-top.pull-right.hidden-lg.hidden-md.hidden-sm
-  .container-fluid
-    .navbar-header
-      button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"
-        span class="sr-only"
-          = "Toggle navigation"
-        span class="icon-bar"
-        span class="icon-bar"
-        span class="icon-bar"
-    .collapse.navbar-collapse id="bs-example-navbar-collapse-1"
+.navbar.navbar-default.navbar-fixed-top.hidden-lg.hidden-md.hidden-sm.harder-bar-mini
+  .navbar-header
+    .row
+      .col-xs-3.pull-left
+        button type="button" class="navbar-toggle collapsed btn-back" onclick="javascript: history.go(-1);"
+          = "<"
+      .col-xs-6
+        center
+          .header-title = "Hanks·Hou"
+      .col-xs-3
+        button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"
+          span class="sr-only"
+            = "Toggle navigation"
+          span class="icon-bar"
+          span class="icon-bar"
+          span class="icon-bar"
+  .collapse.navbar-collapse id="bs-example-navbar-collapse-1"
+    center
       ul class="nav navbar-nav"
         li.nav-technique = link_to "技术文章", articles_path
         li.nav-experience = link_to "心得体会", articles_path(type: "experience")
         li.nav-travel = link_to "旅行笔记", articles_path(type: "travel")
         li.nav-reading = link_to "读书感", articles_path(type: "reading")
         li.nav-about = link_to "关于我", home_about_me_path
+        li
+        - if user_signed_in?
+          = image_tag current_user.head_avatar.url, class: "author-head"
+          = link_to current_user.try(:user_name), account_dashboard_path, target: "_top"
+          = link_to "<i class='fa fa-bell'></i><span>(#{Notification.unread_count(current_user)})</span>".html_safe, notifications_path, class: "notification-header"
+          = link_to "退出", destroy_user_session_path, method: "delete"
+        - else
+            span Welcome to here,
+            = link_to "登录", new_user_session_path
+            span  或者
+            = link_to "注册", new_user_registration_path
+
+        javascript:
+          $(".nav-#{cookies[:nav_active]}").addClass("active");
