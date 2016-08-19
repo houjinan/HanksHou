@@ -10,7 +10,7 @@
                 .label-wapper = article.labels.present? ? "\(" + article.labels_content.to_s + "\)" : ""
           .row
             .col-lg-12
-              pre.pre
+              pre
                 - if article.content.length > 100
                   = article.content[0..100]
                   = link_to "»", article_path(article), class: "read-more"
@@ -23,7 +23,8 @@
               .article-date= "#{article.created_at.strftime("%d %B %Y") if article.created_at.present?}"
             .col-lg-6.col-sm-6.col-xs-12
               .pull-right ="访问量:#{article.visit_count} 赞数:#{article.vote_users.count} 评论数:#{article.comments.count}"
-      .pull-right = will_paginate @articles
+      .row.col-lg-12
+        .pull-right = will_paginate @articles
 
     .col-lg-2
       = render "shared/labels"
