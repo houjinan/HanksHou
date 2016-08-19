@@ -73,6 +73,10 @@
 
   }
 
+  .navbar-collapse {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
 
 }
 
@@ -104,13 +108,15 @@
 }
 
 
+.board-main {
+  background-color: #ebf2f5;
+}
 
 .board-desc {
   margin: 0 auto;
   text-align: center;
   // min-height: 200px;
   padding: 50px 0px;
-  background-color: #ebf2f5;
   overflow: hidden;
 
   .empty,

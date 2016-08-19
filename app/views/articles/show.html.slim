@@ -1,37 +1,42 @@
-.container.home-articles
-  .row
+.container
+  .row.home-articles
     .col-lg-10
-      p
-        h3 = @article.title
-        = (@article.labels.present? ? "\(" + @article.labels_content.to_s + "\)" : "") + "  创建时间：#{@article.created_at.strftime("%Y-%m-%d %H:%M:%S") if @article.created_at.present?}"
-      p= ""
-      p
-        ="访问量:#{@article.visit_count} 赞数:#{@article.vote_users.count} 评论数:#{@article.comments.count}"
-        = link_to "", vote_article_path(@article), class: 'glyphicon glyphicon-thumbs-up handle', title: "赞", method: :put
-        = link_to "", collection_article_path(@article), class: 'glyphicon glyphicon-heart-empty handle', title: "收藏", method: :put
-      p
-        .markdown
-          .article-content = raw @article.content_html
-      p
-        strong 创建者:
-        = @article.try(:user).try(:user_name)
-      / = link_to "回复", new_article_comment_path(@article)
-
-      br
-      - if current_user
-        = render "comments/new", article: @article, comment: @article.comments.build
-      - else
-        = "回复请 "
-        = link_to "登录", new_user_session_path, class: "btn btn-success btn-xs sign-in"
-      p
-        strong 回复：
-      = render "comments/list", comments: @article.comments
-      - if current_user
-        = render "comments/new", article: @article, comment: @article.comments.build if @article.comments.count > 3
-      - else
-        - if @article.comments.present?
+      .article
+        .row
+          .col-lg-12
+            .article-title
+              = @article.title
+              .label-wapper = @article.labels.present? ? "\(" + @article.labels_content.to_s + "\)" : ""
+        .row
+          .col-lg-12.text-right
+            ="访问量:#{@article.visit_count} 赞数:#{@article.vote_users.count} 评论数:#{@article.comments.count}"
+            = link_to "", vote_article_path(@article), class: 'glyphicon glyphicon-thumbs-up handle', title: "赞", method: :put
+            = link_to "", collection_article_path(@article), class: 'glyphicon glyphicon-heart-empty handle', title: "收藏", method: :put
+        .row
+          .col-lg-12
+            .markdown
+              .article-content = raw @article.content_html
+        hr
+        .row
+          .col-lg-12.text-right
+            = image_tag @article.user.head_avatar.url, class: "author-head"
+            = @article.user.try(:user_name)
+            .article-date= "#{@article.created_at.strftime("%d %B %Y") if @article.created_at.present?}"
+        br
+        - if current_user
+          = render "comments/new", article: @article, comment: @article.comments.build
+        - else
           = "回复请 "
           = link_to "登录", new_user_session_path, class: "btn btn-success btn-xs sign-in"
+        .row
+          .col-lg-12
+            = render "comments/list", comments: @article.comments
+        - if current_user
+          = render "comments/new", article: @article, comment: @article.comments.build if @article.comments.count > 3
+        - else
+          - if @article.comments.present?
+            = "回复请 "
+            = link_to "登录", new_user_session_path, class: "btn btn-success btn-xs sign-in"
 
     .col-lg-2
       = render "shared/labels"

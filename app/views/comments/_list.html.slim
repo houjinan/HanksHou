@@ -1,9 +1,11 @@
-- comments.all.each_with_index do |comment, i|
+.comments
   .panel.panel-default
-    .panel-body
-      .col-lg-3
-        = "# " + (i+1).to_s + "楼 " + (comment.user.try(:user_name).present? ? comment.user.try(:user_name) : "匿名：")
-      .col-lg-9
-        = comment.created_at.strftime("%Y-%m-%d %H:%M")
-      .col-lg-12
-        pre = comment.content
+    .total.panel-heading
+      = "共收到#{comments.count}条回复"
+    .items.panel-body
+      - comments.all.each_with_index do |comment, i|
+        .comment
+          .avatar = image_tag @article.user.head_avatar.url, class: "author-head"
+          = "# " + (i+1).to_s + "楼 " + (comment.user.try(:user_name).present? ? comment.user.try(:user_name) : "匿名：")
+          .article-date= "#{@article.created_at.strftime("%d %B %Y") if @article.created_at.present?}"
+          pre = comment.content

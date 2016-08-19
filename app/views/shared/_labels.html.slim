@@ -1,3 +1,4 @@
-- @labels.each do |label|
-  .p.badge
-    = link_to label.name + " (#{label.articles.count})", articles_path(label_id: label.id, type: @type)
+.badges
+  - @labels.each do |label|
+    .p.badge
+      = link_to label.name + " (#{label.articles.count})", articles_path(label_id: label.id, type: @type)

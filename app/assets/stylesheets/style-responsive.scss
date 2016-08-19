@@ -1,10 +1,17 @@
-@media (min-width: 768px){
+@media (min-width: 1201px){
+  .board-title {
+    font-size: 2.5rem;
+  }
+}
+
+
+@media (min-width: 768px) and (max-width: 1200px){
   .header-right {
     display: none;
   }
 
   .board-title {
-    font-size: 2.5rem;
+    font-size: 2.0rem;
   }
 }
 
