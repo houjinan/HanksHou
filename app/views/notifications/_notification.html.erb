@@ -1,4 +1,4 @@
-<%= cache(['notifications', Notifications::VERSION, notification]) do %>
+<%#= cache(['notifications', Notifications::VERSION, notification]) do %>
 <div id="notification-<%= notification.id %>"
      data-id="<%= notification.id %>"
      class="media notification notification-<%= notification.notify_type %><%= ' unread' if !notification.read? %>">
@@ -15,4 +15,4 @@
     <%= notification.created_at.strftime("%R") %>
   </div>
 </div>
-<% end %>
+<%# end %>

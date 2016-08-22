@@ -1,15 +1,15 @@
 <div class="container">
   <div class="notifications row">
     <div class="heading clearfix">
-      <%= t('notifications.all_notifications') %>
+      <%= "所有通知" %>
 
-      <span class="pull-xs-right">
-        <%= link_to t('notifications.clean_all'), clean_notifications_path, class: 'btn btn-sm btn-secondary', method: :delete %>
+      <span class="pull-right">
+        <%= link_to '清空', clean_notifications_path, class: 'btn btn-xs btn-danger', method: :delete %>
       </span>
     </div>
     <div class="list">
       <% if @notifications.blank? %>
-        <div class="no-records"><%= t('notifications.no_records') %></div>
+        <div class="no-records"><%= ".......暂无通知......" %></div>
       <% else %>
         <% @notification_groups.each do |group, notifications| %>
           <div class="notification-group">
