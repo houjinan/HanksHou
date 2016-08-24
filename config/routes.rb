@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :articles do
       collection do
         get "collections"
+        get "calendar"
       end
     end
 
