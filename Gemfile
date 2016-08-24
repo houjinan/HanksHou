@@ -51,6 +51,7 @@ group :development, :test do
   gem 'launchy'
   gem 'brakeman', :require => false
   gem "rubycritic", :require => false
+  gem "better_errors"
 end
 
 gem 'unicorn', '~> 4.9.0'
