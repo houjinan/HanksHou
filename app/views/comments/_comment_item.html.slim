@@ -1,0 +1,5 @@
+.comment
+  .avatar = image_tag comment.user.head_avatar.url, class: "author-head"
+  = "# " + (i+1).to_s + "楼 " + (comment.user.try(:user_name).present? ? comment.user.try(:user_name) : "匿名：")
+  .article-date= "#{comment.created_at.strftime("%d %B %Y") if comment.created_at.present?}"
+  pre = comment.content

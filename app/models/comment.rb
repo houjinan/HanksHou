@@ -6,7 +6,7 @@ class Comment
 
   field :content, type: String
 
-  validates :content, presence: true
+  validates :content, presence: {message: "回复内容不能为空"}
   belongs_to :user
   belongs_to :article
 

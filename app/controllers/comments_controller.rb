@@ -9,10 +9,17 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @comment.user = current_user
-    if @comment.save
-      redirect_to controller: :articles, action: :show, id: @comment.article_id
-    else
-
+    respond_to do |format|
+      if @comment.save
+        format.html { redirect_to controller: :articles, action: :show, id: @comment.article_id }
+        format.js   { }
+        format.json { render :show, status: :created, location: @comment }
+      else
+        @msg = @comment.errors.full_messages.join('<br />')
+        format.html { render :new }
+        format.js   { }
+        format.json { render json: @comment.errors, status: :unprocessable_entity }
+      end
     end
 
   end

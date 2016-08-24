@@ -1,0 +1,7 @@
+<% if @msg.present? %>
+  $(".msg").html('<div class="col-lg-12"><div class="alert alert-danger"><button aria-label="Close" class="close" data-dismiss="alert" type="button"><span>×</span></button><div class="alert-content"><%=@msg%></div></div></div>');
+<% else %>
+  $(".msg").html('');
+  $(".items").append('<%= escape_javascript(render "comments/comment_item", comment: @comment, i: @comment.article.comments.count-1)%>');
+  $("#comment_content").val("");
+<% end %>
