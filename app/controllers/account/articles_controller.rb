@@ -54,6 +54,11 @@ module Account
       redirect_to action: :index
     end
 
+    def calendar
+      data = current_user.calendar_data
+      render json: data
+    end
+
     private
       def initialize_or_create_labels(labels)
         @article.labels = []

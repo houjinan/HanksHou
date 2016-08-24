@@ -64,4 +64,14 @@ class User
   def user_name
     self.nickname.present? ? self.nickname : self.email
   end
+
+  def calendar_data
+    date_from = 12.months.ago.beginning_of_month.to_date
+    data_articles = self.articles.where(:created_at.gte => date_from).group_by{|d| d.created_at.to_date}
+    timestamps = {}
+    data_articles.each do |date, articles|
+      timestamps[date.to_time.to_i.to_s] = articles.size
+    end
+    timestamps
+  end
 end
