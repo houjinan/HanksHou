@@ -1,23 +1,12 @@
 class HomeController < ApplicationController
-  #before_action :authenticate_user!
+
   def index
     cookies["nav_active"] = "index"
     redirect_to articles_path
-  end
-
-  def feel
-    cookies["nav_active"] = "feel"
-    render "feel", layout: "feel"
   end
 
   def about_me
     render "about_me", layout: "about_me"
   end
 
-  def jquery_mobile
-    render "jquery_mobile", layout: "jquery_mobile"
-  end
-
-  def call_back
-  end
 end

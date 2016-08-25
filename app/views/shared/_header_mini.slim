@@ -21,7 +21,7 @@
         li.nav-experience = link_to "心得体会", articles_path(type: "experience")
         li.nav-travel = link_to "旅行笔记", articles_path(type: "travel")
         li.nav-reading = link_to "读书感", articles_path(type: "reading")
-        li.nav-about = link_to "关于我", home_about_me_path
+        li.nav-about = link_to "关于我", about_me_path
         li
         - if user_signed_in?
           = image_tag current_user.head_avatar.url, class: "author-head"

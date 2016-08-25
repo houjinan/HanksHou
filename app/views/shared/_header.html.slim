@@ -7,7 +7,7 @@ nav.header-bar.navbar
         li.nav-experience = link_to "心得体会", articles_path(type: "experience")
         li.nav-travel = link_to "旅行笔记", articles_path(type: "travel")
         li.nav-reading = link_to "读书感", articles_path(type: "reading")
-        li.nav-about = link_to "关于我", home_about_me_path
+        li.nav-about = link_to "关于我", about_me_path
         javascript:
           $(".nav-#{cookies[:nav_active]}").addClass("active");
       ul.nav.navbar-nav.navbar-right.header-right

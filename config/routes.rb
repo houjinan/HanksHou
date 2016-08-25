@@ -43,10 +43,8 @@ Rails.application.routes.draw do
   end
   devise_for :users
 
-  get 'home/index'
-  get 'home/feel'
-  get 'home/about_me'
-  get 'home/call_back'
+  get 'index' => 'home#index', as: 'home'
+  get 'about_me' => 'home#about_me', controller: 'home'
   root 'home#index'
 
   get 'home/jquery_mobile'
