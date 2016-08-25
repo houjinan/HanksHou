@@ -32,7 +32,7 @@
 //= require cropper.min
 //= require upload-crop-pic
 //= require d3.min
-//= require cal-heatmap.min
+//= require cal-heatmap
 
 function choice_label(label){
   var has_labels = $("#labels").val().split(",");

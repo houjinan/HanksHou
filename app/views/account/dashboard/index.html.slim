@@ -3,19 +3,19 @@ hr
 
 div id="cal-heatmap"
 - start_date = 12.months.ago.beginning_of_month
-
 javascript:
   var cal = new CalHeatMap();
   cal.init({
     itemSelector: "#cal-heatmap",
     domain: "month",
     subDomain: 'day',
-    rowLimit: 7,
     domainGutter: 0,
     data: '#{calendar_account_articles_path(format: "json")}',
     start: new Date(#{start_date.year}, #{start_date.month}, #{start_date.day}),
+    maxDate: new Date(),
     cellSize: 15,
     range: 12,
     displayLegend: true,
+    tooltip: true,
     legend: [1, 2, 3, 4]
   });
