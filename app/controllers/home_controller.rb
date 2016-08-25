@@ -6,6 +6,7 @@ class HomeController < ApplicationController
   end
 
   def about_me
+    cookies["nav_active"] = "about"
     render "about_me", layout: "about_me"
   end
 

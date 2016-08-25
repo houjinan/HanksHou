@@ -1,0 +1,61 @@
+.about-me
+  .carousel.slide id="carousel-example-generic" data-ride="carousel"
+    ol.carousel-indicators
+      li.active data-target="#carousel-example-generic" data-slide-to="0"
+      li data-target="#carousel-example-generic" data-slide-to="1"
+      li data-target="#carousel-example-generic" data-slide-to="2"
+      li data-target="#carousel-example-generic" data-slide-to="3"
+
+    .carousel-inner role="listbox"
+      .item.active
+        figure
+          .aspectRatioPlaceholder-fill style="padding-bottom: 66.5%;"
+          = image_tag("pic0.jpg", class: "progressiveMedia-image")
+
+      .item
+        figure
+          .aspectRatioPlaceholder-fill style="padding-bottom: 66.5%;"
+          = image_tag("pic1.jpeg", class: "progressiveMedia-image")
+
+      .item
+        figure
+          .aspectRatioPlaceholder-fill style="padding-bottom: 66.5%;"
+          = image_tag("pic2.jpg", class: "progressiveMedia-image")
+
+      .item
+        figure
+          .aspectRatioPlaceholder-fill style="padding-bottom: 66.5%;"
+          = image_tag("pic3.jpg", class: "progressiveMedia-image")
+
+    a.left.carousel-control href="#carousel-example-generic" role="button" data-slide="prev"
+      span.glyphicon.glyphicon-chevron-left aria-hidden="true"
+      span.sr-only Previous
+    a.right.carousel-control href="#carousel-example-generic" role="button" data-slide="next"
+      span.glyphicon.glyphicon-chevron-right aria-hidden="true"
+      span.sr-only Next
+
+  .container.about-self
+    .row
+      .col-lg-6.col-ms-6.col-xs-6.key
+        ul
+          li 姓名
+          li 英文
+          li email
+          li address
+      .col-lg-6.col-ms-6.col-xs-6.value
+        ul
+          li 侯纪男
+          li Hanks
+          li houjinan@126.com
+          li 北京
+
+    hr
+
+    .row
+      .col-lg-12.col-ms-12.col-xs-12
+        ul.community-list.pull-right
+          li = link_to image_tag("github.gif"), "https://github.com/houjinan", target: "_blank"
+          li = link_to image_tag("sina.png"), "http://weibo.com/hankshou", target: "_blank"
+          li = link_to image_tag("douban.jpg"), "https://www.douban.com/people/65631114/", target: "_blank"
+          li = link_to image_tag("facebook.png"), "https://www.facebook.com/houjinan", target: "_blank"
+          li = link_to image_tag("twitter.jpg"), "https://twitter.com//HanksHjn", target: "_blank"
