@@ -60,6 +60,7 @@ module Account
       def initialize_or_create_labels(labels)
         @article.labels = []
         labels.split(",").each do |name|
+          next if name.blank?
           label = Label.find_or_initialize_by(name: name.strip)
           label.save!
           @article.labels << label

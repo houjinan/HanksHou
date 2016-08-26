@@ -24,10 +24,13 @@
 
 function choice_label(label){
   var has_labels = $("#labels").val().split(",");
-  if(has_labels.indexOf(label) < 0){
-    $("#labels").val($("#labels").val() + "," + label);
+  if($("#labels").val().length == 0){
+    $("#labels").val(label);
+  }else{
+    if(has_labels.indexOf(label) < 0){
+      $("#labels").val($("#labels").val() + "," + label);
+    }
   }
-
 }
 
 
