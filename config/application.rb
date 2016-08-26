@@ -39,5 +39,9 @@ module HanksHou
     config.generators do |g|
       g.template_engine :slim
     end
+
+
+
+    # config.autoload_paths += Dir[Rails.root.join('app', 'apis', '*')]
   end
 end

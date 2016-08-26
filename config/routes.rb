@@ -48,4 +48,9 @@ Rails.application.routes.draw do
   root 'home#index'
 
   get 'home/jquery_mobile'
+
+
+  #API
+  mount ApiV1 => "/"
+  mount GrapeSwaggerRails::Engine => '/swagger'
 end

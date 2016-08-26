@@ -79,3 +79,9 @@ gem 'bootstrap-will_paginate'
 gem 'react-rails'
 gem 'oneapm_rpm'
 # gem 'rails_admin', github: 'sferik/rails_admin'
+
+
+# api
+gem 'grape'
+gem 'grape-swagger'
+gem 'grape-swagger-rails'
