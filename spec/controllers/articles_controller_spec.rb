@@ -2,19 +2,22 @@ require 'spec_helper'
 
 describe ArticlesController, :type => :controller do
   before(:each) do
+    request.env["HTTP_REFERER"] = "where_i_came_from"
   end
 
   before do
     @label = create :label
+    @article = create :article
   end
 
-  it "renders GET index" do
-    get :index
-    expect(response).to be_successful
-    expect(response).to render_template('index')
-  end
 
-  describe 'Get Search' do
+  describe 'visit article index' do
+    it "renders GET index" do
+      get :index
+      expect(response).to be_successful
+      expect(response).to render_template('index')
+    end
+
     it "Search by label, renders index" do
       get :index, label_id: @label.id
       expect(response).to be_successful
@@ -25,6 +28,48 @@ describe ArticlesController, :type => :controller do
       get :index, search: "MyString"
       expect(response).to be_successful
       expect(response).to render_template('index')
+    end
+  end
+
+  it "article show" do
+    get :show, id: @article.id
+    expect(response).to be_successful
+    expect(response).to render_template('show')
+  end
+
+  describe 'not login user to vote, collection, delete_collection' do
+    it "when vote" do
+      put :vote, id: @article.id
+      expect(response).to redirect_to(user_session_path)
+    end
+
+    it "when collection" do
+      put :collection, id: @article.id
+      expect(response).to redirect_to(user_session_path)
+    end
+
+    it "when delete_collection" do
+      delete :delete_collection, id: @article.id
+      expect(response).to redirect_to(user_session_path)
+    end
+  end
+
+  describe 'logined user to vote, collection, delete_collection' do
+    let(:user) {create :user}
+    login_user
+    it "when vote" do
+      put :vote, id: @article.id
+      expect(response).to redirect_to(article_path(@article))
+    end
+
+    it "when collection" do
+      put :collection, id: @article.id
+      expect(response).to redirect_to(article_path(@article))
+    end
+
+    it "when delete_collection" do
+      delete :delete_collection, id: @article.id
+      expect(response).to(redirect_to "where_i_came_from")
     end
   end
 end

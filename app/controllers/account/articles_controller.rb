@@ -1,19 +1,17 @@
 module Account
   class ArticlesController < Account::AccountController
-    # before_action :authenticate_user!
+
     before_action :set_article, only: [:show, :edit, :update, :destroy]
+
     def index
       @type = params[:type].present? ? params[:type] : Article.default_type
       cookies[:sidebar_active] = @type
-      @articles = current_user.articles.where(article_type: @type).desc("created_at").paginate(:per_page => 10, :page => params[:page])
+      @articles = current_user.articles.where(article_type: @type).desc("created_at").paginate(:per_page => 20, :page => params[:page])
     end
 
     def collections
       cookies[:sidebar_active] = "collection"
-      @articles = current_user.collection_articles.desc("created_at").paginate(:per_page => 10, :page => params[:page])
-    end
-
-    def show
+      @articles = current_user.collection_articles.desc("created_at").paginate(:per_page => 20, :page => params[:page])
     end
 
     def new
@@ -37,9 +35,7 @@ module Account
     end
 
     def update
-
       @article = Article.find params[:id]
-
       labels = params.delete(:labels).to_s
       initialize_or_create_labels(labels)
       if @article.update(article_params)
@@ -50,8 +46,9 @@ module Account
     end
 
     def destroy
+      type = @article.article_type
       @article.destroy
-      redirect_to action: :index
+      redirect_to ({action: :index}.merge(type: type))
     end
 
     def calendar
