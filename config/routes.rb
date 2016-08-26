@@ -41,7 +41,7 @@ Rails.application.routes.draw do
       delete 'clean'
     end
   end
-  devise_for :users
+  devise_for :users, controllers: { sessions: 'sessions' }
 
   get 'index' => 'home#index', as: 'home'
   get 'about_me' => 'home#about_me', controller: 'home'

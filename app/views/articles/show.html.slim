@@ -9,9 +9,13 @@
               .label-wapper = @article.labels.present? ? "\(" + @article.labels_content.to_s + "\)" : ""
         .row
           .col-lg-12.text-right
-            ="访问量:#{@article.visit_count} 赞数:#{@article.vote_users.count} 评论数:#{@article.comments.count}"
-            = link_to "", vote_article_path(@article), class: 'glyphicon glyphicon-thumbs-up handle', title: "赞", method: :put
-            = link_to "", collection_article_path(@article), class: 'glyphicon glyphicon-heart-empty handle', title: "收藏", method: :put
+            = "访问量:<span id='visit-count'>#{@article.visit_count}</span> 赞数:<span id='vote-count'>#{@article.vote_users.count}</span> 评论数:<span id='comment-count'>#{@article.comments.count}</span>".html_safe
+            - if current_user.present?
+              = link_to "", vote_article_path(@article), class: 'glyphicon glyphicon-thumbs-up handle', title: "赞", method: :put, remote: true
+              = link_to "", collection_article_path(@article), class: 'glyphicon glyphicon-heart-empty handle', title: "收藏", method: :put, remote: true
+            - else
+              = link_to "", user_session_path, class: 'glyphicon glyphicon-thumbs-up handle', title: "赞"
+              = link_to "", user_session_path, class: 'glyphicon glyphicon-heart-empty handle', title: "收藏"
         .row
           .col-lg-12
             .markdown

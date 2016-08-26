@@ -1,0 +1,6 @@
+<% if @msg.present? %>
+  $("#vote-count").html("<%=@article.vote_users.count %>")
+  $(".prompt-alert").html('<%=render "shared/prompt", notice: @msg %>')
+<% else %>
+  $(".prompt-alert").html('<%=render "shared/prompt", alert: @error %>')
+<% end %>

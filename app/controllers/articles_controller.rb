@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :vote, :collection, :delete_vote, :delete_collection]
+  before_action :authenticate_user!, only: [:vote, :collection, :delete_collection]
   protect_from_forgery :except => :preview
   def index
     @articles = Article.where(is_public: true).desc("created_at")
@@ -27,13 +28,29 @@ class ArticlesController < ApplicationController
   end
 
   def vote
-    @article.vote_users << current_user if current_user.present?
-    redirect_to ({action: :show}.merge(id: @article.id))
+    if @article.vote_users.include?(current_user)
+      @msg = "您已经点赞!"
+    else
+      @article.vote_users << current_user
+      @msg = "点赞成功!"
+    end
+    respond_to do |format|
+      format.html { redirect_to ({action: :show}.merge(id: @article.id))}
+      format.js   { }
+    end
   end
 
   def collection
-    @article.collection_users << current_user if current_user.present?
-    redirect_to ({action: :show}.merge(id: @article.id))
+    if @article.vote_users.include?(current_user)
+      @msg = "您已经收藏!"
+    else
+      @article.collection_users << current_user
+      @msg = "收藏成功!"
+    end
+    respond_to do |format|
+      format.html { redirect_to ({action: :show}.merge(id: @article.id))}
+      format.js   { }
+    end
   end
 
   def delete_collection
