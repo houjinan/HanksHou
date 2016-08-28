@@ -22,7 +22,13 @@ nav.header-bar.navbar
         - if user_signed_in?
           li = link_to "<i class='fa fa-bell'></i><span>(#{Notification.unread_count(current_user)})</span>".html_safe, notifications_path, class: "notification-header"
           li = image_tag current_user.head_avatar.url, class: "mini-head-img"
-          li = link_to current_user.try(:user_name), account_dashboard_path, class: "first", target: "_top"
+          - if current_user.is_super_admin?
+            li = link_to current_user.try(:user_name), account_dashboard_path, class: "first", target: "_top"
+          - else
+            li 
+              a href=""
+                = current_user.try(:user_name)
+
           li = link_to "退出", destroy_user_session_path, method: "delete", class: "first"
         - else
           li.not-sign-in

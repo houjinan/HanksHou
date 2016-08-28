@@ -25,7 +25,12 @@
         li
         - if user_signed_in?
           = image_tag current_user.head_avatar.url, class: "author-head"
-          = link_to current_user.try(:user_name), account_dashboard_path, target: "_top"
+          - if current_user.is_super_admin?
+            = link_to current_user.try(:user_name), account_dashboard_path, target: "_top"
+          - else
+            li 
+              a href=""
+                = current_user.try(:user_name)
           = link_to "<i class='fa fa-bell'></i><span>(#{Notification.unread_count(current_user)})</span>".html_safe, notifications_path, class: "notification-header"
           = link_to "退出", destroy_user_session_path, method: "delete"
         - else
