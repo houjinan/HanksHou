@@ -1,5 +1,3 @@
-require "pry"
-
 class ErrorExceptions < ActionDispatch::PublicExceptions
   def call(env)
     status = env["PATH_INFO"][1..-1]
