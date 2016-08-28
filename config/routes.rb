@@ -53,4 +53,8 @@ Rails.application.routes.draw do
   #API
   mount ApiV1 => "/"
   mount GrapeSwaggerRails::Engine => '/swagger'
+
+  match "/404" => "errors#errors404", via: [:get, :post, :patch, :delete, :put]
+  match "/422" => "errors#errors422", via: [:get, :post, :patch, :delete, :put]
+  match "/500" => "errors#errors500", via: [:get, :post, :patch, :delete, :put]
 end

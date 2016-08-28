@@ -43,5 +43,7 @@ module HanksHou
 
 
     # config.autoload_paths += Dir[Rails.root.join('app', 'apis', '*')]
+    require Rails.root.join("lib/errors/error_exceptions")
+    config.exceptions_app = ErrorExceptions.new(Rails.public_path)
   end
 end
