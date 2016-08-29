@@ -12,6 +12,7 @@ class ApiV1 < Grape::API
   end
 
 
+  mount V1::UsersApi
   mount V1::ArticlesApi
 
   add_swagger_documentation doc_version: 'v1'

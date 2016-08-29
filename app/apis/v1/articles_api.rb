@@ -1,5 +1,10 @@
 class V1::ArticlesApi < Grape::API
 
+
+  params do
+    requires :auth_token, type: String
+  end
+
   resources :articles do
 
     desc "show article", {
@@ -63,9 +68,10 @@ class V1::ArticlesApi < Grape::API
     }
 
     params do
+      requires :id, type: String, desc: "article's _id"
     end
 
-    delete do
+    delete ":id" do
 
     end
 
