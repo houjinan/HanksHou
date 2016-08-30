@@ -1,5 +1,8 @@
 class V1::ArticlesApi < Grape::API
 
+  before do
+    token_authenticate!
+  end
 
   params do
     requires :auth_token, type: String
@@ -8,25 +11,27 @@ class V1::ArticlesApi < Grape::API
   resources :articles do
 
     desc "show article", {
-
+      entity: ArticleEntity
     }
 
     params do
-      requires :id, type: String, desc: "article's _id"
+      requires :id, type: String, desc: "article's _id", allow_blank: false
     end
 
     get ":id" do
       begin
-        article = Article.find(params[:id])
+        article = current_user.articles.find(params[:id])
       rescue Mongoid::Errors::DocumentNotFound, BSON::InvalidObjectId
-        article = {}
+        error! "not search article", 400
       end
-      body data: article.to_json
+
+     present article, with: ArticleEntity
+     body data: body()
     end
 
 
     desc "get articles list", {
-
+      entity: ArticleEntity
     }
 
     params do
@@ -34,7 +39,9 @@ class V1::ArticlesApi < Grape::API
     end
 
     get do
-      body data: Article.where(is_public: true).to_json
+      articles = current_user.articles
+      present articles, with: ArticleEntity
+      body data: body()
     end
 
 

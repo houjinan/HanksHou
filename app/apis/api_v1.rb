@@ -11,6 +11,7 @@ class ApiV1 < Grape::API
     { version: 'v1'}
   end
 
+  helpers AuthTokenHelper
 
   mount V1::UsersApi
   mount V1::ArticlesApi

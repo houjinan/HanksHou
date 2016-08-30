@@ -35,17 +35,5 @@ class V1::UsersApi < Grape::API
       user.auth_tokens.create unless user.auth_tokens.any?
       present user, with: UserEntity, return_token: true
     end
-
-    desc "获取auth_token", {
-
-    }
-
-    params do
-
-    end
-
-    get "auth_token" do
-
-    end
   end
 end
