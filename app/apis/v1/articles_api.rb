@@ -20,7 +20,7 @@ class V1::ArticlesApi < Grape::API
 
     get ":id" do
       begin
-        article = current_user.articles.find(params[:id])
+        article = api_user.articles.find(params[:id])
       rescue Mongoid::Errors::DocumentNotFound, BSON::InvalidObjectId
         error! "not search article", 400
       end
@@ -39,7 +39,7 @@ class V1::ArticlesApi < Grape::API
     end
 
     get do
-      articles = current_user.articles
+      articles = api_user.articles
       present articles, with: ArticleEntity
       body data: body()
     end
