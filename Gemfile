@@ -86,3 +86,6 @@ gem 'grape'
 gem 'grape-swagger'
 gem 'grape-swagger-rails'
 gem 'grape-swagger-entity'
+
+
+gem 'whenever', :require => false
