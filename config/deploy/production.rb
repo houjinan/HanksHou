@@ -1,5 +1,5 @@
 set :stage, :production
-set :server_name, '54.200.28.250'
+set :server_name, '54.201.252.120'
 
 set :ssh_options, {
     user: "web"
