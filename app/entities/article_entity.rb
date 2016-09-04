@@ -4,5 +4,7 @@ class ArticleEntity < Grape::Entity
   end
   expose :title, documentation: {required: true, type: "String", desc: "article 标题"}
   expose :content,    documentation: {required: true, type: "String", desc: "article 内容"}
-  expose :created_at,    documentation: {required: true, type: "Date", desc: "article create time"}
+  expose :created_at,    documentation: {required: true, type: "DateTime", desc: "article create time"} do |instance, options|
+    instance.created_at.strftime("%F %R")
+  end
 end
