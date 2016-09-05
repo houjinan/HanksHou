@@ -18,7 +18,7 @@
                   = article.content
           .row
             .col-lg-6.col-sm-6.col-xs-12
-              = image_tag article.user.head_avatar.url, class: "author-head"
+              = image_tag article.user.try(:head_avatar).try(:url).to_s, class: "author-head"
               = article.user.try(:user_name)
               .article-date= "#{article.created_at.strftime("%d %B %Y") if article.created_at.present?}"
             .col-lg-6.col-sm-6.col-xs-12
