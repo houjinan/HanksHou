@@ -2,6 +2,7 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :vote, :collection, :delete_vote, :delete_collection]
   before_action :authenticate_user!, only: [:vote, :collection, :delete_collection]
   protect_from_forgery :except => :preview
+  
   def index
     @articles = Article.where(is_public: true).desc("created_at")
     if params[:label_id].present?
@@ -16,7 +17,6 @@ class ArticlesController < ApplicationController
     @labels = @articles.map(&:labels).flatten.compact.uniq
 
     cookies["nav_active"] = @type
-    # render component: 'Articles', props: { todos: @articles }, tag: 'span', class: 'article' and return
   end
 
   def show
