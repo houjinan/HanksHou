@@ -56,7 +56,7 @@ describe ArticlesController, :type => :controller do
 
   describe 'logined user to vote, collection, delete_collection' do
     let(:user) {create :user}
-    # login_user
+    login_user
     it "when vote" do
       put :vote, id: @article.id
       expect(response).to redirect_to(article_path(@article))
