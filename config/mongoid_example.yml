@@ -25,7 +25,6 @@ test:
       database: hanks_hou_test
       hosts:
         - localhost:27017
+      username: hanks
+      password: hanks1234
       options:
-        read:
-          mode: primary
-        max_pool_size: 1
