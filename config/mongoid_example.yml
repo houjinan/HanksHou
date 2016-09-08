@@ -25,6 +25,3 @@ test:
       database: hanks_hou_test
       hosts:
         - localhost:27017
-      username: hanks
-      password: hanks1234
-      options:
