@@ -41,19 +41,16 @@ Rails.application.routes.draw do
       delete 'clean'
     end
   end
-  devise_for :users, controllers: { sessions: 'sessions' }
 
   get 'index' => 'home#index', as: 'home'
   get 'about_me' => 'home#about_me', controller: 'home'
   root 'home#index'
 
-  get 'home/jquery_mobile'
-
-
   #API
   mount ApiV1 => "/"
   mount GrapeSwaggerRails::Engine => '/swagger'
 
+  devise_for :users, controllers: { sessions: 'sessions' }
   match "/404" => "errors#errors404", via: [:get, :post, :patch, :delete, :put]
   match "/422" => "errors#errors422", via: [:get, :post, :patch, :delete, :put]
   match "/500" => "errors#errors500", via: [:get, :post, :patch, :delete, :put]
