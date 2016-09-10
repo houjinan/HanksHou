@@ -6,4 +6,6 @@ class UserEntity < Grape::Entity
   expose :auth_token,    documentation: {required: true, type: "String"}, if: {return_token: true} do |instance, options|
     instance.auth_tokens.try(:first).try(:token_value)
   end
+
+  expose :nickname, documentation: {type: "String", desc: "user nickname"}
 end
