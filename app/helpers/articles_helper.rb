@@ -23,7 +23,7 @@ module ArticlesHelper
     elsif cookies[:nav_active] == "experience"
       "思考 回顾 发现 总结"
     elsif cookies[:nav_active] == "travel"
-      "旅行"
+      "旅行 行走"
     elsif cookies[:nav_active] == "reading"
       "充实 学习"
     elsif cookies[:nav_active] == "about"
