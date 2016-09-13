@@ -20,6 +20,8 @@ Rails.application.routes.draw do
         post 'update_head'
       end
     end
+
+    resources :labels
   end
 
   resources :articles do
