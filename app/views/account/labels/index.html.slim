@@ -1,1 +1,22 @@
-p lables
+span.pull-right
+  = "当前标签总数"
+  = "(" + @labels.count.to_s + ") "
+
+
+table.table
+  thead
+    tr
+      th 名称
+      th 使用数量
+      th
+
+  tbody
+    - @labels.each do |label|
+      tr
+        td = label.name
+        td = label.articles.count
+        td
+          = link_to '编辑', edit_account_label_path(label), class: "btn btn-xs btn-primary"
+          = link_to '删除', account_label_path(label), data: {:confirm => 'Are you sure?'}, :method => :delete, class: "btn btn-xs btn-danger"
+
+= will_paginate @labels
