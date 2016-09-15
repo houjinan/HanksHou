@@ -15,6 +15,12 @@ module Account
 
     def destroy
       @label = Label.find(params[:id])
+      if @label.articles.present?
+        flash[:error] = "exist label's articles" 
+      else
+        @label.destroy
+      end
+      redirect_to :index
     end
   end
 
