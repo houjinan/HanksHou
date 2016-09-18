@@ -25,11 +25,11 @@ html
                       span == "&times;"
                     = notice
 
-            - if flash[:alert]
+            - if flash[:error]
               .row
                 .col-lg-12
                   .alert.alert-danger
                     button type="button" class="close" data-dismiss="alert" aria-label="Close"
                       span == "&times;"
-                    = alert
+                    = flash[:error]
             = yield

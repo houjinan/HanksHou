@@ -1,1 +1,6 @@
-= ""
+= simple_form_for(@label, url: account_label_path(@label), html:{class: "horizontal_form"}) do |f|
+  .row
+    .col-lg-4
+      = f.input :name, label: "名称"
+
+  .actions = f.submit "提交", class: "btn btn-default"
