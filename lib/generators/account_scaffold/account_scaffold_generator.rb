@@ -28,7 +28,7 @@ module Rails
       end
 
       hook_for :template_engine, :test_framework, as: :scaffold do |invoked|
-        controller_name_param = class_path.present? ? singular_name : (class_path.join("/") + "/" + singular_name)
+        controller_name_param = controller_class_path.blank? ? singular_name : (controller_class_path.join("/") + "/" + singular_name)
         if @options[:disable_common]
           invoke invoked, [ controller_name_param ], {view_specs: false, request_specs: false, routing_specs: false}
         else
