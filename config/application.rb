@@ -37,7 +37,10 @@ module HanksHou
     config.i18n.default_locale = "zh-CN"
     # config.log_level = :error
     config.generators do |g|
-      g.template_engine :slim
+      g.template_engine     :slim
+      g.javascript_engine   :js
+      g.scaffold_stylesheet false
+      g.jbuilder            false
     end
 
 
