@@ -1,0 +1,26 @@
+= link_to '新建', new_<%=singular_table_name %>_path(), class: "btn btn-xs btn-success"
+span.pull-right
+  = "当前总数"
+  = "(" + @<%=singular_name.pluralize %>.count.to_s + ") "
+
+
+table.table
+  thead
+    tr
+    <%- self.shell.base.attributes.each do |attribute| -%>
+      th <%= attribute.name %>
+    <%- end -%>
+      th
+
+  tbody
+    - @<%=singular_name.pluralize %>.each do |<%=singular_name %>|
+      tr
+      <%- self.shell.base.attributes.each do |attribute| -%>
+        td = <%=singular_name %>.<%= attribute.name %>
+      <%- end -%>
+        td
+          = link_to '详情', <%=singular_table_name %>_path(<%=singular_name %>), class: "btn btn-xs btn-default"
+          = link_to '编辑', edit_<%=singular_table_name %>_path(<%=singular_name %>), class: "btn btn-xs btn-primary"
+          = link_to '删除', <%=singular_table_name %>_path(<%=singular_name %>), data: {:confirm => 'Are you sure?'}, :method => :delete, class: "btn btn-xs btn-danger"
+
+= will_paginate @<%=singular_name.pluralize %>
