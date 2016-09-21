@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   namespace :account do
     get 'dashboard' => 'dashboard#index', as: 'dashboard'
+    get 'unauthorized_error' => 'dashboard#unauthorized_error'
     resources :articles do
       collection do
         get "collections"

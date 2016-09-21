@@ -80,6 +80,7 @@ GEM
     bson (4.1.1)
     builder (3.2.2)
     byebug (9.0.5)
+    cancancan (1.15.0)
     capistrano (3.3.5)
       capistrano-stats (~> 1.1.0)
       i18n
@@ -475,6 +476,7 @@ DEPENDENCIES
   bootstrap-will_paginate
   brakeman
   byebug
+  cancancan
   capistrano (~> 3.3.5)
   capistrano-bundler
   capistrano-ext

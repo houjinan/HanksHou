@@ -89,3 +89,5 @@ gem 'grape-swagger-entity'
 
 
 gem 'whenever', :require => false
+
+gem 'cancancan'

@@ -1,5 +1,6 @@
 module Account
   class LabelsController < Account::AccountController
+    load_and_authorize_resource
     def index
       @labels = Label.all.paginate(:per_page => 20, :page => params[:page])
     end
