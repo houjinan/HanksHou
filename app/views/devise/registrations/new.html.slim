@@ -8,6 +8,10 @@
           = f.email_field :email, autofocus: true, class: "form-control"
 
         .field
+          = f.label :nickname, "昵称："
+          = f.text_field :nickname, class: "form-control"
+
+        .field
           = f.label :password, "密码："
           - if @minimum_password_length
             em = "(至少 #{@minimum_password_length} 位)"

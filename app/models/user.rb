@@ -42,6 +42,8 @@ class User
 
   has_many :notifications, dependent: :destroy
   has_many :auth_tokens, dependent: :destroy
+
+  validates :nickname, presence: {message: "昵称不能为空"}
   ## Confirmable
   # field :confirmation_token,   type: String
   # field :confirmed_at,         type: Time

@@ -1,8 +1,15 @@
 = render "user_info"
 
-= "修改头像"
+br
+/ = form_for @user, url: account_user_path(@user), html: {:multipart => true} do |f|
+/   = f.file_field :head_avatar
+/   br
+/   = f.submit "修改"
+= link_to "修改头像", "javascript: update_head_model_show();", class:"btn btn-xs btn-success"
 
-= form_for @user, url: account_user_path(@user), html: {:multipart => true} do |f|
-  = f.file_field :head_avatar
-  br
-  = f.submit "修改"
+
+javascript:
+  function update_head_model_show(){
+    this.$avatarModal = $("body").find('#avatar-modal');
+    this.$avatarModal.modal('show');
+  }
