@@ -2,6 +2,7 @@ module Account
   class LabelsController < Account::AccountController
     load_and_authorize_resource
     def index
+      cookies[:sidebar_active] = "label"
       @labels = @labels.paginate(:page => params[:page])
     end
 

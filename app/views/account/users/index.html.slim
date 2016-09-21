@@ -7,7 +7,7 @@ span.pull-right
 table.table
   thead
     tr
-      th 标题
+      th 用户
       th 用户邮箱
       th 昵称
       th 创建时间
@@ -16,7 +16,9 @@ table.table
   tbody
     - @users.each do |user|
       tr
-        td = user.id
+        td
+          = image_tag user.try(:head_avatar).try(:url).to_s, class: "user-head"
+          = user.id
         td = user.try(:email)
         td = user.try(:nickname)
         td = user.created_at.present? ? user.created_at.strftime("%Y-%m-%d %H:%M") : ""
