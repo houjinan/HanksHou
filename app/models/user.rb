@@ -6,6 +6,8 @@ class User
   # include Mongoid::Carrierwave
   include Mongoid::Document
   include Mongoid::Timestamps
+
+  default_scope { desc(:created_at) }
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

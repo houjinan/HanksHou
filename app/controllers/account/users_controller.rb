@@ -1,29 +1,24 @@
 module Account
   require 'mini_magick'
   class UsersController < Account::AccountController
-    before_action :set_user, only: [:show, :edit, :update, :destroy]
+    load_and_authorize_resource
 
     def index
-      @users = User.desc(:created_at)
       cookies[:sidebar_active] = "users"
       @users = @users.paginate(:page => params[:page])
     end
 
     def show
       cookies[:sidebar_active] = "users-show"
-      @user = User.find(params[:id])
     end
 
     def new
-      @user = User.new
     end
 
     def edit
-      @user = User.find(params[:id])
     end
 
     def create
-      @user = User.new(user_params)
       if @user.save
         redirect_to action: :index
       else
@@ -32,13 +27,11 @@ module Account
     end
 
     def edit_password
-      @user = User.find(params[:id])
       @resource = @user
       @resource_name = :user
     end
 
     def edit_head
-      @user = User.find(params[:id])
     end
 
     def update
@@ -71,10 +64,6 @@ module Account
     end
 
     private
-      def set_user
-        @user = User.find(params[:id])
-      end
-
       def user_params
         params.require(:user).permit(:title, :content, :user_id, :nickname, :head_avatar)
       end

@@ -12,6 +12,10 @@ class Article
 
   field :article_type, type: String, default: "technique"
   field :is_public, type: Boolean, default: true
+
+  default_scope { desc(:created_at) }
+
+
   validates :title, presence: true
   belongs_to :user, inverse_of: :articles
   has_many :comments
