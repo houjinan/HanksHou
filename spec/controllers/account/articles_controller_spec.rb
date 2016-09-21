@@ -2,7 +2,9 @@ require 'spec_helper'
 
 describe Account::ArticlesController, :type => :controller do
 
-  let(:user) {create(:user_with_articles, articles_count: 20)}
+  User.create(email: "houjinan@126.com", password: "88888888", nickname: "hanks") if User.where(email: "houjinan@126.com").blank?
+
+  let(:user) {User.where(email: "houjinan@126.com").first}
   login_user
 
   before do

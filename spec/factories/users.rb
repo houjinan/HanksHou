@@ -8,17 +8,18 @@ FactoryGirl.define do
     # email { generate(:user_email) }
     email { Faker::Internet.email }
     # email "user#{User.count}@test.com"
+    nickname "MyString"
     password "88888888"
 
     factory :user_with_articles do
       transient do
-        articles_count 5 
+        articles_count 5
       end
 
       after(:create) do |user, evaluator|
         create_list(:article, evaluator.articles_count, user: user)
       end
-    end 
+    end
   end
 
 
