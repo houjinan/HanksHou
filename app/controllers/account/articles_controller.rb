@@ -5,12 +5,12 @@ module Account
     def index
       @type = params[:type].present? ? params[:type] : Article.default_type
       cookies[:sidebar_active] = @type
-      @articles = current_user.articles.where(article_type: @type).desc("created_at").paginate(:per_page => 20, :page => params[:page])
+      @articles = current_user.articles.where(article_type: @type).desc("created_at").paginate(:page => params[:page])
     end
 
     def collections
       cookies[:sidebar_active] = "collection"
-      @articles = current_user.collection_articles.desc("created_at").paginate(:per_page => 20, :page => params[:page])
+      @articles = current_user.collection_articles.desc("created_at").paginate(:page => params[:page])
     end
 
     def new

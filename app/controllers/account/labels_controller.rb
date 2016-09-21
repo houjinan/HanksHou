@@ -2,16 +2,23 @@ module Account
   class LabelsController < Account::AccountController
     load_and_authorize_resource
     def index
-      @labels = Label.all.paginate(:per_page => 20, :page => params[:page])
+      @labels = @labels.paginate(:page => params[:page])
+    end
+
+    def show
     end
 
 
+    def new
+    end
+
+    def create
+    end
+
     def edit
-      @label = Label.find(params[:id])
     end
 
     def update
-      @label = Label.find params[:id]
       if @label.update(label_params)
         redirect_to action: :index
       else
@@ -20,7 +27,6 @@ module Account
     end
 
     def destroy
-      @label = Label.find(params[:id])
       if @label.articles.present?
         flash[:error] = "标签存在已经使用的文章不能删除！"
       else
