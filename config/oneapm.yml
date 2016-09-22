@@ -4,7 +4,7 @@
 
 common: &default_settings
 
-  license_key: 'AQMMUEleE545bA5UFFhGCQe0ebkdBgUFAE98863VA0hTCxQEee14AlRQHAQHGQRV'
+  license_key: <%=Settings.one_apm_key %>
 
   # 您在这里填写的app_name会显示在OneAPM的管理后台界面中。
   #

@@ -91,3 +91,5 @@ gem 'grape-swagger-entity'
 gem 'whenever', :require => false
 
 gem 'cancancan'
+
+gem 'rails_config', "~> 0.4.2"

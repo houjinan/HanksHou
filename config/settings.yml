@@ -1,0 +1,5 @@
+secret_key_base: <%= ENV['HANKS_HOU_SECRET_KEY'] %>
+
+one_apm_key: "AQMMUEleE545bA5UFFhGCQe0ebkdBgUFAE98863VA0hTCxQEee14AlRQHAQHGQRV"
+
+rails_env: <%= ENV['RAILS_ENV'] %>
