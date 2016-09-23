@@ -24,6 +24,10 @@ class Article
   has_and_belongs_to_many :vote_users, class_name: 'User', inverse_of: :vote_articles
 
   ArticleType = [["技术文章", "technique"], ["心得体会", "experience"], ["读书感", "reading"], ["旅行笔记", "travel"]]
+
+
+  resourcify
+
   def labels_content
     self.labels.collect { |label| label.name }.join(", ")
   end

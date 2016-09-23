@@ -6,6 +6,7 @@ class User
   # include Mongoid::Carrierwave
   include Mongoid::Document
   include Mongoid::Timestamps
+  rolify
 
   default_scope { desc(:created_at) }
   # Include default devise modules. Others available are:
@@ -62,7 +63,8 @@ class User
 
   mount_uploader :head_avatar, HeadAvatarUploader
   def is_super_admin?
-    email == "houjinan@126.com" ? true : false
+    # email == "houjinan@126.com" ? true : false
+    self.has_role? :admin
   end
 
 
