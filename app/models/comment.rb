@@ -13,6 +13,7 @@ class Comment
 
   after_create :create_notifications
 
+  resourcify
   private
     def create_notifications
       notification = Notification.create(
