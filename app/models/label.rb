@@ -6,4 +6,7 @@ class Label
 
   has_and_belongs_to_many :articles
   validates :name, presence: true
+
+
+  resourcify
 end
