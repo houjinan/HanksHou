@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :account do
+    resources :humen
+  end
   # mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   namespace :admin do
     resources :users
@@ -23,6 +26,12 @@ Rails.application.routes.draw do
     end
 
     resources :labels
+
+    resources :humen do
+      member do
+        get :graphic
+      end
+    end
   end
 
   resources :articles do

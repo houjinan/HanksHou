@@ -1,0 +1,10 @@
+- url = @human.new_record? ? account_humen_path : account_humen_path(@human)
+= simple_form_for(@human, url: url, html:{class: "horizontal_form"}) do |f|
+  .form-inputs
+      = f.input :realname
+      = f.input :birthday
+      = f.input :sex
+      = f.input :work
+
+  .form-actions
+    = f.button :submit

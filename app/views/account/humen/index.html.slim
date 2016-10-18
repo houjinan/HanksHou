@@ -1,0 +1,29 @@
+= link_to '新建', new_account_human_path(), class: "btn btn-xs btn-success"
+span.pull-right
+  = "当前总数"
+  = "(" + @humen.count.to_s + ") "
+
+
+table.table
+  thead
+    tr
+      th realname
+      th birthday
+      th sex
+      th work
+      th
+
+  tbody
+    - @humen.each do |human|
+      tr
+        td = human.realname
+        td = human.birthday
+        td = human.sex
+        td = human.work
+        td
+          = link_to '圈子', graphic_account_human_path(human), class: "btn btn-xs btn-success"
+          = link_to '详情', account_human_path(human), class: "btn btn-xs btn-default"
+          = link_to '编辑', edit_account_human_path(human), class: "btn btn-xs btn-primary"
+          = link_to '删除', account_human_path(human), data: {:confirm => 'Are you sure?'}, :method => :delete, class: "btn btn-xs btn-danger"
+
+= will_paginate @humen

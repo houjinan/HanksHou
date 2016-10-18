@@ -18,6 +18,9 @@
 
   -if current_user.is_super_admin?
     ul.nav.nav-sidebar
+      li.nav-human
+        = link_to "人脉圈子", account_humen_path, target: "_top"
+    ul.nav.nav-sidebar
       li.nav-users
         = link_to "用户管理", account_users_path, target: "_top"
 
