@@ -27,6 +27,7 @@ gem 'jquery-atwho-rails'
 group :development, :test do
   gem 'pry'
   gem 'byebug'
+  gem 'rb-readline'
   # gem 'web-console', '~> 2.0'
   gem 'spring'
 

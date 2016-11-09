@@ -348,6 +348,7 @@ GEM
     rb-fsevent (0.9.7)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
+    rb-readline (0.5.3)
     rdoc (4.2.2)
       json (~> 1.4)
     react-rails (1.8.1)
@@ -522,6 +523,7 @@ DEPENDENCIES
   rails-controller-testing
   rails_autolink
   rails_config (~> 0.4.2)
+  rb-readline
   react-rails
   redcarpet (~> 3.3.4)
   rolify
