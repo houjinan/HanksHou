@@ -21,6 +21,21 @@ module Account
 
     def create
       if @human.save
+        @uptoken = uptoken
+        filePath = params[:avatar].path
+        key = params[:avatar].original_filename
+        # 调用 upload_with_token_2 方法上传
+        code, result, response_headers = Qiniu::Storage.upload_with_token_2(
+             @uptoken,
+             filePath,
+             key,
+             nil, # 可以接受一个 Hash 作为自定义变量，请参照 http://developer.qiniu.com/article/kodo/kodo-developer/up/vars.html#xvar
+             bucket: "hanks"
+        )
+        binding.pry
+        if code == 200
+          @human.update(avatar: result[:hash])
+        end
         flash[:notice] = '创建成功'
         redirect_to ({action: :show}.merge(id: @human.id))
       else
