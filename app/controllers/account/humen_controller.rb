@@ -7,6 +7,8 @@ module Account
     end
 
     def show
+      primitive_url = 'http://7xkefc.com1.z0.glb.clouddn.com/Head.png'
+      @download_url = Qiniu::Auth.authorize_download_url(primitive_url)
     end
 
     def new
@@ -23,21 +25,14 @@ module Account
       if @human.save
         @uptoken = uptoken
         filePath = params[:avatar].path
-        key = params[:avatar].original_filename
+        key = File.basename(params[:avatar].original_filename, ".*") + @human.id + @human.class.to_s + File.extname(params[:avatar].original_filename)
         # 调用 upload_with_token_2 方法上传
-        code, result, response_headers = Qiniu::Storage.upload_with_token_2(
-             @uptoken,
-             filePath,
-             key,
-             nil, # 可以接受一个 Hash 作为自定义变量，请参照 http://developer.qiniu.com/article/kodo/kodo-developer/up/vars.html#xvar
-             bucket: "hanks"
-        )
-        binding.pry
+        code, result, response_headers = Qiniu::Storage.upload_with_token_2(@uptoken, filePath, key, nil, bucket: "hanks")
         if code == 200
-          @human.update(avatar: result[:hash])
+          @human.update(avatar: result["key"])
         end
         flash[:notice] = '创建成功'
-        redirect_to ({action: :show}.merge(id: @human.id))
+        redirect_to action: :index
       else
         render :new
       end
@@ -45,8 +40,16 @@ module Account
 
     def update
       if @human.update(human_params)
+        @uptoken = uptoken
+        filePath = params[:avatar].path
+        key = File.basename(params[:avatar].original_filename, ".*") + @human.id + @human.class.to_s + File.extname(params[:avatar].original_filename)
+        # 调用 upload_with_token_2 方法上传
+        code, result, response_headers = Qiniu::Storage.upload_with_token_2(@uptoken, filePath, key, nil, bucket: "hanks")
+        if code == 200
+          @human.update(avatar: result["key"])
+        end
         flash[:notice] = '成功更新'
-        redirect_to ({action: :show}.merge(id: @human.id))
+        redirect_to action: :index
       else
         render :edit
       end
