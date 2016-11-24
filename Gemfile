@@ -97,4 +97,4 @@ gem 'rolify'
 gem 'rails_config', "~> 0.4.2"
 
 
-gem 'qiniu'
+#gem 'qiniu'

@@ -8,7 +8,7 @@ module Account
 
     def show
       primitive_url = 'http://7xkefc.com1.z0.glb.clouddn.com/Head.png'
-      @download_url = Qiniu::Auth.authorize_download_url(primitive_url)
+      # @download_url = Qiniu::Auth.authorize_download_url(primitive_url)
     end
 
     def new
@@ -23,14 +23,14 @@ module Account
 
     def create
       if @human.save
-        @uptoken = uptoken
-        filePath = params[:avatar].path
-        key = File.basename(params[:avatar].original_filename, ".*") + @human.id + @human.class.to_s + File.extname(params[:avatar].original_filename)
-        # 调用 upload_with_token_2 方法上传
-        code, result, response_headers = Qiniu::Storage.upload_with_token_2(@uptoken, filePath, key, nil, bucket: "hanks")
-        if code == 200
-          @human.update(avatar: result["key"])
-        end
+        # @uptoken = uptoken
+        # filePath = params[:avatar].path
+        # key = File.basename(params[:avatar].original_filename, ".*") + @human.id + @human.class.to_s + File.extname(params[:avatar].original_filename)
+        # # 调用 upload_with_token_2 方法上传
+        # code, result, response_headers = Qiniu::Storage.upload_with_token_2(@uptoken, filePath, key, nil, bucket: "hanks")
+        # if code == 200
+        #   @human.update(avatar: result["key"])
+        # end
         flash[:notice] = '创建成功'
         redirect_to action: :index
       else
@@ -40,14 +40,14 @@ module Account
 
     def update
       if @human.update(human_params)
-        @uptoken = uptoken
-        filePath = params[:avatar].path
-        key = File.basename(params[:avatar].original_filename, ".*") + @human.id + @human.class.to_s + File.extname(params[:avatar].original_filename)
-        # 调用 upload_with_token_2 方法上传
-        code, result, response_headers = Qiniu::Storage.upload_with_token_2(@uptoken, filePath, key, nil, bucket: "hanks")
-        if code == 200
-          @human.update(avatar: result["key"])
-        end
+        # @uptoken = uptoken
+        # filePath = params[:avatar].path
+        # key = File.basename(params[:avatar].original_filename, ".*") + @human.id + @human.class.to_s + File.extname(params[:avatar].original_filename)
+        # # 调用 upload_with_token_2 方法上传
+        # code, result, response_headers = Qiniu::Storage.upload_with_token_2(@uptoken, filePath, key, nil, bucket: "hanks")
+        # if code == 200
+        #   @human.update(avatar: result["key"])
+        # end
         flash[:notice] = '成功更新'
         redirect_to action: :index
       else
