@@ -1,0 +1,16 @@
+.container
+  .notifications.row
+    .heading.clearfix
+      = "所有通知"
+
+      span.pull-right
+        = link_to '清空', clean_notifications_path, class: 'btn btn-xs btn-danger', method: :delete
+    .list
+      - if @notifications.blank?
+        .no-records = ".......暂无通知......"
+      - else
+        - @notification_groups.each do |group, notifications|
+          .notification-group
+            .group-title = group
+            = render notifications
+    = will_paginate @notifications

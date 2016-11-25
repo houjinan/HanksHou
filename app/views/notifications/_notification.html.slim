@@ -1,0 +1,8 @@
+div id="notification-#{notification.id}" data-id="#{notification.id}" class="media notification notification-#{notification.notify_type} #{' unread' if !notification.read?}"
+  .media-left
+    .user-avatar
+      =image_tag(notification.actor.head_avatar.url)
+  .media-body
+    = render partial: "/notifications/#{notification.notify_type}", locals: { notification: notification }
+  .media-right
+    = notification.created_at.strftime("%R")

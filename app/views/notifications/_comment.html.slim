@@ -1,0 +1,6 @@
+div
+  = "在文章："
+  = link_to notification.try(:target).try(:article).try(:title), article_path(notification.try(:target).try(:article))
+  = "回复了："
+.media-content.summary.markdown
+  p =notification.try(:target).try(:content)
