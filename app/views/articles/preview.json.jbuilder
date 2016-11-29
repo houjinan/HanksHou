@@ -1,1 +1,0 @@
-json.body sanitize_markdown(MarkdownTopicConverter.format(@body))
