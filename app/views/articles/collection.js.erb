@@ -1,0 +1,5 @@
+<% if @msg.present? %>
+  $(".prompt-alert").html('<%=render "shared/prompt", notice: @msg %>')
+<% else %>
+  $(".prompt-alert").html('<%=render "shared/prompt", alert: @error %>')
+<% end %>
