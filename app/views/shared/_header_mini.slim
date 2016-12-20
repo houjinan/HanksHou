@@ -18,9 +18,9 @@
     center
       ul class="nav navbar-nav"
         li.nav-technique = link_to "技术文章", articles_path
+        li.nav-reading = link_to "读书感", articles_path(type: "reading")
         li.nav-experience = link_to "心得体会", articles_path(type: "experience")
         li.nav-travel = link_to "旅行笔记", articles_path(type: "travel")
-        li.nav-reading = link_to "读书感", articles_path(type: "reading")
         li.nav-about = link_to "关于我", about_me_path
         li
         - if user_signed_in?
@@ -28,7 +28,7 @@
           - if current_user.is_super_admin?
             = link_to current_user.try(:user_name), account_dashboard_path, target: "_top"
           - else
-            li 
+            li
               a href=""
                 = current_user.try(:user_name)
           = link_to "<i class='fa fa-bell'></i><span>(#{Notification.unread_count(current_user)})</span>".html_safe, notifications_path, class: "notification-header"
