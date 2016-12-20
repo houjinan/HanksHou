@@ -1,4 +1,4 @@
 .badges
   - @labels.each do |label|
     .p.badge
-      = link_to label.name + " (#{label.articles.is_publics.count})", articles_path(label_id: label.id, type: @type)
+      = link_to label.name + " (#{label.articles.is_publics.where(article_type: @type).count})", articles_path(label_id: label.id, type: @type)
