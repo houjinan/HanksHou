@@ -2,11 +2,11 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :vote, :collection, :delete_vote, :delete_collection]
   before_action :authenticate_user!, only: [:vote, :collection, :delete_collection]
   protect_from_forgery :except => :preview
-  
+
   def index
-    @articles = Article.where(is_public: true).desc("created_at")
+    @articles = Article.is_publics.desc("created_at")
     if params[:label_id].present?
-      @articles = Label.find(params[:label_id]).articles
+      @articles = Label.find(params[:label_id]).articles.is_publics
     end
     if params[:search].present?
       @articles = @articles.any_of({:title => Regexp.new(".*"+params[:search]+".*")}, {:content => Regexp.new(".*"+params[:search]+".*") })

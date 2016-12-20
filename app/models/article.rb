@@ -25,7 +25,7 @@ class Article
 
   ArticleType = [["技术文章", "technique"], ["心得体会", "experience"], ["读书感", "reading"], ["旅行笔记", "travel"]]
 
-
+  scope :is_publics, -> { where(is_public: true)}
   resourcify
 
   def labels_content
