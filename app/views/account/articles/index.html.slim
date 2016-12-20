@@ -12,6 +12,7 @@ table.table
       th 创建者
       th 创建时间
       th 是否公开
+      th 访问量
       th
 
   tbody
@@ -22,6 +23,7 @@ table.table
         td = article.user.try(:user_name)
         td = article.created_at.present? ? article.created_at.strftime("%Y-%m-%d %H:%M") : ""
         td = article.try(:is_public) ? "公开" : "私密"
+        td = article.visit_count
         td
           = link_to '详情', article_path(article), class: "btn btn-xs btn-default", target: "_blank"
           = link_to '编辑', edit_account_article_path(article), class: "btn btn-xs btn-primary"
