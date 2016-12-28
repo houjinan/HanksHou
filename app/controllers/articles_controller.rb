@@ -22,6 +22,7 @@ class ArticlesController < ApplicationController
     @article.visit_count = @article.visit_count + 1
     @article.save
     @type = @article.article_type
+    cookies["nav_active"] = @type
     @labels = @article.try(&:labels).flatten.compact.uniq
     Notification.where(notify_type: 'comment', user: current_user).each{|n| n.update(read_at: DateTime.now) if n.target.article == @article}
     @title = @article.try(:title)
