@@ -11,7 +11,7 @@ class HomeController < ApplicationController
   end
 
   def weixin
-
+    render :json => {token: "houjinan"}.to_json
   end
 
 end
