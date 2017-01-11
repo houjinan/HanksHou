@@ -56,6 +56,7 @@ Rails.application.routes.draw do
 
   get 'index' => 'home#index', as: 'home'
   get 'about_me' => 'home#about_me', controller: 'home'
+  get 'weixin' => 'home#weixin', controller: 'home'
   root 'home#index'
 
   #API

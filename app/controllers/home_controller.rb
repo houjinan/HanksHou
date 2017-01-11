@@ -10,4 +10,8 @@ class HomeController < ApplicationController
     render "about_me", layout: "about_me"
   end
 
+  def weixin
+
+  end
+
 end
