@@ -33,3 +33,5 @@
         = render "shared/labels"
     - else
       center .^..^. 暂时没有内容
+/= @qrcode = RQRCode::QRCode.new("12fdsafasfa3")
+/= raw @qrcode.as_svg(resize_gte_to: false, resize_exactly_to: false, size: 120, border_modules: 40, module_px_size: 60, file: nil)
