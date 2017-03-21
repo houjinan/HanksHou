@@ -20,24 +20,24 @@ javascript:
     legend: [1, 2, 3, 4]
   });
 
+- if current_user.is_super_admin?
+  - start_time = DateTime.parse("2017-01-26")
+  - days = (Date.current - start_time).to_i
+  = "已经#{days}天，还有#{280 - days}天。"
+  .progress
+    .progress-bar.progress-bar-success role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: #{days.to_f/280*100}%"
 
-- start_time = DateTime.parse("2017-01-26")
-- days = (Date.current - start_time).to_i
-= "已经#{days}天，还有#{280 - days}天。"
-.progress
-  .progress-bar.progress-bar-success role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: #{days.to_f/280*100}%"
-
-= "#{days.to_f/280*100}%"
-table.table
-  - (0..39).each do |w|
-    tr
-      td
-        = "第#{w+1}周"
-      - (1..7).each do |i|
-        - time = (start_time + (7*w+i).day)
-        - if Date.current > time
-          td.btn-success = time.strftime("%m/%d") +"("+ (7*w+i).to_s+")"
-        - elsif Date.current == time
-          td.btn-info = time.strftime("%m/%d") +"("+ (7*w+i).to_s+")"
-        - else
-          td.btn-default = time.strftime("%m/%d") +"("+ (7*w+i).to_s+")"
+  = "#{days.to_f/280*100}%"
+  table.table
+    - (0..39).each do |w|
+      tr
+        td
+          = "第#{w+1}周"
+        - (1..7).each do |i|
+          - time = (start_time + (7*w+i).day)
+          - if Date.current > time
+            td.btn-success = time.strftime("%m/%d") +"("+ (7*w+i).to_s+")"
+          - elsif Date.current == time
+            td.btn-info = time.strftime("%m/%d") +"("+ (7*w+i).to_s+")"
+          - else
+            td.btn-default = time.strftime("%m/%d") +"("+ (7*w+i).to_s+")"
