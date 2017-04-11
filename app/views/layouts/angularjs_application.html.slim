@@ -1,0 +1,8 @@
+doctype html
+html ng-app="myApp"
+  head
+    = stylesheet_link_tag    'angularjs_application', media: 'all'
+    = javascript_include_tag 'angularjs_application'
+  body
+    sidebar
+    = yield

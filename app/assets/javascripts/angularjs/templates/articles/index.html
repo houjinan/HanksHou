@@ -1,0 +1,22 @@
+<div ng-controller="ArticlesController">
+  <hr>
+  <h3>Articles</h3>
+  <div>article's count: {{articles.length}}</div>
+  <table class="table">
+  	<tr>
+  	  <td>id</td>
+  	  <td>title</td>
+  	  <td>author</td>
+  	  <td>操作</td>
+  	</tr>
+    <tr ng-repeat="article in articles">
+      <td>{{article.id}}</td>
+      <td>{{article.title}}</td>
+      <td>{{article.author}}</td>
+      <td>
+      	<a ui-sref="article({id: article.id})">详情</a>
+      </td>
+    </tr>
+  </table>
+
+</div>

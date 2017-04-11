@@ -4,28 +4,37 @@ class ArticlesController < ApplicationController
   protect_from_forgery :except => :preview
 
   def index
-    @articles = Article.is_publics.desc("created_at")
-    if params[:label_id].present?
-      @articles = Label.find(params[:label_id]).articles.is_publics
-    end
-    if params[:search].present?
-      @articles = @articles.any_of({:title => Regexp.new(".*"+params[:search]+".*")}, {:content => Regexp.new(".*"+params[:search]+".*") })
-    end
+    if params[:format] == "json"
+      result = @articles = Article.is_publics.desc("created_at").map{|article| {id: article.id.to_s, title: article.title, author: article.user.try(:nickname)}}
+      render :json => result
+    else
+      @articles = Article.is_publics.desc("created_at")
+      if params[:label_id].present?
+        @articles = Label.find(params[:label_id]).articles.is_publics
+      end
+      if params[:search].present?
+        @articles = @articles.any_of({:title => Regexp.new(".*"+params[:search]+".*")}, {:content => Regexp.new(".*"+params[:search]+".*") })
+      end
 
-    @type = params[:type].present? ? params[:type] : Article.default_type
-    @articles = @articles.where(article_type: @type).paginate(:per_page => 10, :page => params[:page])
-    @labels = @articles.map(&:labels).flatten.compact.uniq
-    cookies["nav_active"] = @type
+      @type = params[:type].present? ? params[:type] : Article.default_type
+      @articles = @articles.where(article_type: @type).paginate(:per_page => 10, :page => params[:page])
+      @labels = @articles.map(&:labels).flatten.compact.uniq
+      cookies["nav_active"] = @type
+    end
   end
 
   def show
-    @article.visit_count = @article.visit_count + 1
-    @article.save
-    @type = @article.article_type
-    cookies["nav_active"] = @type
-    @labels = @article.try(&:labels).flatten.compact.uniq
-    Notification.where(notify_type: 'comment', user: current_user).each{|n| n.update(read_at: DateTime.now) if n.target.article == @article}
-    @title = @article.try(:title)
+    if params[:format] == "json"
+      render :json => {id: @article.id.to_s, title: @article.title, author: @article.user.try(:nickname)}
+    else
+      @article.visit_count = @article.visit_count + 1
+      @article.save
+      @type = @article.article_type
+      cookies["nav_active"] = @type
+      @labels = @article.try(&:labels).flatten.compact.uniq
+      Notification.where(notify_type: 'comment', user: current_user).each{|n| n.update(read_at: DateTime.now) if n.target.article == @article}
+      @title = @article.try(:title)
+    end  
   end
 
   def vote
