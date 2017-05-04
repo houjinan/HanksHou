@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
 
   def index
     if params[:format] == "json"
-      result = @articles = Article.is_publics.desc("created_at").map{|article| {id: article.id.to_s, title: article.title, author: article.user.try(:nickname)}}
+      result = Article.is_publics.desc("created_at").map{|article| {id: article.id.to_s, title: article.title, author: article.user.try(:nickname)}}
       render :json => result
     else
       @articles = Article.is_publics.desc("created_at")
@@ -25,7 +25,7 @@ class ArticlesController < ApplicationController
 
   def show
     if params[:format] == "json"
-      render :json => {id: @article.id.to_s, title: @article.title, author: @article.user.try(:nickname)}
+      render :json => {id: @article.id.to_s, title: @article.title, author: @article.user.try(:nickname), content: @article.content}
     else
       @article.visit_count = @article.visit_count + 1
       @article.save

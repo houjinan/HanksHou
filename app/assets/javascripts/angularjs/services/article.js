@@ -1,30 +1,13 @@
-//var myApp = angular.module("myApp", [])
-
-myApp.factory("articleService", ['$http', function($http){
-  return {
-    article_list: function(){
-      $http({
-        method: "GET",
-        url: "articles.json"
-      }).then(function(response){
-        return response.data;
-      }, function(error){
-        console.log("error .....");
-        return [];
-      });
+angular.module("services").factory("Article", ["BaseResource", function($resource){
+  return $resource(
+    "/api/v1/articles/:id", 
+    {
+      id: "@id", 
+      auth_token: "8275179d1d7bac8222b12dd1f165921d"
+    }, 
+    {
+      article_list: {method: 'get', url: '/api/v1/articles', isArray: false},
+      delete: {method: 'delete', url: '/api/v1/articles/:id',  isArray: false}
     }
-    ,
-    article: function(id){
-      $http({
-        method: "GET",
-        url: "articles/" +$state.params.id+ ".json"
-      }).then(function(response){
-        return response.data;
-      }, function(error){
-        console.log("error .....");
-        console.log(error);
-        return {};
-      });
-    }
-  }
-}]);
+  )}
+])

@@ -4,10 +4,12 @@
 
 //= require angular
 //= require angular-route
+//= require angular-resource
 //= require plugins/angular-ui-router
 //= require angular-rails-templates
 
 //= require angularjs/app
+//= require angularjs/ext_resource
 
 
 //= require_tree ./angularjs/controllers
