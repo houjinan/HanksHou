@@ -99,3 +99,7 @@ gem 'rails_config', "~> 0.4.2"
 
 #gem 'qiniu'
 gem 'rqrcode'
+
+
+gem 'angularjs-rails'
+gem 'angular-rails-templates'

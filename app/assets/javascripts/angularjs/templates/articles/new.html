@@ -1,0 +1,11 @@
+<div>
+  <hr>
+  <h3>Article</h3>
+  <form class="form-horizontal" name="articleForm">
+    <div>title: <input name="title" ng-model="article.title" required></div>
+    <div>content: <textarea name="content" ng-model="article.content"></textarea></div>
+    <div>
+      <button class="btn btn-xs btn-success" ng-click="submitArticle()">提交</button>
+    </div>
+  </form>
+</div>

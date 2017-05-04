@@ -18,6 +18,7 @@ class V1::ArticlesApi < Grape::API
       requires :id, type: String, desc: "article's _id", allow_blank: false
     end
 
+
     get ":id" do
       begin
         article = api_user.articles.find(params[:id])
@@ -26,7 +27,7 @@ class V1::ArticlesApi < Grape::API
       end
 
      present article, with: ArticleEntity
-     body data: body()
+     body body()
     end
 
 
@@ -41,7 +42,7 @@ class V1::ArticlesApi < Grape::API
     get do
       articles = api_user.articles
       present articles, with: ArticleEntity
-      body data: body()
+      body total_page: articles.count, total: articles.count, per_page: 20, page: 1, data: body()
     end
 
 
@@ -51,10 +52,14 @@ class V1::ArticlesApi < Grape::API
     }
 
     params do
+      requires :title, type: String, desc: "article's title", allow_blank: false
+      optional :content, type: String, desc: "article's content", allow_blank: true
     end
 
     post do
-
+      article = Article.create(title: params["title"], content: params["content"], user: @api_user)
+      present article, with: ArticleEntity
+      body data: body()
     end
 
 
@@ -63,10 +68,25 @@ class V1::ArticlesApi < Grape::API
     }
 
     params do
+      requires :id, type: String, desc: "article's _id"
+      requires :title, type: String, desc: "article's title", allow_blank: false
+      requires :content, type: String, desc: "article's content", allow_blank: true
     end
 
-    patch do
+    put ":id" do
+      article_params = {}
+      article_params["title"] = params["title"] if params["title"].present?
+      article_params["content"] = params["content"] if params["content"].present?
+      begin
+        article = api_user.articles.find(params[:id])
+      rescue Mongoid::Errors::DocumentNotFound, BSON::InvalidObjectId
+        error! "not search article", 400
+      end
 
+      if article.present? && article_params.present?
+        article.update(article_params)
+      end
+      body code: 0
     end
 
 
@@ -79,8 +99,17 @@ class V1::ArticlesApi < Grape::API
     end
 
     delete ":id" do
+      begin
+        article = api_user.articles.find(params[:id])
+      rescue Mongoid::Errors::DocumentNotFound, BSON::InvalidObjectId
+        error! "not search article", 400
+      end
 
+      article.destroy()
+      body code: 0
     end
+
+    
 
   end
 end

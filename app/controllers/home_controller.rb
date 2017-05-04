@@ -14,4 +14,9 @@ class HomeController < ApplicationController
     render :json => {token: "houjinan"}.to_json
   end
 
+
+  def angularjs
+    render "angularjs", layout: "angularjs_application"
+  end
+
 end

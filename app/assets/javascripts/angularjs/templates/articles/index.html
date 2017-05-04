@@ -1,0 +1,26 @@
+<div class="container" ng-controller="ArticlesController">
+  <div class="row">
+    <hr>
+    <h3>Articles</h3>
+    <a class="btn btn-default" ui-sref="article_new">create article</a>
+    <div ng-if="articles.length>0">article's count: {{articles.length}}</div>
+    <table class="table">
+    	<tr>
+    	  <td>id</td>
+    	  <td>title</td>
+    	  <td>author</td>
+    	  <td>操作</td>
+    	</tr>
+      <tr ng-repeat="article in articles">
+        <td>{{article.id}}</td>
+        <td>{{article.title}}</td>
+        <td>{{article.author}}</td>
+        <td>
+          <a ng-click="deleteArticle(article.id)">删除</a>
+          <a ui-sref="article_edit({id: article.id})">编辑</a>
+        	<a ui-sref="article({id: article.id})">详情</a>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
