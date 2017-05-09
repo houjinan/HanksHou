@@ -1,5 +1,5 @@
 source 'https://ruby.taobao.org/'
-gem 'rails', '5.0.0'
+gem 'rails', '5.1.0'
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'jquery-rails'
@@ -57,7 +57,7 @@ end
 
 gem 'unicorn', '~> 4.9.0'
 gem 'uglifier', '>= 1.3.0'
-gem 'devise'
+gem 'devise', git: 'https://github.com/plataformatec/devise.git'
 
 gem 'mongoid', git: 'https://github.com/mongodb/mongoid.git'
 gem 'mongoid-tree'
@@ -74,7 +74,7 @@ gem 'carrierwave'
 gem "carrierwave-mongoid"
 
 
-gem 'simple_form'
+gem 'simple_form', github: 'christiannelson/simple_form', branch: 'rails-5.1'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'react-rails'
@@ -94,7 +94,7 @@ gem 'whenever', :require => false
 gem 'cancancan'
 gem 'rolify'
 
-gem 'rails_config', "~> 0.4.2"
+gem 'config'
 
 
 #gem 'qiniu'

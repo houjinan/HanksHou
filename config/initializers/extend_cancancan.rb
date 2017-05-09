@@ -6,7 +6,7 @@ module CanCan
     end
 
     class << self
-      alias_method_chain(:add_before_action, :set_resource_user)
+      # alias_method_chain(:add_before_action, :set_resource_user)
     end
 
     # def initialize_with_set_resources(controller, *args)
