@@ -1,3 +1,8 @@
+
+
+set :deploy_config_path, 'config/cap_deploy.rb'
+set :stage_config_path, 'config/cap_deploy'
+
 # Load DSL and Setup Up Stages
 require 'capistrano/setup'
 
@@ -16,8 +21,8 @@ require 'erb'
 
 def from_template file
   tmp_file = "/tmp/#{file}.tmp"
-  info "Generating from 'config/deploy/templates/#{file}' to '#{tmp_file}'"
-  template = File.read "config/deploy/templates/#{file}"
+  info "Generating from 'config/cap_deploy/templates/#{file}' to '#{tmp_file}'"
+  template = File.read "config/cap_deploy/templates/#{file}"
   result = ERB.new(template).result self.send(:binding)
   File.open(tmp_file, "w"){|f| f.write result }
   tmp_file

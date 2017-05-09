@@ -1,131 +1,75 @@
-# config valid only for Capistrano 3.1
-lock '3.4.1'
+require 'mina/rails'
+require 'mina/git'
+# require 'mina/rbenv'  # for rbenv support. (https://rbenv.org)
+require 'mina/rvm'    # for rvm support. (https://rvm.io)
 
-set :stages, %w(testing production)
-set :default_stage, "production"
+# Basic settings:
+#   domain       - The hostname to SSH to.
+#   deploy_to    - Path to deploy into.
+#   repository   - Git repo to clone from. (needed by mina/git)
+#   branch       - Branch name to deploy. (needed by mina/git)
 
+set :application_name, 'hankshou'
+set :domain, 'hankshou.com'
+set :deploy_to, '/data/www/hankshou.com'
+set :repository, 'git@bitbucket.org:hankshou/hankshou.git'
+set :branch, 'master'
 
-set :application, 'hankshou'
-set :repo_url, 'git@bitbucket.org:hankshou/hankshou.git'
+set :user, 'web'
+set :rvm_use_path, '/usr/local/rvm/bin/rvm'
 
-set :rails_env, 'production'
+# Optional settings:
+#   set :user, 'foobar'          # Username in the server to SSH to.
+#   set :port, '30000'           # SSH port number.
+#   set :forward_agent, true     # SSH forward_agent.
 
-# set :rvm_type, :user
-set :rvm_ruby_version, '2.3.0'
+# shared dirs and files will be symlinked into the app-folder by the 'deploy:link_shared_paths' step.
+# set :shared_dirs, fetch(:shared_dirs, []).push('somedir')
+# set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/secrets.yml')
 
-set :branch, "master" # proc { `git rev-parse --abbrev-ref HEAD`.chomp }
+# This task is the environment that is loaded for all remote run commands, such as
+# `mina deploy` or `mina rake`.
+task :environment do
+  # If you're using rbenv, use this to load the rbenv environment.
+  # Be sure to commit your .ruby-version or .rbenv-version to your repository.
+  # invoke :'rbenv:load'
 
-set :scm, :git
-
-set :format, :pretty
-set :log_level, :debug
-set :pty, true
-
-#set :linked_files, %w{config/database.yml}
-set :linked_files, %w{config/mongoid.yml}
-set :linked_dirs, %w{log tmp public/system public/assets public/uploads}
-
-set :keep_releases, 5
-
-namespace :deploy do
-
-  task :start do
-    invoke :"rvm:hook"
-    on roles :app do
-      within current_path do
-        unless test("[ -f #{fetch(:unicorn_pid)} ]")
-          info ">>>>>> starting unicorn"
-          execute :bundle, "exec unicorn_rails -c #{fetch(:unicorn_config)} -D -E #{fetch(:rails_env)}"
-        else
-          error ">>>>>> unicorn already started"
-        end
-      end
-    end
-  end
-
-  task :stop do
-    on roles :app do
-      if test("[ -f #{fetch(:unicorn_pid)} ]")
-        info ">>>>>> stopping unicorn"
-        execute "kill `cat #{fetch(:unicorn_pid)}`"
-      else
-        error ">>>>>> can not stop. there is no started unicorn"
-      end
-    end
-  end
-
-  task :graceful_stop do
-    on roles :app do
-      if test("[ -f #{fetch(:unicorn_pid)} ]")
-        info ">>>>>> graceful stop unicorn"
-        execute "kill -s QUIT cat `#{fetch(:unicorn_pid)}`"
-      else
-        error ">>>>>> can not stop. there is no started unicorn"
-      end
-    end
-  end
-
-  task :restart do
-    pid = nil
-    on roles :app do
-      if pid = test("[ -f #{fetch(:unicorn_pid)} ]")
-        info ">>>>>> soft restarting unicorn"
-        execute "kill -s USR2 `cat #{fetch(:unicorn_pid)}`"
-      else
-        error ">>>>>> can not restart. there is no started unicorn. will run deploy:start"
-      end
-    end
-
-    invoke "deploy:start" unless pid
-  end
-
-  desc "Remote rails console"
-  task :rails_console do
-    on roles :app do
-      within current_path do
-        # execute :bundle, "exec rails console"
-        # exec %Q(ssh -i /Users/hanks/Documents/Development/hankshou.pem ubuntu@#{fetch(:server_name)} -t "cd #{current_path} && ")
-        run_interactively " ~/.rvm/bin/rvm 2.3.0 do bundle exec rails console -e production"
-      end
-    end
-  end
-
-  desc "Remote mongodb shell"
-  task :mongodb_shell do
-    on roles :app do
-      exec %Q(ssh -i #{fetch(:ssh_options)[:keys]} #{fetch(:ssh_options)[:user]}@#{fetch(:server_name)} -t "mongo")
-    end
-  end
-
-
-  task :force_restart do
-    invoke :"deploy:stop"
-    invoke :"deploy:start"
-  end
-
-  after :finishing, 'deploy:cleanup'
-
+  # For those using RVM, use this to load an RVM version@gemset.
+  invoke :'rvm:use', 'ruby-2.3.0'
 end
 
-before "deploy:cleanup_assets", "rvm:hook"
-before "deploy:compile_assets", "rvm:hook"
-before "bundler:install", "rvm:hook"
-after "deploy:publishing", "deploy:restart"
-# after "deploy:publishing", "kindeditor:restart"
-
-
-def run_interactively(command)
-  # server ||= find_servers_for_task(current_task).first
-  exec %Q(ssh -i #{fetch(:ssh_options)[:keys]} #{fetch(:ssh_options)[:user]}@#{fetch(:server_name)} -t "cd #{current_path} && #{command}")
+# Put any custom commands you need to run at setup
+# All paths in `shared_dirs` and `shared_paths` will be created on their own.
+task :setup do
+  # command %{rbenv install 2.3.0}
 end
 
+desc "Deploys the current version to the server."
+task :deploy do
+  # uncomment this line to make sure you pushed your local branch to the remote origin
+  # invoke :'git:ensure_pushed'
+  deploy do
+    # Put things that will set up an empty directory into a fully set-up
+    # instance of your project.
+    invoke :'git:clone'
+    invoke :'deploy:link_shared_paths'
+    invoke :'bundle:install'
+    # invoke :'rails:db_migrate'
+    invoke :'rails:assets_precompile'
+    invoke :'deploy:cleanup'
 
-namespace :kindeditor do
-  task :assets do
-    on roles :app do
-      within current_path do
-        execute :rake, "kindeditor:assets"
+    on :launch do
+      in_path(fetch(:current_path)) do
+        command %{mkdir -p tmp/}
+        command %{touch tmp/restart.txt}
       end
     end
   end
+
+  # you can use `run :local` to run tasks on local machine before of after the deploy scripts
+  # run(:local){ say 'done' }
 end
+
+# For help in making your deploy script, see the Mina documentation:
+#
+#  - https://github.com/mina-deploy/mina/tree/master/docs

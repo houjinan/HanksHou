@@ -40,6 +40,8 @@ group :development, :test do
   gem 'capistrano-rvm'
   gem 'capistrano-rails-console'
 
+  gem 'mina'
+
   gem 'capybara'
   gem 'poltergeist'
   gem 'rspec'
