@@ -1,3 +1,8 @@
+myApp.controller("HeaderController", ['$scope', '$state', '$http', 'Article', function($scope, $state, $http, Article){
+  $scope.linkArticle = function(type){
+  }
+}]);
+
 myApp.controller("ArticlesController", ['$scope', '$state', '$http', 'Article', function($scope, $state, $http, Article){
   Article.article_list({}, function(result){
     $scope.articles = result.data
@@ -15,7 +20,7 @@ myApp.controller("ArticlesController", ['$scope', '$state', '$http', 'Article', 
   }
 }]);
 
-myApp.controller("ArticleController", ['$scope', '$state', '$http', 'Article', function($scope, $state, $http, Article){
+myApp.controller("ArticleController", ['$scope', '$state', '$stateParams', '$http', 'Article', function($scope, $state, $stateParams, $http, Article){
   Article.get({id: $state.params.id}, function(result){
     $scope.article = result
   }, function(error){

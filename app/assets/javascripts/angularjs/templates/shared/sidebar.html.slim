@@ -1,7 +1,39 @@
-.container
-  div
-    = "HanksHou"
-  a ui-sref="articles" articles
-  = " "
-  a ui-sref="users" users
-  br
+div ng-controller="HeaderController"
+  nav.header-bar.navbar
+    .container
+      .collapse.navbar-collapse
+        ul.nav.navbar-nav.header-left
+          li 
+            <a class="logo" href="#">Hanks·Hou</a>
+          li
+            <a href="#/articles">技术文章</a>
+          li
+            <a ng-click='linkArticle("reading")'>读书感</a>
+
+        ul.nav.navbar-nav.navbar-right.header-right
+          li
+            form action="" method="get" class="search"
+              .input-group
+                input type="test" name="search" class="form-control search-input" placeholder="Search" value=""
+                span class="input-group-btn"
+                  button type="submit" class="btn btn-default search-button"
+                    = "Go"
+
+
+
+  .navbar.navbar-default.navbar-fixed-top.harder-bar-mini
+    .navbar-header
+      .row
+        .col-xs-3.pull-left
+          button type="button" class="navbar-toggle collapsed btn-back" onclick="javascript: history.go(-1);"
+            = "<"
+        .col-xs-6
+          center
+            .header-title = "Hanks·Hou"
+        .col-xs-3
+          button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"
+            span class="sr-only"
+              = "Toggle navigation"
+            span class="icon-bar"
+            span class="icon-bar"
+            span class="icon-bar"

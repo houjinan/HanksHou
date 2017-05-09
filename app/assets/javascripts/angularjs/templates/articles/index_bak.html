@@ -1,17 +1,18 @@
-<div class="container" ng-controller="ArticlesController">
+<div class="container" >
   <div class="row">
-    <hr>
     <h3>Articles</h3>
     <a class="btn btn-default" ui-sref="article_new">create article</a>
     <div ng-if="articles.length>0">article's count: {{articles.length}}</div>
     <table class="table">
     	<tr>
+        <td>编号</td>
     	  <td>id</td>
     	  <td>title</td>
     	  <td>author</td>
     	  <td>操作</td>
     	</tr>
-      <tr ng-repeat="article in articles">
+      <tr ng-repeat="article in articles track by $index">
+        <td>{{$index + 1}}</td>
         <td>{{article.id}}</td>
         <td>{{article.title}}</td>
         <td>{{article.author}}</td>

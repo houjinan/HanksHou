@@ -1,0 +1,21 @@
+.container ng-controller="ArticlesController"
+  .row.home-articles ng-show="articles.length > 0"
+    .col-lg-10 
+      .article ng-repeat="article in articles track by $index"
+        .row
+          .col-lg-12
+            .article-title
+              a ui-sref="article({id: article.id})" ng-bind="article.title"
+        .row
+          .col-lg-12
+            pre ng-bind="article.content"
+        .row
+          .col-lg-6.col-sm-6.col-xs-12
+            img ng-src="{{article.author_head_url}}" class="author-head"
+            = "{{article.author}}"
+            .article-date= "{{article.created_at}}"
+          .col-lg-6.col-sm-6.col-xs-12
+            .pull-right ="访问量: 0 赞数: 0 评论数: 0"
+    .col-lg-2
+  .row.home-articles ng-show="articles.length == 0"
+    center .^..^. 暂时没有内容

@@ -10,4 +10,7 @@ class ArticleEntity < Grape::Entity
   expose :created_at,    documentation: {required: true, type: "DateTime", desc: "article create time"} do |instance, options|
     instance.created_at.strftime("%F %R") if instance.created_at.present?
   end
+  expose :author_head_url, documentation: {required: true, type: "String", desc: "user's head url"} do |instance, options|
+    instance.user.try(:head_avatar).try(:url).to_s
+  end
 end
