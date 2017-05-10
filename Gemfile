@@ -103,3 +103,7 @@ gem 'rqrcode'
 
 gem 'angularjs-rails'
 gem 'angular-rails-templates'
+
+
+gem 'webpacker'
+
