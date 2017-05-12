@@ -25,7 +25,7 @@ gem 'dropzonejs-rails'
 gem 'jquery-atwho-rails'
 
 group :development, :test do
-  gem 'pry'
+  gem 'pry-byebug'
   gem 'byebug'
   gem 'rb-readline'
   # gem 'web-console', '~> 2.0'
