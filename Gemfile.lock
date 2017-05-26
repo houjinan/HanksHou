@@ -216,6 +216,9 @@ GEM
       grape-swagger (>= 0.20.4)
     grape-swagger-rails (0.3.0)
       railties (>= 3.2.12)
+    graphiql-rails (1.4.1)
+      rails
+    graphql (1.5.13)
     guard (2.14.1)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
@@ -331,6 +334,7 @@ GEM
       byebug (~> 9.0)
       pry (~> 0.10)
     public_suffix (2.0.5)
+    puma (3.8.2)
     rack (2.0.2)
     rack-accept (0.4.5)
       rack (>= 0.4)
@@ -531,6 +535,8 @@ DEPENDENCIES
   grape-swagger
   grape-swagger-entity
   grape-swagger-rails
+  graphiql-rails
+  graphql
   guard-rspec
   jbuilder
   jquery-atwho-rails
@@ -549,6 +555,7 @@ DEPENDENCIES
   paperclip
   poltergeist
   pry-byebug
+  puma
   rails (= 5.1.0)
   rails-controller-testing
   rails_autolink

@@ -106,4 +106,6 @@ gem 'angular-rails-templates'
 
 
 gem 'webpacker'
+gem 'puma'
 
+gem 'graphiql-rails', group: :development
