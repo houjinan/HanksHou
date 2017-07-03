@@ -53,6 +53,7 @@ group :development, :test do
   gem 'brakeman', :require => false
   gem "rubycritic", :require => false
   gem "better_errors"
+  gem 'meta_request'
 end
 
 gem 'unicorn', '~> 4.9.0'
@@ -108,4 +109,5 @@ gem 'angular-rails-templates'
 gem 'webpacker'
 gem 'puma'
 
-gem 'graphiql-rails', group: :development
+
+# gem 'zxing_cpp', github: "glassechidna/zxing_cpp.rb"

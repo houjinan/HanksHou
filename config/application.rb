@@ -17,10 +17,13 @@ require "carrierwave"
 # you've limited to :test, :development, or :production.
 
 require_relative './markdown.rb'
+require_relative '../lib/response_timer.rb'
 Bundler.require(*Rails.groups)
 
 module HanksHou
   class Application < Rails::Application
+    # config.middleware.delete Rack::Runtime
+    config.middleware.use ResponseTimer, "Load Time"
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
