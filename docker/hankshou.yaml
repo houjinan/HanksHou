@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: hanks
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: hanks
+    spec:
+      nodeName: docker-desktop
+      containers:
+      - name: hanks
+        image: houjinan/hankshou:latest
+        imagePullPolicy: Never
+        volumeMounts:
+          - mountPath: /var/www/hankshou/vendor/bundle
+            name: bundle
+          - mountPath: /var/www/hankshou/config/mongoid.yml
+            name: mongoid-yml
+        ports:
+        - containerPort: 3202
+      volumes:
+      - name: bundle
+        hostPath:
+          path: /Users/classiclaw/Documents/Development/tmp/k8s/hankshoumount/vendor/bundle
+      - name: mongoid-yml
+        hostPath:
+          path: /Users/classiclaw/Documents/Development/tmp/k8s/hankshoumount/config/mongoid.yml
