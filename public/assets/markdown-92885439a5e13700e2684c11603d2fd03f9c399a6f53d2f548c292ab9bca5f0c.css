@@ -1,0 +1,382 @@
+@charset "UTF-8";
+/* line 38, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+#preview {
+  margin-top: -15px;
+  min-height: 300px;
+  height: auto;
+}
+
+/* line 43, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.markdown {
+  position: relative;
+  line-height: 1.8em;
+  font-size: 14px;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  font-family: "PingFang SC","Hiragino Sans GB",Helvetica,Arial,"Source Han Sans CN",Roboto,"Heiti SC","Microsoft Yahei",sans-serif !important;
+}
+/* line 47, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.markdown img {
+  max-width: 100%;
+}
+/* line 48, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.markdown p,
+.markdown pre,
+.markdown ul,
+.markdown ol,
+.markdown blockquote {
+  margin-bottom: 16px;
+}
+/* line 54, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.markdown p {
+  font-size: 14px;
+  line-height: 1.5em;
+}
+/* line 55, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.markdown hr {
+  border: 2px dashed #F0F4F6;
+  border-bottom: 0px;
+  margin: 18px auto;
+  width: 50%;
+}
+/* line 56, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.markdown blockquote {
+  margin: 0 18px 15px 18px;
+  padding: 0;
+  padding-left: 32px;
+  border: 0px;
+  quotes: "“" "”" "‘" "’";
+  position: relative;
+  line-height: 1.45;
+}
+/* line 64, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.markdown blockquote p {
+  display: inline;
+  color: #999;
+}
+/* line 65, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.markdown blockquote:before, .markdown blockquote:after {
+  display: block;
+  content: "\201C";
+  font-size: 35px;
+  position: absolute;
+  font-family: serif;
+  left: 0px;
+  top: 0px;
+  color: #aaa;
+}
+/* line 77, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.markdown pre {
+  font-family: Menlo, Monaco, "Courier New", monospace;
+  font-size: 12px;
+  background-color: #F5F5F5;
+  border: 0px;
+  padding: 5px;
+  color: #444;
+  overflow: auto;
+  border-radius: 0px;
+}
+/* line 86, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.markdown pre code {
+  display: block;
+  line-height: 150%;
+  padding: 0 !important;
+  font-size: 12px !important;
+  background-color: #F5F5F5 !important;
+  border: none !important;
+}
+/* line 94, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.markdown p:last-child,
+.markdown blockquote:last-child,
+.markdown pre:last-child {
+  margin-bottom: 0;
+}
+/* line 97, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.markdown pre::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+/* line 101, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.markdown pre::-webkit-scrollbar-thumb:horizontal {
+  width: 25px;
+  background-color: #ccc;
+  -webkit-border-radius: 4px;
+}
+/* line 106, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.markdown pre::-webkit-scrollbar-track-piece {
+  margin-bottom: 10px;
+  background-color: #e5e5e5;
+  border-bottom-left-radius: 4px 4px;
+  border-bottom-right-radius: 4px 4px;
+  border-top-left-radius: 4px 4px;
+  border-top-right-radius: 4px 4px;
+}
+/* line 114, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.markdown pre::-webkit-scrollbar-thumb:vertical {
+  height: 25px;
+  background-color: #ccc;
+  -webkit-border-radius: 4px;
+  -webkit-box-shadow: 0 1px 1px white;
+}
+/* line 120, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.markdown code {
+  font-size: 12px !important;
+  background-color: #F5F5F5 !important;
+  color: #444 !important;
+  padding: 1px 2px !important;
+  border: 0px;
+  margin: 2px;
+  border-radius: 0px;
+  word-break: break-all;
+  line-height: 20px;
+  font-family: Monaco,Menlo, "Courier New", monospace;
+}
+/* line 132, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.markdown a:link,
+.markdown a:visited {
+  color: #0069D6 !important;
+  text-decoration: none !important;
+}
+/* line 136, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.markdown a:hover {
+  text-decoration: underline !important;
+  color: #00438A !important;
+}
+/* line 137, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.markdown a.mention-floor {
+  color: #60b566 !important;
+  margin-right: 3px;
+}
+/* line 138, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.markdown a.mention {
+  color: #777 !important;
+  font-weight: bold;
+  margin-right: 2px;
+}
+/* line 141, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.markdown a.mention b {
+  color: #777 !important;
+  font-weight: normal;
+}
+/* line 143, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown h6 {
+  font-weight: bold;
+  text-align: left;
+  margin-top: 10px !important;
+  margin-bottom: 16px;
+}
+/* line 152, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.markdown h1 {
+  font-size: 26px !important;
+  text-align: center;
+  margin-bottom: 30px !important;
+}
+/* line 153, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.markdown h2,
+.markdown h3,
+.markdown h4 {
+  text-align: left;
+  font-weight: bold;
+  font-size: 16px !important;
+  line-height: 100%;
+  margin: 0;
+  color: #555;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+}
+/* line 165, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.markdown h2 {
+  font-size: 20px !important;
+  border-bottom-width: 2px;
+  padding-bottom: 15px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: #111;
+}
+/* line 166, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.markdown h3 {
+  font-size: 18px !important;
+  padding-bottom: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: #333;
+}
+/* line 167, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.markdown h5, .markdown h6 {
+  font-size: 15px;
+  line-height: 100%;
+  color: #777;
+}
+/* line 168, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.markdown h6 {
+  font-size: 14px;
+  color: #999;
+}
+/* line 170, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.markdown strong {
+  color: #000;
+}
+/* line 171, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.markdown ul,
+.markdown ol {
+  list-style-position: inside;
+  list-style-type: square;
+  margin: 0;
+  margin-bottom: 20px;
+  padding: 0px 20px;
+}
+/* line 178, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.markdown ul p,
+.markdown ul blockquote,
+.markdown ul pre,
+.markdown ol p,
+.markdown ol blockquote,
+.markdown ol pre {
+  margin-bottom: 8px;
+}
+/* line 181, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.markdown ul li,
+.markdown ol li {
+  line-height: 1.6em;
+  padding: 2px 0;
+  color: #333;
+}
+/* line 182, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.markdown ul ul,
+.markdown ol ul {
+  list-style-type: circle;
+  margin-bottom: 0px;
+}
+/* line 184, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.markdown ol {
+  list-style-type: decimal;
+}
+/* line 186, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.markdown ol ol {
+  list-style-type: lower-alpha;
+  margin-bottom: 0px;
+}
+/* line 188, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.markdown img {
+  vertical-align: top;
+  max-width: 100%;
+}
+/* line 189, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.markdown a.zoom-image {
+  cursor: zoom-in;
+}
+/* line 190, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.markdown a.at_floor {
+  color: #60B566 !important;
+}
+/* line 191, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.markdown a.at_user {
+  color: #0069D6 !important;
+}
+/* line 192, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.markdown img.twemoji {
+  width: 20px;
+}
+/* line 193, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.markdown .emoji {
+  width: 20px;
+  height: 20px;
+}
+
+/* line 197, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.emoji-modal .twemoji {
+  width: 20px;
+  height: 20px;
+}
+/* line 199, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.emoji-modal .modal-dialog {
+  max-width: 496px;
+}
+/* line 201, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.emoji-modal .modal-dialog .close {
+  margin-top: 0px;
+}
+/* line 203, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.emoji-modal .modal-header {
+  border: 0px;
+  padding: 8px;
+}
+/* line 204, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.emoji-modal .modal-body {
+  padding: 0 8px 8px 8px;
+}
+/* line 205, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.emoji-modal .nav > li > a {
+  padding: 5px 8px;
+}
+/* line 209, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.emoji-modal .nav-tabs li:first-child {
+  margin-left: 8px;
+}
+/* line 211, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.emoji-modal .tab-pane {
+  padding: 0px;
+  height: 180px;
+  overflow: scroll;
+}
+/* line 216, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.emoji-modal .tab-pane::-webkit-scrollbar {
+  width: 4px;
+  border-radius: 3px;
+}
+/* line 220, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.emoji-modal .tab-pane::-webkit-scrollbar-thumb {
+  background: #e0e0e0;
+}
+/* line 224, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.emoji-modal .tab-pane a {
+  padding: 5px;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+}
+/* line 227, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.emoji-modal .tab-pane a:hover {
+  background: #f0f0f0;
+}
+/* line 230, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.emoji-modal .modal-footer {
+  padding: 8px;
+  text-align: left;
+  font-size: 16px;
+}
+/* line 234, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.emoji-modal .modal-footer .emoji {
+  width: 48px;
+  height: 48px;
+  margin-right: 10px;
+}
+
+/* line 239, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.editor-toolbar .nav-pills > li > a {
+  border-radius: 3px 3px 0 0;
+  padding: 3px 23px;
+  margin-right: 5px;
+  background-color: #f0f0f0;
+  color: #999;
+}
+/* line 246, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.editor-toolbar .nav-pills > li.active > a:link,
+.editor-toolbar .nav-pills > li.active > a:visited,
+.editor-toolbar .nav-pills > li.active > a:hover {
+  background-color: #d0d0d0;
+  color: #666;
+}
+
+/* line 251, /Users/classiclaw/Documents/Development/tmp/k8s/hanks_docker/HanksHou/app/assets/stylesheets/markdown.scss */
+.editor-toolbar .dropdown-menu {
+  left: auto;
+  right: 0;
+}
