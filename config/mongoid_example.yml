@@ -4,8 +4,6 @@ development:
       database: hanks_hou_development
       hosts:
         - localhost:27017
-      username: hanks
-      password: hanks1234
 
   options:
 
@@ -15,8 +13,6 @@ production:
       database: hanks_hou_production
       hosts:
         - localhost:27017
-      username: hanks
-      password: hanks1234
   options:
 
 test:
@@ -24,4 +20,4 @@ test:
     default:
       database: hanks_hou_test
       hosts:
-        - 127.0.0.1:27017
+        - localhost:27017
