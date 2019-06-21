@@ -7,7 +7,7 @@ GrapeSwaggerRails.options.before_filter_proc = proc {
 GrapeSwaggerRails.options.app_name = 'HanksHou Apis'
 
 
-GrapeSwaggerRails.options.before_filter do |request|
+GrapeSwaggerRails.options.before_action do |request|
   GrapeSwaggerRails.options.app_url = request.protocol + request.host_with_port
   if current_user.blank? || !current_user.is_super_admin?
     request.session[:user_return_to] = request.url

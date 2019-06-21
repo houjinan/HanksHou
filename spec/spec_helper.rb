@@ -84,7 +84,8 @@ RSpec.configure do |config|
   # config.include Rack::Test::Methods, type: :controller
   config.include FactoryGirl::Syntax::Methods
   config.raise_errors_for_deprecations! 
-  config.include Devise::TestHelpers, type: :controller
+  # config.include Devise::TestHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :controller
   # config.extend ControllerMacros, :type => :controller
   config.include Rails.application.routes.url_helpers
   config.include Capybara::DSL

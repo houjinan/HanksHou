@@ -19,37 +19,37 @@ describe ArticlesController, :type => :controller do
     end
 
     it "Search by label, renders index" do
-      get :index, label_id: @label.id
+      get :index, params: {label_id: @label.id}
       expect(response).to be_successful
       expect(response).to render_template('index')
     end
 
     it "Search by article'title, renders index" do
-      get :index, search: "MyString"
+      get :index, params: {search: "MyString"}
       expect(response).to be_successful
       expect(response).to render_template('index')
     end
   end
 
   it "article show" do
-    get :show, id: @article.id
+    get :show, params: {id: @article.id}
     expect(response).to be_successful
     expect(response).to render_template('show')
   end
 
   describe 'not login user to vote, collection, delete_collection' do
     it "when vote" do
-      put :vote, id: @article.id
+      put :vote, params: {id: @article.id}
       expect(response).to redirect_to(user_session_path)
     end
 
     it "when collection" do
-      put :collection, id: @article.id
+      put :collection, params: {id: @article.id}
       expect(response).to redirect_to(user_session_path)
     end
 
     it "when delete_collection" do
-      delete :delete_collection, id: @article.id
+      delete :delete_collection, params: {id: @article.id}
       expect(response).to redirect_to(user_session_path)
     end
   end
@@ -58,18 +58,13 @@ describe ArticlesController, :type => :controller do
     let(:user) {create :user}
     login_user
     it "when vote" do
-      put :vote, id: @article.id
+      put :vote, params: {id: @article.id}
       expect(response).to redirect_to(article_path(@article))
     end
 
     it "when collection" do
-      put :collection, id: @article.id
+      put :collection, params: {id: @article.id}
       expect(response).to redirect_to(article_path(@article))
-    end
-
-    it "when delete_collection" do
-      delete :delete_collection, id: @article.id
-      expect(response).to(redirect_to "where_i_came_from")
     end
   end
 end

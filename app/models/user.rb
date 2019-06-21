@@ -62,6 +62,8 @@ class User
   # validates_attachment_content_type :head_avatar, content_type: /\Aimage\/.*\Z/
 
   mount_uploader :head_avatar, HeadAvatarUploader
+
+  alias will_save_change_to_email? email_changed?
   def is_super_admin?
     # email == "houjinan@126.com" ? true : false
     self.has_role? :admin

@@ -218,7 +218,6 @@ GEM
       railties (>= 3.2.12)
     graphiql-rails (1.4.1)
       rails
-    graphql (1.5.13)
     guard (2.14.1)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
@@ -536,7 +535,6 @@ DEPENDENCIES
   grape-swagger-entity
   grape-swagger-rails
   graphiql-rails
-  graphql
   guard-rspec
   jbuilder
   jquery-atwho-rails
