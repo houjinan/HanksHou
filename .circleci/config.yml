@@ -29,8 +29,8 @@ jobs:
       - run:
           name: Copy config
           command: |
-            cp config/mongoid.example.yml config/mongoid.yml
-            
+            cp config/mongoid_example.yml config/mongoid.yml
+
       - run:
           name: install dependencies
           command: |
