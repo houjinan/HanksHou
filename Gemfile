@@ -44,6 +44,7 @@ group :development, :test do
   gem 'poltergeist'
   gem 'rspec'
   gem 'rspec-rails'
+  gem "rspec_junit_formatter"
   gem 'factory_girl_rails'
   gem 'spork'
   gem 'rails-controller-testing'
