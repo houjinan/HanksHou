@@ -383,7 +383,7 @@ GEM
       execjs
       railties (>= 3.2)
       tilt
-    redcarpet (3.3.4)
+    redcarpet (3.5.1)
     reek (4.6.2)
       codeclimate-engine-rb (~> 0.4.0)
       parser (>= 2.4.0.0, < 2.5)
@@ -561,7 +561,7 @@ DEPENDENCIES
   rails_autolink
   rb-readline
   react-rails
-  redcarpet (~> 3.3.4)
+  redcarpet (~> 3.5.1)
   rolify
   rouge
   rqrcode

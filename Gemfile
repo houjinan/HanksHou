@@ -14,7 +14,7 @@ gem 'bootstrap-sass', '~> 3.3.4'
 
 
 # Markdown
-gem 'redcarpet', '~> 3.3.4'
+gem 'redcarpet', '~> 3.5.1'
 gem 'rouge'
 gem 'auto-space'
 
